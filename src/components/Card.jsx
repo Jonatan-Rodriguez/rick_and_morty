@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {connect} from 'react-redux';
 import { addFav, removeFav } from "../redux/action";
 import { useState, useEffect } from "react";
@@ -6,6 +6,9 @@ import { useState, useEffect } from "react";
 function Card(props) {
 
    const [isFav, setIsFav] = useState(false);
+   const location = useLocation();
+
+   //const {onClose, addFavorite, removeFavorite, myFavorites} = props; destructuring de props
 
    const handleFavorite = () => {
       if(isFav){
@@ -18,18 +21,17 @@ function Card(props) {
    }
 
    useEffect(() => {
-      /* props.myFavorites.forEach((fav) => {
+      props.myFavorites.forEach((fav) => {
          if (fav.id === props.id) {
             setIsFav(true);
          }
-      }); */
-      console.log(props)
+      });
    }, [props.myFavorites]);
 
    return (
       <div>
          <button onClick={handleFavorite}>{isFav?'❤️':'🤍'}</button>
-         <button onClick={()=>{props.onClose(props.id)}}>X</button>
+         {  location.pathname !== '/favorites' && <button onClick={()=>{props.onClose(props.id)}}>X</button>}
          <Link to={`/detail/${props.id}`}>
             <h2>{props.name}</h2>
          </Link>
@@ -44,7 +46,7 @@ function Card(props) {
 
 const mapStateToProps = (state) => {
    return{
-      myFavorites: state.myfavorites
+      myFavorites: state.myFavorites
    };
 }
 

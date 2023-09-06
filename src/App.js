@@ -8,7 +8,7 @@ import {Routes, Route, useLocation, useNavigate} from 'react-router-dom';
 import About from './components/About';
 import Detail from './components/Detail';
 import Form from './components/form';
-
+import Favorites from './components/Favorites';
 
 const email = 'joe@gmail.com';
 const password = 'joe123';
@@ -36,8 +36,9 @@ function App() {
       !access && navigate('/');
    },[access]);
 
+   //`https://rickandmortyapi.com/api/character/${id}`
    const onSearch = (id) => {
-      axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+      axios(`https://rym2-production.up.railway.app/api/character/${id}?key=henrym-jonatan-rodriguez`).then(({ data }) => {
          if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]);
          } else {
@@ -48,13 +49,30 @@ function App() {
 
    const onClose = (id) => {
       const characterFiltered = characters.filter(character => character.id !== Number(id))
-      setCharacters(characterFiltered)
+      setCharacters(characterFiltered);
+      
+   }
+
+   function randomHandler() {
+      let memoria = [];
+
+      let randomId = (Math.random() * 826).toFixed();
+
+      randomId = Number(randomId);
+
+      if (!memoria.includes(randomId)) {
+         memoria.push(randomId);
+         onSearch(randomId);
+      } else {
+         alert("Ese personaje ya fue agregado");
+         return;
+      }
    }
 
    return (
       <div className='App'>
 
-         {  location.pathname !== '/' && <Nav onSearch={onSearch} logout={logout}/>
+         {  location.pathname !== '/' && <Nav onSearch={onSearch} randomize={randomHandler} logout={logout}/>
             /* otra forma de hacer un renderizado condicional
             location.pathname !== '/'
             ? <Nav onSearch={onSearch}/>
@@ -66,6 +84,7 @@ function App() {
             <Route path='/' element={<Form login={login}/>}/>
             <Route path='/home' element={<Cards characters={characters} onClose={onClose}/>}/>
             <Route path='/about' element={<About/>}/>
+            <Route path="/favorites" element={<Favorites/>} />
             <Route path='/detail/:id' element={<Detail/>}/>
          </Routes>
          
