@@ -6,6 +6,7 @@ import Nav from './components/Nav';
 import axios from 'axios';
 import {Routes, Route, useLocation, useNavigate} from 'react-router-dom';
 import About from './components/About';
+import Error from './components/Error';
 import Detail from './components/Detail';
 import Form from './components/form';
 import Favorites from './components/Favorites';
@@ -38,14 +39,22 @@ function App() {
 
    //`https://rickandmortyapi.com/api/character/${id}`
    const onSearch = (id) => {
+
       axios(`https://rym2-production.up.railway.app/api/character/${id}?key=henrym-jonatan-rodriguez`)
       .then(({ data }) => {
          if (data.name) {
-            setCharacters((oldChars) => [...oldChars, data]);
+            const copy = characters.filter(element => element.id == data.id)
+
+            if(!copy[0]){
+               setCharacters((oldChars) => [...oldChars, data]);
+            }else{
+               alert('Personaje repetido')
+            }
          } else {
             alert('¡No hay personajes con este ID!');
          }
       });
+   
    }
 
    const onClose = (id) => {
@@ -85,7 +94,8 @@ function App() {
             <Route path='/' element={<Form login={login}/>}/>
             <Route path='/home' element={<Cards characters={characters} onClose={onClose}/>}/>
             <Route path='/about' element={<About/>}/>
-            <Route path="/favorites" element={<Favorites/>} />
+            <Route path='*' element={<Error/>}/>
+            <Route path='/favorites' element={<Favorites/>} />
             <Route path='/detail/:id' element={<Detail/>}/>
          </Routes>
          
