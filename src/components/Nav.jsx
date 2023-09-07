@@ -5,7 +5,7 @@ const Nav = ({onSearch, logout, randomize})=>{
     return(
         <div>
             <SearchBar onSearch={onSearch}/>
-            <button onClick={randomize}>ADD RANDOM</button>
+            <button onClick={randomize}>RANDOM</button>
             <button>
                 <NavLink to='/about'>About</NavLink>
             </button>

@@ -38,7 +38,8 @@ function App() {
 
    //`https://rickandmortyapi.com/api/character/${id}`
    const onSearch = (id) => {
-      axios(`https://rym2-production.up.railway.app/api/character/${id}?key=henrym-jonatan-rodriguez`).then(({ data }) => {
+      axios(`https://rym2-production.up.railway.app/api/character/${id}?key=henrym-jonatan-rodriguez`)
+      .then(({ data }) => {
          if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]);
          } else {
