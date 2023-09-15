@@ -1,15 +1,15 @@
 import { useState, useEffect} from 'react';
 import './App.css';
-import Card from './components/Card.jsx';
-import Cards from './components/Cards.jsx';
-import Nav from './components/Nav';
+import Card from './components/Card/Card.jsx';
+import Cards from './components/Cards/Cards.jsx';
+import Nav from './components/Nav/Nav';
 import axios from 'axios';
 import {Routes, Route, useLocation, useNavigate} from 'react-router-dom';
-import About from './components/About';
-import Error from './components/Error';
-import Detail from './components/Detail';
-import Form from './components/form';
-import Favorites from './components/Favorites';
+import About from './views/About';
+import Error from './views/Error';
+import Detail from './views/Detail';
+import Form from './components/Form/Form';
+import Favorites from './views/Favorites';
 
 const email = 'joe@gmail.com';
 const password = 'joe123';

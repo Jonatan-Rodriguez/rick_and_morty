@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import {connect} from 'react-redux';
-import { addFav, removeFav } from "../redux/action";
+import { addFav, removeFav } from "../../redux/action";
 import { useState, useEffect } from "react";
 
 function Card(props) {
@@ -39,7 +39,7 @@ function Card(props) {
          <h2>{props.species}</h2>
          <h2>{props.gender}</h2>
          <h2>{props.origin}</h2>
-         <img src={props.image} alt='' />
+         <img src={props.image} alt={props.name} />
       </div>
    );
 };
