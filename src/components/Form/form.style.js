@@ -15,13 +15,6 @@ height: 100%;
 width: auto;
 `
 
-export const FormStyled = styled.form`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-`
-
 export const DivContainerForm = styled.div`
 height: 100%;
 width: auto;
@@ -38,7 +31,7 @@ export const LoginBox = styled.div`
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
 `
-export const UserBox = styled.form`
+export const UserBox = styled.div`
   position: relative;
 `
 export const InputStyled = styled.input`
@@ -112,7 +105,7 @@ export const SpanStyled = styled.span`
       left: -100%;
     }
 
-    50%,100% {
+    100% {
       left: 100%;
     }
   }

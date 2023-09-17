@@ -1,6 +1,6 @@
 import { useState } from "react";
 import validation from "./validation";
-import { DivContainer, DivContainerForm, DivContainerImg, FormStyled, LoginBox, UserBox, InputStyled, LabelStyled, LinkStyled, SpanStyled} from "./form.style";
+import { DivContainer, DivContainerForm, DivContainerImg, LoginBox, UserBox, InputStyled, LabelStyled, LinkStyled, SpanStyled} from "./form.style";
 import rick from '../../assets/img/rick.svg'
 import rickLogo from '../../assets/img/rickLogo.svg'
 
@@ -27,7 +27,7 @@ const Form = ({login}) => {
         <DivContainer>
             <DivContainerForm>
                 <img src={rickLogo} alt="" />
-                {/* <FormStyled onSubmit={handleSubmit}>
+                {/* <Form onSubmit={handleSubmit}>
                     <label htmlFor="email">email:</label>
                     <input type="email" placeholder="Ingrese su email" value={userData.email} name="email" onChange={handleChange}/>
 
@@ -39,7 +39,7 @@ const Form = ({login}) => {
                     {errors.password && <p>{errors.password}</p>}
 
                     <button disabled={!userData.email || !userData.password || errors.email || errors.password} type="submit">Enviar</button>
-                </FormStyled> */}
+                </Form> */}
 
                 <LoginBox>
                     <form onSubmit={handleSubmit}>
@@ -59,10 +59,10 @@ const Form = ({login}) => {
                             </LinkStyled>
                         </center>
                     </form>
-                </LoginBox>
+                </LoginBox> 
 
             </DivContainerForm>
-            <DivContainerImg src={rick} sr/>
+            <DivContainerImg src={rick}/>
         </DivContainer>
     );
 }
