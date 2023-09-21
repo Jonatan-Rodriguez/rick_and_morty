@@ -2,13 +2,16 @@ import { Link, useLocation } from "react-router-dom";
 import {connect} from 'react-redux';
 import { addFav, removeFav } from "../../redux/action";
 import { useState, useEffect } from "react";
+import {CardContainer} from './card.style'
+import delet from '../../assets/img/delet.svg';
+import alien from '../../assets/img/alien.svg';
+import planet from '../../assets/img/planet.svg';
+import pulso from '../../assets/img/pulse.svg';
 
 function Card(props) {
 
    const [isFav, setIsFav] = useState(false);
    const location = useLocation();
-
-   //const {onClose, addFavorite, removeFavorite, myFavorites} = props; destructuring de props
 
    const handleFavorite = () => {
       if(isFav){
@@ -29,18 +32,39 @@ function Card(props) {
    }, [props.myFavorites]);
 
    return (
-      <div>
-         <button onClick={handleFavorite}>{isFav?'❤️':'🤍'}</button>
-         {  location.pathname !== '/favorites' && <button onClick={()=>{props.onClose(props.id)}}>X</button>}
-         <Link to={`/detail/${props.id}`}>
-            <h2>{props.name}</h2>
-         </Link>
-         <h2>{props.status}</h2>
-         <h2>{props.species}</h2>
-         <h2>{props.gender}</h2>
-         <h2>{props.origin}</h2>
-         <img src={props.image} alt={props.name} />
-      </div>
+      <CardContainer>
+         <div className="imgContainer">
+            <Link to={`/detail/${props.id}`}>
+               <img src={props.image} alt={props.name} />
+            <div className="overlay">
+               <p>Saber mas</p>
+            </div>
+            </Link>
+         </div>
+         <div className="dataContainer">
+            <div className="dataInfo">
+               <h2>{props.name}</h2>
+               <p><img src={pulso} />{props.status}</p>
+               <p><img src={alien} />{props.species}</p>
+               {/* <h2>{props.gender}</h2> */}
+               <p><img src={planet} />{props.origin}</p>
+            </div>
+            <div className="btnLike">
+               <div className="likeIco" onClick={handleFavorite}>
+                  {isFav?'❤️':'🤍'}
+               </div>
+            </div>
+         </div>
+         <div className="btnDelete">
+            {
+               location.pathname !== '/favorites' && 
+               <button className="button" onClick={()=>{props.onClose(props.id)}}>
+                  <span className="button__text">Eliminar</span>
+                  <span className="button__icon"><img src={delet}/></span>
+               </button>
+            }
+         </div>
+      </CardContainer>
    );
 };
 

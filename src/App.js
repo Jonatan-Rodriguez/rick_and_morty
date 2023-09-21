@@ -1,6 +1,4 @@
 import { useState, useEffect} from 'react';
-import './App.css';
-import Card from './components/Card/Card.jsx';
 import Cards from './components/Cards/Cards.jsx';
 import Nav from './components/Nav/Nav';
 import axios from 'axios';
@@ -37,13 +35,14 @@ function App() {
       !access && navigate('/');
    },[access]);
 
-   //`https://rickandmortyapi.com/api/character/${id}`
+   //https://rym2-production.up.railway.app/api/character/${id}?key=henrym-jonatan-rodriguez
+   
    const onSearch = (id) => {
 
-      axios(`https://rym2-production.up.railway.app/api/character/${id}?key=henrym-jonatan-rodriguez`)
+      axios(`https://rickandmortyapi.com/api/character/${id}`)
       .then(({ data }) => {
          if (data.name) {
-            const copy = characters.filter(element => element.id == data.id)
+            const copy = characters.filter(element => element.id === data.id)
 
             if(!copy[0]){
                setCharacters((oldChars) => [...oldChars, data]);

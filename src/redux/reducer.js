@@ -26,7 +26,7 @@ const reducer = (state = initialState, action) => {
         return{
             ...state,
             myFavorites:
-                action.payload == 'all'?
+                action.payload === 'all'?
                 state.allCharacters:
                 characterFilter
         }
