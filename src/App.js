@@ -81,7 +81,7 @@ function App() {
    return (
       <div className='App'>
 
-         {  location.pathname !== '/' && <Nav onSearch={onSearch} randomize={randomHandler} logout={logout}/>
+         {  location.pathname !== '/' && <Nav logout={logout}/>
             /* otra forma de hacer un renderizado condicional
             location.pathname !== '/'
             ? <Nav onSearch={onSearch}/>
@@ -91,7 +91,7 @@ function App() {
 
          <Routes>
             <Route path='/' element={<Form login={login}/>}/>
-            <Route path='/home' element={<Cards characters={characters} onClose={onClose}/>}/>
+            <Route path='/home' element={<Cards onSearch={onSearch} randomize={randomHandler} characters={characters} onClose={onClose}/>}/>
             <Route path='/about' element={<About/>}/>
             <Route path='*' element={<Error/>}/>
             <Route path='/favorites' element={<Favorites/>} />

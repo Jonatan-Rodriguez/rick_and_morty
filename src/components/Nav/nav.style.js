@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const NavContainer = styled.div`
-    height: 50vh;
+    height: auto;
     width: 100%;
     background-color: black;
     padding: 0 5%;
@@ -9,4 +9,24 @@ export const NavContainer = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
+    .logo{
+
+    }
+
+    .navBtn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        flex-direction: row;
+
+        .favIco{
+            cursor: pointer;
+        }
+
+        .logOutBtn{
+            cursor: pointer;
+        }
+    }
 `

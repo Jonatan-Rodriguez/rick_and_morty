@@ -7,6 +7,7 @@ import delet from '../../assets/img/delet.svg';
 import alien from '../../assets/img/alien.svg';
 import planet from '../../assets/img/planet.svg';
 import pulso from '../../assets/img/pulse.svg';
+import info from '../../assets/img/info.svg';
 
 function Card(props) {
 
@@ -37,7 +38,8 @@ function Card(props) {
             <Link to={`/detail/${props.id}`}>
                <img src={props.image} alt={props.name} />
             <div className="overlay">
-               <p>Saber mas</p>
+            <img className='infoIco' src={info}/>
+            <p>Saber mas</p>
             </div>
             </Link>
          </div>

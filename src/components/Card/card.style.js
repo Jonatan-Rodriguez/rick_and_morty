@@ -10,7 +10,7 @@ export const CardContainer = styled.div`
     min-width: 200px;
     height: 350px;
     background-color: #313234;
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 13px;
     gap: 10px;
 
@@ -21,7 +21,7 @@ export const CardContainer = styled.div`
         border-radius: 15px;
 
         img{
-            border-radius: 15px;
+            border-radius: 16px;
             height: 100%;
             width: 100%;
             background-position: center top;
@@ -48,6 +48,12 @@ export const CardContainer = styled.div`
             font-size: 2em;
             font-weight: 300;
             opacity: 0;
+
+        }
+        .infoIco{
+            height: auto;
+            width: 20px;
+            margin-right: 5px;
         }
 
     }
