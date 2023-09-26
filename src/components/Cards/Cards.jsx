@@ -3,6 +3,7 @@ import { ContainerCards } from './cards.style';
 import SearchBar from '../SearchBar/SearchBar';
 import dado from '../../assets/img/dado.svg';
 import logoHome from '../../assets/img/rickLogo.svg';
+import smile from '../../assets/img/smiley.svg'
 
 export default function Cards(props) {
    return (
@@ -17,7 +18,10 @@ export default function Cards(props) {
                <span className="text">Random</span>
             </button>
          </div>
-         <h2 className='title'>Personajes</h2>
+         <div className='containerTitle'>
+            <img src={smile} alt="personajes" />
+            <h2 className='title'>Personajes</h2>
+         </div>
          <div className='cards'>
          {props.characters.map(element => {
             return (

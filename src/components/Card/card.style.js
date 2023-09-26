@@ -21,7 +21,7 @@ export const CardContainer = styled.div`
         border-radius: 15px;
 
         img{
-            border-radius: 16px;
+            border-radius: 15px;
             height: 100%;
             width: 100%;
             background-position: center top;

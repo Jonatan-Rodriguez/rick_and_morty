@@ -77,14 +77,25 @@ export const ContainerCards = styled.div`
         }
     }
 
-    .title{
-        font-style: bold;
-        color: white;
-        font-size: 2em;
-        margin: 0;
-        padding: 0;
-        font-weight: 600;
-        letter-spacing: 3px;
+    .containerTitle{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        img{
+            height: 3em;
+            width: 3em;
+        }
+
+        .title{
+            color: white;
+            font-size: 2em;
+            margin: 0;
+            padding: 0;
+            font-weight: 600;
+            letter-spacing: 3px;
+        }
     }
 
     .cards{

@@ -21,12 +21,14 @@ export const NavContainer = styled.div`
         gap: 20px;
         flex-direction: row;
 
-        .favIco{
+        .navIco{
             cursor: pointer;
-        }
+            border-radius: 20px;
 
-        .logOutBtn{
-            cursor: pointer;
+            .ico{
+                width: 32px;
+                height: 32px;
+            }
         }
     }
 `

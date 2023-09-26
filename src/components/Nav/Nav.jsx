@@ -14,18 +14,18 @@ const Nav = ({onSearch, logout, randomize})=>{
                 </NavLink>
             </div>
             <div className="navBtn">
-                <div className="aboutIco">
+                <div className="navIco">
                     <NavLink to='/about'>
-                        <img src={about} alt="about"/>
+                        <img className="ico" src={about} alt="about"/>
                     </NavLink>
                 </div>
-                <div className="favIco">
+                <div className="navIco">
                     <NavLink to="/favorites">
-                        <img src={fav} alt="favoritos"/>
+                        <img className="ico" src={fav} alt="favoritos"/>
                     </NavLink>
                 </div>
-                <div className="logOutIco" onClick={logout}>
-                    <img src={logOut} alt="Log out" />
+                <div className="navIco" onClick={logout}>
+                    <img className="ico" src={logOut} alt="Log out" />
                 </div>
             </div>
         </NavContainer>
