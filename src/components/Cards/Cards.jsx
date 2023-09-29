@@ -23,22 +23,22 @@ export default function Cards(props) {
             <h2 className='title'>Personajes</h2>
          </div>
          <div className='cards'>
-         {props.characters.map(element => {
-            return (
-            <Card
-               key={element.id}
-               id={element.id}
-               name={element.name}
-               status={element.status}
-               species={element.species}
-               gender={element.gender}
-               origin={element.origin.name}
-               image={element.image}
-               onClose={props.onClose}
-            />
-            )})
-         }
-      </div>
-   </ContainerCards>
+            {props.characters.map(element => {
+               return (
+               <Card
+                  key={element.id}
+                  id={element.id}
+                  name={element.name}
+                  status={element.status}
+                  species={element.species}
+                  gender={element.gender}
+                  origin={element.origin.name}
+                  image={element.image}
+                  onClose={props.onClose}
+               />
+               )})
+            }
+         </div>
+      </ContainerCards>
    );
 }

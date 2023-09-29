@@ -1,27 +1,47 @@
 import styled from 'styled-components';
 
 export const DivContainer = styled.div`
-background: black;
-width: 100%;
-height:100vh;
-display: flex;
-align-items: center;
-flex-direction: row;
-justify-content: space-around;
+  background: linear-gradient(90deg, rgba(24,25,26,1) 0%, rgba(0,0,0,1) 70%);
+  width: 100%;
+  height:100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
 `
 
 export const DivContainerImg = styled.img`
-height: 100%;
-width: auto;
+  height: 100%;
+  width: auto;
+  animation: fadeIn 5s linear;
+
+  @keyframes fadeIn {
+    0%{
+      opacity: 0;
+      transform: scale(0.9)
+    }
+
+    50%{
+      opacity: 0.5;
+      transform: scale(0.95);
+    }
+
+    100%{
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 `
 
 export const DivContainerForm = styled.div`
-height: 100%;
-width: auto;
-display: flex;
-align-items: center;
-flex-direction: column;
-justify-content: space-around;
+  height: 100%;
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  background-color: rgba(24,25,26,1);
 `
 
 export const LoginBox = styled.div`
@@ -30,9 +50,20 @@ export const LoginBox = styled.div`
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
+  width: 350px;
 `
 export const UserBox = styled.div`
   position: relative;
+
+    .error{
+      background-color: #c1121f;
+      border-radius: 5px;
+      padding: 1px 5px;
+      p{
+        font-size: 1.5em;
+        color: #ffffff;
+      }
+    }
 `
 export const InputStyled = styled.input`
   width: 100%;
@@ -84,11 +115,12 @@ export const LinkStyled = styled.a`
   margin-top: 40px;
   letter-spacing: 4px;
   cursor: pointer;
+  box-shadow: 0 0 5px #11B0C830;
+  border-radius: 5px;
 
   &:hover{
     background: #11B0C8;
     color: #fff;
-    border-radius: 5px;
     box-shadow: 0 0 5px #11B0C8,
                 0 0 25px #11B0C8,
                 0 0 50px #11B0C8,

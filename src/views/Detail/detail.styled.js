@@ -8,13 +8,12 @@ export const ContainerDetail = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #0d0d01;
+    background-color: #18191a;
     padding: 5%;
 
     .card {
         width: 75%;
         height: 60%;
-        max-height: auto;
         transition: all 0.2s;
         position: relative;
 
@@ -65,9 +64,13 @@ export const ContainerDetail = styled.div`
                 gap: 20px 20px;
 
                 .containerImg{
-                    border-radius: 8px;
-                    width: 300px;
-                    height: 300px;
+                    border-radius: 15px;
+                    min-width: 200px;
+                    width: 275px;
+                    max-width: 350px;
+                    min-height: 200px;
+                    height: 275px;
+                    max-height: 350px;
 
                     .img{
                         border-radius: 15px;
@@ -79,8 +82,11 @@ export const ContainerDetail = styled.div`
                 }
 
                 .containerData{
-                    width: 300px;
-                    height: 300px;
+                    min-width: 200px;
+                    max-width: 350px;
+                    min-height: 200px;
+                    height: 275px;
+                    max-height: 350px;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;

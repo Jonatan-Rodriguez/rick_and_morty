@@ -9,7 +9,7 @@ export const ContainerCards = styled.div`
     align-items: start;
     flex-direction:column;
     gap: 20px;
-    background-color: #1E1E1E;
+    background-color: #18191a;
     padding: 2% 5%;
 
     .logoHome{

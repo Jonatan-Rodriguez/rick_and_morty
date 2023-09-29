@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const NavContainer = styled.div`
     height: auto;
     width: 100%;
-    background-color: black;
+    background-color:#242526;
     padding: 0 5%;
     display: flex;
     flex-direction: row;

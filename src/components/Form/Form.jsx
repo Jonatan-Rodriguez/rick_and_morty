@@ -27,31 +27,17 @@ const Form = ({login}) => {
         <DivContainer>
             <DivContainerForm>
                 <img src={rickLogo} alt="" />
-                {/* <Form onSubmit={handleSubmit}>
-                    <label htmlFor="email">email:</label>
-                    <input type="email" placeholder="Ingrese su email" value={userData.email} name="email" onChange={handleChange}/>
-
-                    {errors.email && <p>{errors.email}</p>}
-
-                    <label htmlFor="password">password:</label>
-                    <input type="password" placeholder="Ingrese su password" value={userData.password} name="password" onChange={handleChange}/>
-
-                    {errors.password && <p>{errors.password}</p>}
-
-                    <button disabled={!userData.email || !userData.password || errors.email || errors.password} type="submit">Enviar</button>
-                </Form> */}
-
                 <LoginBox>
                     <form onSubmit={handleSubmit}>
                         <UserBox>
                             <InputStyled type="text" required value={userData.email} name="email" onChange={handleChange}/>
                             <LabelStyled htmlFor="email">Email</LabelStyled>
-                            {errors.email && <p>{errors.email}</p>}
+                            {errors.email && <div className="error"><p>{errors.email}</p></div>}
                         </UserBox>
                         <UserBox>
                             <InputStyled type="password" required value={userData.password} name="password" onChange={handleChange}/>
                             <LabelStyled htmlFor="password">Password</LabelStyled>
-                            {errors.password && <p>{errors.password}</p>}
+                            {errors.password && <div className="error"><p>{errors.password}</p></div>}
                         </UserBox>
                         <center>
                             <LinkStyled onClick={handleSubmit}>Enviar

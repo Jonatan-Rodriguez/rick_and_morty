@@ -7,7 +7,7 @@ import About from './views/About';
 import Error from './views/Error';
 import Detail from './views/Detail/Detail.jsx';
 import Form from './components/Form/Form';
-import Favorites from './views/Favorites';
+import Favorites from './views/Favorites/Favorites.jsx';
 
 const email = 'joe@gmail.com';
 const password = 'joe123';
@@ -29,6 +29,7 @@ function App() {
 
    const logout = () => {
       setAccess(false);
+      setCharacters([]);
    }
 
    useEffect(()=>{
