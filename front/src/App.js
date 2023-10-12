@@ -9,8 +9,8 @@ import Detail from './views/Detail/Detail.jsx';
 import Form from './components/Form/Form';
 import Favorites from './views/Favorites/Favorites.jsx';
 
-const email = 'joe@gmail.com';
-const password = 'joe123';
+/* const email = 'joe@gmail.com';
+const password = 'joe123'; */
 
 function App() {
 
@@ -19,13 +19,22 @@ function App() {
    const navigate = useNavigate();
    const [access,setAccess] = useState(false);
 
+   function login(userData) {
+      const { email, password } = userData;
+      const URL = 'http://localhost:3001/rickandmorty/login/';
+      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+         const { access } = data;
+         setAccess(data);
+         access && navigate('/home');
+      });
+   }
 
-   const login = (userData) => {
+   /* const login = (userData) => {
       if(userData.email === email && userData.password === password){
          setAccess(true);
          navigate('/home');
       }
-   }
+   } */
 
    const logout = () => {
       setAccess(false);
@@ -37,10 +46,10 @@ function App() {
    },[access]);
 
    //https://rym2-production.up.railway.app/api/character/${id}?key=henrym-jonatan-rodriguez
-   
+   //https://rickandmortyapi.com/api/character/${id}
    const onSearch = (id) => {
 
-      axios(`https://rickandmortyapi.com/api/character/${id}`)
+      axios(`http://localhost:3001/rickandmorty/character/${id}`)
       .then(({ data }) => {
          if (data.name) {
             const copy = characters.filter(element => element.id === data.id)
