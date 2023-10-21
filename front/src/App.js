@@ -19,14 +19,19 @@ function App() {
    const navigate = useNavigate();
    const [access,setAccess] = useState(false);
 
-   function login(userData) {
-      const { email, password } = userData;
-      const URL = 'http://localhost:3001/rickandmorty/login/';
-      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+   async function login(userData) {
+      try {
+         const { email, password } = userData;
+         const URL = 'http://localhost:3001/rickandmorty/login/';
+         const { data } = await axios(URL + `?email=${email}&password=${password}`);
+
          const { access } = data;
          setAccess(data);
          access && navigate('/home');
-      });
+
+      } catch (error) {
+         throw Error(error.message);
+      }
    }
 
    /* const login = (userData) => {
@@ -47,10 +52,10 @@ function App() {
 
    //https://rym2-production.up.railway.app/api/character/${id}?key=henrym-jonatan-rodriguez
    //https://rickandmortyapi.com/api/character/${id}
-   const onSearch = (id) => {
-
-      axios(`http://localhost:3001/rickandmorty/character/${id}`)
-      .then(({ data }) => {
+   const onSearch = async (id) => {
+      try {
+         const {data} = await axios(`http://localhost:3001/rickandmorty/character/${id}`);
+         
          if (data.name) {
             const copy = characters.filter(element => element.id === data.id)
 
@@ -59,10 +64,10 @@ function App() {
             }else{
                alert('Personaje repetido')
             }
-         } else {
-            alert('¡No hay personajes con este ID!');
          }
-      });
+      } catch (error) {
+         alert('¡No hay personajes con este ID!');
+      }
    
    }
 
