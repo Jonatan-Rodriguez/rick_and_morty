@@ -4,7 +4,7 @@ import { DivContainer, DivContainerForm, DivContainerImg, LoginBox, UserBox, Inp
 import rick from '../../assets/img/rick.svg'
 import rickLogo from '../../assets/img/rickLogo.svg'
 
-const Form = ({login}) => {
+const Form = ({login, loginInvited}) => {
 
     const [userData, setUserData] = useState({email: '', password: ''});
 
@@ -28,6 +28,7 @@ const Form = ({login}) => {
             <DivContainerForm>
                 <img src={rickLogo} alt="" />
                 <LoginBox>
+                    <h2 className="title">Login</h2>
                     <form onSubmit={handleSubmit}>
                         <UserBox>
                             <InputStyled type="text" required value={userData.email} name="email" onChange={handleChange}/>
@@ -42,6 +43,9 @@ const Form = ({login}) => {
                         <center>
                             <LinkStyled onClick={handleSubmit}>Enviar
                                 <SpanStyled></SpanStyled>
+                            </LinkStyled>
+                            <LinkStyled id="linkInvited" onClick={loginInvited}>Ingresar como invitado
+                                <SpanStyled id="spanInvited"></SpanStyled>
                             </LinkStyled>
                         </center>
                     </form>

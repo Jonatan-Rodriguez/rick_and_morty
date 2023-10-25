@@ -9,8 +9,6 @@ import Detail from './views/Detail/Detail.jsx';
 import Form from './components/Form/Form';
 import Favorites from './views/Favorites/Favorites.jsx';
 
-/* const email = 'joe@gmail.com';
-const password = 'joe123'; */
 
 function App() {
 
@@ -34,6 +32,22 @@ function App() {
       }
    }
 
+   async function loginInvited() {
+      try {
+         const email = "joe@gmail.com";
+         const password = "joe123"
+         const URL = 'http://localhost:3001/rickandmorty/login/';
+         const { data } = await axios(URL + `?email=${email}&password=${password}`);
+
+         const { access } = data;
+         setAccess(data);
+         access && navigate('/home');
+
+      } catch (error) {
+         throw Error(error.message);
+      }
+   }
+
    /* const login = (userData) => {
       if(userData.email === email && userData.password === password){
          setAccess(true);
@@ -45,6 +59,7 @@ function App() {
       setAccess(false);
       setCharacters([]);
    }
+
 
    useEffect(()=>{
       !access && navigate('/');
@@ -105,7 +120,7 @@ function App() {
          }
 
          <Routes>
-            <Route path='/' element={<Form login={login}/>}/>
+            <Route path='/' element={<Form login={login} loginInvited={loginInvited}/>}/>
             <Route path='/home' element={<Cards onSearch={onSearch} randomize={randomHandler} characters={characters} onClose={onClose}/>}/>
             <Route path='/about' element={<About/>}/>
             <Route path='*' element={<Error/>}/>

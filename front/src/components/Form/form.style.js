@@ -51,6 +51,34 @@ export const LoginBox = styled.div`
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
   width: 350px;
+
+  .title{
+    font-size: 2.5em;
+    color: #ffffff;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  #linkInvited{
+    letter-spacing: 2px;
+    font-size: 13px;
+    box-shadow: 0 0 5px #208D4530;
+
+    &:hover{
+      background: #208D45;
+      box-shadow: 0 0 5px #208D45,
+                  0 0 25px #208D45,
+                  0 0 50px #208D45,
+                  0 0 100px #208D45;
+    }
+  }
+
+  #spanInvited{
+    &:nth-child(1){
+      background: linear-gradient(90deg, transparent, #208D45);
+    }
+  }
 `
 export const UserBox = styled.div`
   position: relative;
@@ -101,6 +129,7 @@ export const LabelStyled = styled.label`
   pointer-events: none;
   transition: .5s;
 `
+
 
 export const LinkStyled = styled.a`
   position: relative;
