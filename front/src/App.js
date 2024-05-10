@@ -1,13 +1,14 @@
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import Cards from './components/Cards/Cards.jsx';
 import Nav from './components/Nav/Nav';
 import axios from 'axios';
-import {Routes, Route, useLocation, useNavigate} from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import About from './views/About';
 import Error from './views/Error';
 import Detail from './views/Detail/Detail.jsx';
 import Form from './components/Form/Form';
 import Favorites from './views/Favorites/Favorites.jsx';
+import Landing from './views/Landing/Landing.jsx';
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
    const [characters, setCharacters] = useState([]);
    const location = useLocation();
    const navigate = useNavigate();
-   const [access,setAccess] = useState(false);
+   const [access, setAccess] = useState(false);
 
    async function login(userData) {
       try {
@@ -61,35 +62,35 @@ function App() {
    }
 
 
-   useEffect(()=>{
+   useEffect(() => {
       !access && navigate('/');
-   },[access]);
+   }, [access]);
 
    //https://rym2-production.up.railway.app/api/character/${id}?key=henrym-jonatan-rodriguez
    //https://rickandmortyapi.com/api/character/${id}
    const onSearch = async (id) => {
       try {
-         const {data} = await axios(`http://localhost:3001/rickandmorty/character/${id}`);
-         
+         const { data } = await axios(`http://localhost:3001/rickandmorty/character/${id}`);
+
          if (data.name) {
             const copy = characters.filter(element => element.id === data.id)
 
-            if(!copy[0]){
+            if (!copy[0]) {
                setCharacters((oldChars) => [...oldChars, data]);
-            }else{
+            } else {
                alert('Personaje repetido')
             }
          }
       } catch (error) {
          alert('¡No hay personajes con este ID!');
       }
-   
+
    }
 
    const onClose = (id) => {
       const characterFiltered = characters.filter(character => character.id !== Number(id))
       setCharacters(characterFiltered);
-      
+
    }
 
    function randomHandler() {
@@ -111,7 +112,7 @@ function App() {
    return (
       <div className='App'>
 
-         {  location.pathname !== '/' && <Nav logout={logout}/>
+         {location.pathname !== '/' && <Nav logout={logout} />
             /* otra forma de hacer un renderizado condicional
             location.pathname !== '/'
             ? <Nav onSearch={onSearch}/>
@@ -120,14 +121,15 @@ function App() {
          }
 
          <Routes>
-            <Route path='/' element={<Form login={login} loginInvited={loginInvited}/>}/>
-            <Route path='/home' element={<Cards onSearch={onSearch} randomize={randomHandler} characters={characters} onClose={onClose}/>}/>
-            <Route path='/about' element={<About/>}/>
-            <Route path='*' element={<Error/>}/>
-            <Route path='/favorites' element={<Favorites/>} />
-            <Route path='/detail/:id' element={<Detail/>}/>
+            {/* <Route path='/' element={<Form login={login} loginInvited={loginInvited}/>}/> */}
+            <Route path='/' element={<Landing />} />
+            <Route path='/home' element={<Cards onSearch={onSearch} randomize={randomHandler} characters={characters} onClose={onClose} />} />
+            <Route path='/about' element={<About />} />
+            <Route path='*' element={<Error />} />
+            <Route path='/favorites' element={<Favorites />} />
+            <Route path='/detail/:id' element={<Detail />} />
          </Routes>
-         
+
       </div>
    );
 }
