@@ -103,7 +103,7 @@ export const ContainerDetail = styled.div`
                         gap: 10px;
 
                         img{
-                            height: 1.7em;
+                            width: 20px;
                         }
 
                         p{

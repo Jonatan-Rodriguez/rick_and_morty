@@ -89,10 +89,12 @@ export const CardContainer = styled.div`
             }
             
             p{
+                display: flex;
                 color: white;
                 font-size: 1.3em;
                 
                 img{
+                    width: 20px;
                     margin-right:5px;
                 }
             }

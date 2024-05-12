@@ -27,22 +27,22 @@ const Favorites = (props) => {
                     <img src={fav} alt="favoritos" />
                     <h2 className='title'>Favoritos</h2>
                 </div>
-                <div className='containerFilter'>
+                {/* <div className='containerFilter'>
                     <p>Filtrar por:</p>
                     <div className='selectContainer'>
-                        <select className='selectBox' onClick={handleFilter}>
+                        <select className='selectBox' onChange={handleFilter}>
+                            <option value="all">All</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                             <option value="Genderless">Genderless</option>
                             <option value="unknown">Unknown</option>
-                            <option value="all">All</option>
                         </select>
                         <div className='iconContainer'>
                             <img src={down} alt="filtros" />
                         </div>
                     </div>
                     <div className='selectContainer'>
-                        <select className='selectBox' onClick={handleOrder}>
+                        <select className='selectBox' onChange={handleOrder}>
                             <option value="A">Ascendente</option>
                             <option value="D">Descendente</option> 
                         </select>
@@ -50,7 +50,7 @@ const Favorites = (props) => {
                             <img src={down} alt="filtros" />
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
             <div className='favorites'>
                 {props.myFavorites?.map(fav => {

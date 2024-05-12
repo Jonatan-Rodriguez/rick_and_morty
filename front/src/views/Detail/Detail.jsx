@@ -14,7 +14,6 @@ const Detail = () => {
     const {id} = useParams();
     const [character, setCharacter] = useState({});
 
-    //https://rickandmortyapi.com/api/character/${id}
     useEffect(() => {
         axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
             if (data.name) {

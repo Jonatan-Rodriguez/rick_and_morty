@@ -121,8 +121,8 @@ function App() {
          }
 
          <Routes>
-            {/* <Route path='/' element={<Form login={login} loginInvited={loginInvited}/>}/> */}
             <Route path='/' element={<Landing />} />
+            <Route path='/form' element={<Form login={login} loginInvited={loginInvited}/>}/>
             <Route path='/home' element={<Cards onSearch={onSearch} randomize={randomHandler} characters={characters} onClose={onClose} />} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<Error />} />
