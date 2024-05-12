@@ -1,5 +1,9 @@
 let myFavorites = [];
 
+const getFav = (req, res) => {
+    return res.status(200).json(myFavorites);
+}
+
 const postFav = (req, res) =>{
     const character = req.body;
     const characterRepeat = myFavorites.find((favorite) => favorite.id === character.id);
@@ -22,5 +26,6 @@ const deleteFav = (req, res) =>{
 
 module.exports = {
     postFav,
-    deleteFav
+    deleteFav,
+    getFav
 }
