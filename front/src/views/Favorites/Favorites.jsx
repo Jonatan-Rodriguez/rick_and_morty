@@ -7,6 +7,9 @@ import fav from '../../assets/img/favoritos.svg';
 import down from '../../assets/img/arrow.svg';
 
 const Favorites = (props) => {
+
+    console.log('Fav', props.myFavorites);
+    console.log('Char', props.allCharacters);
     
     const dispatch = useDispatch();
     const [aux, setAux] = useState(false);
@@ -27,7 +30,7 @@ const Favorites = (props) => {
                     <img src={fav} alt="favoritos" />
                     <h2 className='title'>Favoritos</h2>
                 </div>
-                {/* <div className='containerFilter'>
+                <div className='containerFilter'>
                     <p>Filtrar por:</p>
                     <div className='selectContainer'>
                         <select className='selectBox' onChange={handleFilter}>
@@ -50,7 +53,7 @@ const Favorites = (props) => {
                             <img src={down} alt="filtros" />
                         </div>
                     </div>
-                </div> */}
+                </div>
             </div>
             <div className='favorites'>
                 {props.myFavorites?.map(fav => {
@@ -74,7 +77,8 @@ const Favorites = (props) => {
 
 const mapStateToProps = (state) => {
     return{
-        myFavorites: state.myFavorites
+        myFavorites: state.myFavorites,
+        allCharacters : state.allCharacters
     };
 }
 
