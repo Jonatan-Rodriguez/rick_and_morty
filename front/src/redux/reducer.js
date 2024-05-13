@@ -29,8 +29,8 @@ const reducer = (state = initialState, action) => {
             const allCharactersFavCopy= [...state.myFavorites];
         return{
             ...state,
-            myFavorites: action.payload === 'A' ? allCharactersFavCopy.sort((a,b) => a.id - b.id) :
-            allCharactersFavCopy.sort((a,b) => b.id - a.id)
+            myFavorites: action.payload === 'A' ? allCharactersFavCopy.sort((a,b) => a.name.localeCompare(b.name)) :
+            allCharactersFavCopy.sort((a,b) => b.name.localeCompare(a.name))
         }
 
         default:

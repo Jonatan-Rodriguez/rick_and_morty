@@ -1,27 +1,10 @@
-import {connect, useDispatch} from 'react-redux';
+import { connect } from 'react-redux';
 import Card from '../../components/Card/Card';
-import { filterCards, orderCards } from '../../redux/action';
-import { useState } from 'react';
-import {ContainerFavorite} from './favorites.styled';
+import { ContainerFavorite } from './favorites.styled';
 import fav from '../../assets/img/favoritos.svg';
-import down from '../../assets/img/arrow.svg';
+import FilterFav from '../../components/FilterFav/FilterFav';
 
 const Favorites = (props) => {
-
-    console.log('Fav', props.myFavorites);
-    console.log('Char', props.allCharacters);
-    
-    const dispatch = useDispatch();
-    const [aux, setAux] = useState(false);
-
-    const handleOrder = (event) => {
-        dispatch(orderCards(event.target.value));
-        setAux(true);
-    }
-
-    const handleFilter = (event) => {
-        dispatch(filterCards(event.target.value));
-    }
     
     return(
         <ContainerFavorite>
@@ -30,30 +13,11 @@ const Favorites = (props) => {
                     <img src={fav} alt="favoritos" />
                     <h2 className='title'>Favoritos</h2>
                 </div>
-                <div className='containerFilter'>
-                    <p>Filtrar por:</p>
-                    <div className='selectContainer'>
-                        <select className='selectBox' onChange={handleFilter}>
-                            <option value="all">All</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Genderless">Genderless</option>
-                            <option value="unknown">Unknown</option>
-                        </select>
-                        <div className='iconContainer'>
-                            <img src={down} alt="filtros" />
-                        </div>
-                    </div>
-                    <div className='selectContainer'>
-                        <select className='selectBox' onChange={handleOrder}>
-                            <option value="A">Ascendente</option>
-                            <option value="D">Descendente</option> 
-                        </select>
-                        <div className='iconContainer'>
-                            <img src={down} alt="filtros" />
-                        </div>
-                    </div>
-                </div>
+                {props.myFavorites.length > 1 ?
+                    <FilterFav/>
+                    :
+                    <></>
+                }
             </div>
             <div className='favorites'>
                 {props.myFavorites?.map(fav => {
@@ -77,8 +41,7 @@ const Favorites = (props) => {
 
 const mapStateToProps = (state) => {
     return{
-        myFavorites: state.myFavorites,
-        allCharacters : state.allCharacters
+        myFavorites: state.myFavorites
     };
 }
 
