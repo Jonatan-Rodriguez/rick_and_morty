@@ -13,11 +13,7 @@ const Favorites = (props) => {
                     <img src={fav} alt="favoritos" />
                     <h2 className='title'>Favoritos</h2>
                 </div>
-                {props.myFavorites.length > 1 ?
-                    <FilterFav/>
-                    :
-                    <></>
-                }
+                <FilterFav/>
             </div>
             <div className='favorites'>
                 {props.myFavorites?.map(fav => {

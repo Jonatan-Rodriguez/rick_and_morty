@@ -3,10 +3,6 @@ import { getFav } from '../../redux/action';
 import {connect} from 'react-redux';
 import Card from '../Card/Card';
 import { ContainerCards } from './cards.style';
-/* import SearchBar from '../SearchBar/SearchBar';
-import dado from '../../assets/img/dado.svg';
-import logoHome from '../../assets/img/rickLogo.svg';
-import smile from '../../assets/img/smiley.svg' */
 
 const Cards = (props) => {
 

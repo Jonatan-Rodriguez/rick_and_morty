@@ -49,18 +49,6 @@ function App() {
       }
    }
 
-   /* const login = (userData) => {
-      if(userData.email === email && userData.password === password){
-         setAccess(true);
-         navigate('/home');
-      }
-   } */
-
-   const logout = () => {
-      setAccess(false);
-      setCharacters([]);
-   }
-
 
    useEffect(() => {
       !access && navigate('/');
@@ -111,8 +99,7 @@ function App() {
 
    return (
       <div className='App'>
-
-         {location.pathname !== '/' && <Nav logout={logout} />}
+         {location.pathname !== '/' && <Nav />}
          <Routes>
             <Route path='/' element={<Landing />} />
             <Route path='/form' element={<Form login={login} loginInvited={loginInvited}/>}/>
@@ -122,7 +109,6 @@ function App() {
             <Route path='/favorites' element={<Favorites />} />
             <Route path='/detail/:id' element={<Detail />} />
          </Routes>
-
       </div>
    );
 }
