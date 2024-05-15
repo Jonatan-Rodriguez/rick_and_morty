@@ -5,15 +5,15 @@ import fav from '../../assets/img/favoritos.svg';
 import FilterFav from '../../components/FilterFav/FilterFav';
 
 const Favorites = (props) => {
-    
-    return(
+
+    return (
         <ContainerFavorite>
             <div className='titleFilter'>
                 <div className='containerTitle'>
                     <img src={fav} alt="favoritos" />
                     <h2 className='title'>Favoritos</h2>
                 </div>
-                <FilterFav/>
+                <FilterFav />
             </div>
             <div className='favorites'>
                 {props.myFavorites?.map(fav => {
@@ -24,7 +24,6 @@ const Favorites = (props) => {
                             name={fav.name}
                             status={fav.status}
                             species={fav.species}
-                            /* gender={fav.gender} */
                             origin={fav.origin}
                             image={fav.image}
                         />
@@ -36,7 +35,7 @@ const Favorites = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    return{
+    return {
         myFavorites: state.myFavorites
     };
 }

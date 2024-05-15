@@ -7,15 +7,15 @@ import dado from '../../assets/img/dado.svg';
 
 const Home = (props) => {
 
-    return(
+    return (
         <ContainerHome>
             <div className='logoHome'>
-                <img src={logoHome} alt="logo rick and morty" className='logo'/>
+                <img src={logoHome} alt="logo rick and morty" className='logo' />
             </div>
             <div className='search'>
-                <SearchBar onSearch={props.onSearch}/>
+                <SearchBar onSearch={props.onSearch} />
                 <button className="btnRandom" onClick={props.randomize}>
-                    <img className='icon' src={dado}/>
+                    <img className='icon' src={dado} alt="random" />
                     <span className="text">Random</span>
                 </button>
             </div>
@@ -23,7 +23,7 @@ const Home = (props) => {
                 <img src={smile} alt="personajes" />
                 <h2 className='title'>Personajes</h2>
             </div>
-            <Cards onClose= {props.onClose} characters= {props.characters}/>
+            <Cards onClose={props.onClose} characters={props.characters} />
         </ContainerHome>
     )
 }
