@@ -30,34 +30,6 @@ export const ContainerHome = styled.div`
         align-items: center;
         gap: 20px;
 
-        .btnRandom {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 6px 12px;
-            gap: 8px;
-            height: 35px;
-            width: 125px;
-            border: none;
-            background: #11B0C850;
-            border-radius: 20px;
-            cursor: pointer;
-
-            .icon{
-                width: 25px;
-                height: auto;
-            }
-            
-            .text {
-                line-height: 20px;
-                font-size: 17px;
-                color: #ffff;
-                font-family: sans-serif;
-                letter-spacing: 1px;
-            }
-        }
-
-
         .btnRandom:hover {
             background: #11B0C890;
         }

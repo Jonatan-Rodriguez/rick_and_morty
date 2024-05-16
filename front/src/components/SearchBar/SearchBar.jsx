@@ -1,21 +1,39 @@
+//hooks
+import { useDispatch } from "react-redux";
 import { useState } from "react";
+//action
+import { getChar } from "../../redux/action";
+//styled
 import { ContainerSearch } from "./searBar.style";
+//assets
 import search from '../../assets/img/search.svg'
 
-export default function SearchBar({onSearch}) {
-   const [id,setId] = useState('');
+const SearchBar = () => {
+
+   const [name,setName] = useState('');
+   const dispatch = useDispatch();
 
    let handleChange = (event)=>{
-      setId(event.target.value)
+      setName(event.target.value);
    }
+
+   const searchChar = () => {
+      dispatch(getChar(name));
+   }
+
    return (
       <ContainerSearch>
             <div className="search">
-                <input type="text" className="search__input" placeholder="Id de tu personaje" onChange={handleChange} value={id}/>
-                <button className="search__button" onClick={() => {onSearch(id); setId('')}}>
-                    <img src={search} className="search__icon" />
+                <input type="text" className="search__input" placeholder="Buscar" onChange={handleChange} value={name}/>
+                {name.length > 0 && <button className="search__button" onClick={() => {setName('')}}>
+                    X
+                </button>}
+                <button className="search__button" onClick={() => {searchChar()}}>
+                    <img src={search} alt="search" className="search__icon" />
                 </button>
             </div>
       </ContainerSearch>
    );
 }
+
+export default SearchBar;

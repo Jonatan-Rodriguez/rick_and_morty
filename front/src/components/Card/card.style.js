@@ -108,7 +108,7 @@ export const CardContainer = styled.div`
         }
     }
 
-    .btnDelete{
+    /* .btnDelete{
         height: 10%;
         width: 100%;
         display: flex;
@@ -160,5 +160,5 @@ export const CardContainer = styled.div`
         .button:hover .button__icon {
             transform: translateX(0);
         }
-    }
+    } */
 `

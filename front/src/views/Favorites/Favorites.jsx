@@ -1,10 +1,16 @@
-import { connect } from 'react-redux';
-import Card from '../../components/Card/Card';
 import { ContainerFavorite } from './favorites.styled';
-import fav from '../../assets/img/favoritos.svg';
+import { connect } from 'react-redux';
+import { getFav } from '../../redux/action';
+import { useEffect } from 'react';
+import Card from '../../components/Card/Card';
 import FilterFav from '../../components/FilterFav/FilterFav';
+import fav from '../../assets/img/favoritos.svg';
 
 const Favorites = (props) => {
+
+    useEffect(() => {
+        getFav();
+    }, []);
 
     return (
         <ContainerFavorite>
@@ -40,7 +46,13 @@ const mapStateToProps = (state) => {
     };
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return{
+       getFav: () => {dispatch(getFav())},
+    }
+ }
+
 export default connect(
     mapStateToProps,//me permite acceder al estado global
-    null//me permite despachar action
+    mapDispatchToProps//me permite despachar action
 )(Favorites);

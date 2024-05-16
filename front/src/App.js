@@ -1,11 +1,14 @@
-import { useState, useEffect } from 'react';
-import Nav from './components/Nav/Nav';
 import axios from 'axios';
+//hooks
+import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+//components
+import Nav from './components/Nav/Nav';
+import Form from './components/Form/Form';
+//views
 import About from './views/About';
 import Error from './views/Error';
 import Detail from './views/Detail/Detail.jsx';
-import Form from './components/Form/Form';
 import Favorites from './views/Favorites/Favorites.jsx';
 import Landing from './views/Landing/Landing.jsx';
 import Home from './views/Home/Home.jsx';
@@ -13,7 +16,6 @@ import Home from './views/Home/Home.jsx';
 
 function App() {
 
-   const [characters, setCharacters] = useState([]);
    const location = useLocation();
    const navigate = useNavigate();
    const [access, setAccess] = useState(false);
@@ -49,61 +51,17 @@ function App() {
       }
    }
 
-
    useEffect(() => {
       !access && navigate('/');
    }, [access]);
-
-   //https://rym2-production.up.railway.app/api/character/${id}?key=henrym-jonatan-rodriguez
-   //https://rickandmortyapi.com/api/character/${id}
-   const onSearch = async (id) => {
-      try {
-         const { data } = await axios(`http://localhost:3001/rickandmorty/character/${id}`);
-
-         if (data.name) {
-            const copy = characters.filter(element => element.id === data.id)
-
-            if (!copy[0]) {
-               setCharacters((oldChars) => [...oldChars, data]);
-            } else {
-               alert('Personaje repetido')
-            }
-         }
-      } catch (error) {
-         alert('¡No hay personajes con este ID!');
-      }
-
-   }
-
-   const onClose = (id) => {
-      const characterFiltered = characters.filter(character => character.id !== Number(id))
-      setCharacters(characterFiltered);
-
-   }
-
-   function randomHandler() {
-      let memoria = [];
-
-      let randomId = (Math.random() * 826).toFixed();
-
-      randomId = Number(randomId);
-
-      if (!memoria.includes(randomId)) {
-         memoria.push(randomId);
-         onSearch(randomId);
-      } else {
-         alert("Ese personaje ya fue agregado");
-         return;
-      }
-   }
-
+   
    return (
       <div className='App'>
          {location.pathname !== '/' && <Nav />}
          <Routes>
             <Route path='/' element={<Landing />} />
             <Route path='/form' element={<Form login={login} loginInvited={loginInvited}/>}/>
-            <Route path='/home' element={<Home onSearch={onSearch} randomize={randomHandler} characters={characters} onClose={onClose} />} />
+            <Route path='/home' element={<Home />} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<Error />} />
             <Route path='/favorites' element={<Favorites />} />

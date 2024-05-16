@@ -1,9 +1,12 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {connect} from 'react-redux';
+//action
 import { addFav, removeFav } from "../../redux/action";
+//hooks
 import { useState, useEffect } from "react";
+//styled
 import {CardContainer} from './card.style'
-import delet from '../../assets/img/delet.svg';
+//assets
 import alien from '../../assets/img/alien.svg';
 import planet from '../../assets/img/planet.svg';
 import pulso from '../../assets/img/pulse.svg';
@@ -12,7 +15,6 @@ import info from '../../assets/img/info.svg';
 function Card(props) {
 
    const [isFav, setIsFav] = useState(false);
-   const location = useLocation();
 
    const handleFavorite = () => {
       if(isFav){
@@ -38,7 +40,7 @@ function Card(props) {
             <Link to={`/detail/${props.id}`}>
                <img src={props.image} alt={props.name} />
             <div className="overlay">
-            <img className='infoIco' src={info}/>
+            <img className='infoIco' alt="ico" src={info}/>
             <p>Saber mas</p>
             </div>
             </Link>
@@ -46,10 +48,9 @@ function Card(props) {
          <div className="dataContainer">
             <div className="dataInfo">
                <h2>{props.name}</h2>
-               <p><img src={pulso} />{props.status}</p>
-               <p><img src={alien} />{props.species}</p>
-               {/* <h2>{props.gender}</h2> */}
-               <p><img src={planet} />{props.origin}</p>
+               <p><img src={pulso} alt="pulso" />{props.status}</p>
+               <p><img src={alien} alt="alien" />{props.species}</p>
+               <p><img src={planet} alt="planet" />{props.origin}</p>
             </div>
             <div className="btnLike">
                <div className="likeIco" onClick={handleFavorite}>
@@ -58,13 +59,6 @@ function Card(props) {
             </div>
          </div>
          <div className="btnDelete">
-            {
-               location.pathname !== '/favorites' && 
-               <button className="button" onClick={()=>{props.onClose(props.id)}}>
-                  <span className="button__text">Eliminar</span>
-                  <span className="button__icon"><img src={delet}/></span>
-               </button>
-            }
          </div>
       </CardContainer>
    );

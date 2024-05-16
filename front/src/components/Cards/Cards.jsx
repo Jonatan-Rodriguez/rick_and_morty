@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { getFav } from '../../redux/action';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Card from '../Card/Card';
 import { ContainerCards } from './cards.style';
 
@@ -13,7 +13,7 @@ const Cards = (props) => {
    return (
       <ContainerCards>
          
-         {props.characters.map(element => {
+         {props.allCharacters.map(element => {
             return (
             <Card
                key={element.id}
@@ -24,7 +24,6 @@ const Cards = (props) => {
                gender={element.gender}
                origin={element.origin.name}
                image={element.image}
-               onClose={props.onClose}
             />
             )})
          }
@@ -34,7 +33,7 @@ const Cards = (props) => {
 
 const mapStateToProps = (state) => {
    return{
-      myFavorites: state.myFavorites
+      allCharacters: state.allCharacters
    };
 }
 
