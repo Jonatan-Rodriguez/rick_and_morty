@@ -64,6 +64,7 @@ export const ContainerSearch = styled.div`
       right: 67px;
 
       &:hover{
+        cursor: pointer;
         background-color: #646464;
       }
 
