@@ -5,44 +5,29 @@ const getCharAll = async (req, res) => {
     try {
         const { name } = req.query;
 
-        //cumplira estas condiciones si existe query
-        if (name) {
-            let charFound = [];
+        let allCharacters = [];
+        let nextPage = `${URL}/?name=${name || ''}`;
 
-            const { data } = await axios.get(`${URL}/?name=${name}`);
+        // Recorrer todas las páginas hasta que no haya más páginas disponibles
+        while (nextPage) {
+            const { data } = await axios.get(nextPage);
+            const { results, info } = data;
 
-            if (data.results.length > 0) {
-                data?.results?.map((charApi) => {
-                    charFound.push(charApi);
-                });
-            }
+            // Agregar los resultados de esta página a la lista de personajes
+            allCharacters = allCharacters.concat(results);
 
-            if (charFound[0]) {
-                return res.status(200).json(charFound);
-            }
-
-            return res.status(404).json({ error: 'Personaje no encontrado' });
+            // Obtener la URL de la próxima página
+            nextPage = info.next;
         }
 
-        //cumplira esta condiciones si no existe query
-        const allChar = [];
-
-        const { data } = await axios.get(URL);
-
-        if (data.results.length > 0) {
-
-            data?.results?.map((charApi) => {
-                allChar.push(charApi);
-            });
-
-            return res.status(200).json(allChar);
+        if (allCharacters.length > 0) {
+            return res.status(200).json(allCharacters);
         }
 
-        return res.status(404).json({ error: 'Error al consultar los personajes' })
+        return res.status(404).json({ error: 'No se encontraron personajes' });
 
     } catch (error) {
         console.error('Error al consultar todos los personajes:', error.message);
-
         return res.status(500).json({ message: 'Error interno del servidor' });
     }
 }
