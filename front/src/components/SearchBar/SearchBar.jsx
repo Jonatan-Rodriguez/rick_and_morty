@@ -18,7 +18,7 @@ const SearchBar = () => {
    }
 
    const searchChar = () => {
-      dispatch(getChar(name));
+      dispatch(getChar(name,'1'));
    }
 
    return (

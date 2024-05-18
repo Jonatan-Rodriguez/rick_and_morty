@@ -3,13 +3,14 @@ import {GET_CHAR, GET_FAV, ADD_FAV, REMOVE_FAV, FILTER, ORDER} from './actions-t
 const initialState = {
     myFavorites:[],
     favoriteCopy:[],
-    allCharacters: []
+    allCharacters: [],
+    pagesNavigation:0
 };
 
 const reducer = (state = initialState, action) => {
     switch(action.type){
         case GET_CHAR:
-        return { ...state, allCharacters: action.payload };
+        return { ...state, pagesNavigation:action.payload.pages, allCharacters: action.payload.allCharacters };
 
         case GET_FAV:
         return { ...state, favoriteCopy: action.payload, myFavorites: action.payload };

@@ -8,6 +8,7 @@ import { ContainerHome } from "./home.styled";
 //components
 import Cards from "../../components/Cards/Cards";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import Pagination from "../../components/Pagination/Pagination";
 //assets
 import logoHome from '../../assets/img/rickLogo.svg';
 import smile from '../../assets/img/smiley.svg';
@@ -17,7 +18,7 @@ const Home = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-       dispatch(getChar(''));
+       dispatch(getChar('','1'));
     }, [dispatch]);
 
     return (
@@ -33,6 +34,7 @@ const Home = () => {
                 <h2 className='title'>Personajes</h2>
             </div>
             <Cards/>
+            <Pagination/>
         </ContainerHome>
     )
 }

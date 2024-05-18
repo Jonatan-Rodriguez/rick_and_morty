@@ -1,8 +1,8 @@
 import {GET_CHAR, GET_FAV, ADD_FAV, REMOVE_FAV, FILTER, ORDER} from './actions-types';
 import axios from "axios";
 
-export const getChar = (name) => {
-    const endpoint = `http://localhost:3001/rickandmorty/character?name=${name}`;
+export const getChar = (name, numPag) => {
+    const endpoint = `http://localhost:3001/rickandmorty/character?name=${name}&&numPag=${numPag}`;
     return async (dispatch) => {
         try {
             const { data } = await axios.get(endpoint);

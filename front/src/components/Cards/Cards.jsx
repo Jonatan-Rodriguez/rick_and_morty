@@ -1,7 +1,11 @@
-import { useEffect } from 'react';
-import { getFav } from '../../redux/action';
 import { connect } from 'react-redux';
+//hooks
+import { useEffect } from 'react';
+//actions
+import { getFav } from '../../redux/action';
+//components
 import Card from '../Card/Card';
+//styled
 import { ContainerCards } from './cards.style';
 
 const Cards = (props) => {
@@ -12,7 +16,6 @@ const Cards = (props) => {
 
    return (
       <ContainerCards>
-         
          {props.allCharacters.map(element => {
             return (
             <Card
