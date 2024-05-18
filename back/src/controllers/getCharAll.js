@@ -3,25 +3,22 @@ const URL = 'https://rickandmortyapi.com/api/character';
 
 const getCharAll = async (req, res) => {
     try {
-        const { name } = req.query;
+        const { name, numPag } = req.query;
 
         let allCharacters = [];
-        let nextPage = `${URL}/?name=${name || ''}`;
+        let endpoint = `${URL}/?name=${name || ''}&&page=${numPag || '1'}`;
 
-        // Recorrer todas las páginas hasta que no haya más páginas disponibles
-        while (nextPage) {
-            const { data } = await axios.get(nextPage);
-            const { results, info } = data;
+        const { data } = await axios.get(endpoint);
 
-            // Agregar los resultados de esta página a la lista de personajes
+        if(data.results.length){
+            
+            const { results } = data;
+    
             allCharacters = allCharacters.concat(results);
-
-            // Obtener la URL de la próxima página
-            nextPage = info.next;
         }
 
         if (allCharacters.length > 0) {
-            return res.status(200).json(allCharacters);
+            return res.status(200).json({pages: data.info.pages, allCharacters: allCharacters});
         }
 
         return res.status(404).json({ error: 'No se encontraron personajes' });
