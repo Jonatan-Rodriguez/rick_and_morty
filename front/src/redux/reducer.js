@@ -1,14 +1,18 @@
-import {GET_CHAR, GET_FAV, ADD_FAV, REMOVE_FAV, FILTER, ORDER} from './actions-types';
+import {SEARCH_NAME, GET_CHAR, GET_FAV, ADD_FAV, REMOVE_FAV, FILTER, ORDER} from './actions-types';
 
 const initialState = {
     myFavorites:[],
     favoriteCopy:[],
     allCharacters: [],
-    pagesNavigation:0
+    pagesNavigation:0,
+    nameSearch:''
 };
 
 const reducer = (state = initialState, action) => {
     switch(action.type){
+        case SEARCH_NAME:
+        return { ...state, nameSearch: action.payload };
+
         case GET_CHAR:
         return { ...state, pagesNavigation:action.payload.pages, allCharacters: action.payload.allCharacters };
 

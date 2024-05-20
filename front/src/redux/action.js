@@ -1,5 +1,9 @@
-import {GET_CHAR, GET_FAV, ADD_FAV, REMOVE_FAV, FILTER, ORDER} from './actions-types';
+import {SEARCH_NAME, GET_CHAR, GET_FAV, ADD_FAV, REMOVE_FAV, FILTER, ORDER} from './actions-types';
 import axios from "axios";
+
+export const SearchName = (name) => {
+    return { type: SEARCH_NAME, payload:name };
+}
 
 export const getChar = (name, numPag) => {
     const endpoint = `http://localhost:3001/rickandmorty/character?name=${name}&&numPag=${numPag}`;

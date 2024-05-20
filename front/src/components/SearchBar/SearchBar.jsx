@@ -1,8 +1,8 @@
 //hooks
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 //action
-import { getChar } from "../../redux/action";
+import { getChar, SearchName } from "../../redux/action";
 //styled
 import { ContainerSearch } from "./searBar.style";
 //assets
@@ -12,13 +12,23 @@ const SearchBar = () => {
 
    const [name,setName] = useState('');
    const dispatch = useDispatch();
+   const nameSearch = useSelector(state => state.nameSearch);
+
+   console.log(nameSearch);
 
    let handleChange = (event)=>{
       setName(event.target.value);
    }
 
    const searchChar = () => {
+      dispatch(SearchName(name));
       dispatch(getChar(name,'1'));
+   }
+
+   const btnRemove = () => {
+      setName('')
+      dispatch(SearchName(name));
+      dispatch(getChar('','1'));
    }
 
    return (
@@ -27,7 +37,7 @@ const SearchBar = () => {
             <input type="text" className="search__input" placeholder="Buscar" onChange={handleChange} value={name}/>
          </div>
          <div className="buttons">
-            {name.length > 0 && <button className="clean__button" onClick={() => {setName('')}}>
+            {name.length > 0 && <button className="clean__button" onClick={() => {btnRemove()}}>
                X
             </button>}
             <button className="search__button" onClick={() => {searchChar()}}>
