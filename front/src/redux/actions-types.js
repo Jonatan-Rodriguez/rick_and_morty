@@ -1,3 +1,4 @@
+export const SET_LOADING = 'SET_LOADING';
 export const SEARCH_NAME = 'SEARCH_NAME';
 export const GET_CHAR = 'GET_CHAR';
 export const GET_FAV = 'GET_FAV';

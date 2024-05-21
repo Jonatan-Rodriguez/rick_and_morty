@@ -17,7 +17,6 @@ const Home = () => {
 
     const dispatch = useDispatch();
     const pagNav = useSelector(state => state.pagesNavigation);
-    const charactersArr = useSelector(state => state.allCharacters);
 
     useEffect(() => {
        dispatch(getChar('','1'));

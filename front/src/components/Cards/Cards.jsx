@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import { getFav } from '../../redux/action';
 //components
 import Card from '../Card/Card';
+import SkeletonLoading from '../SkeletonLoading/SkeletonLoading';
+import NoResults from '../NoResults/NoResults';
 //styled
 import { ContainerCards } from './cards.style';
 
@@ -13,6 +15,24 @@ const Cards = (props) => {
    useEffect(() => {
       getFav();
    }, []);
+
+   if (props.loading) {
+      return (
+          <ContainerCards>
+              {Array(20).fill(0).map((_, index) => (
+                  <SkeletonLoading key={index} />
+              ))}
+          </ContainerCards>
+      );
+   }
+
+   if (props.noResults) {
+      return (
+          <ContainerCards>
+              <NoResults/>
+          </ContainerCards>
+      );
+   }
 
    return (
       <ContainerCards>
@@ -36,7 +56,9 @@ const Cards = (props) => {
 
 const mapStateToProps = (state) => {
    return{
-      allCharacters: state.allCharacters
+      allCharacters: state.allCharacters,
+      loading: state.loading,
+      noResults: state.noResults
    };
 }
 
