@@ -9,6 +9,7 @@ import { ContainerHome } from "./home.styled";
 import Cards from "../../components/Cards/Cards";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Pagination from "../../components/Pagination/Pagination";
+import SkeletonLoading from "../../components/SkeletonLoading/SkeletonLoading";
 //assets
 import logoHome from '../../assets/img/rickLogo.svg';
 import smile from '../../assets/img/smiley.svg';
@@ -34,6 +35,7 @@ const Home = () => {
                 <img src={smile} alt="personajes" />
                 <h2 className='title'>Personajes</h2>
             </div>
+            <SkeletonLoading/>
             <Cards/>
             {pagNav > 1 && <Pagination/>}
         </ContainerHome>

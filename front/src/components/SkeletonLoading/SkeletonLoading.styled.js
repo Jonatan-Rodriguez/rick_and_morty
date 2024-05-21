@@ -3,10 +3,15 @@ import styled from 'styled-components';
 export const ContainerSkeletonLoading = styled.div`
 
     .card {
-        width: 18rem;
-        padding: 1rem;
-        text-align: center;
-        border-radius: .8rem;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+        row-gap: 16px;
+        width: 220px;
+        height: 350px;
+        padding: 13px;
+        border-radius: 8px;
         background-color: white;
     }
 
@@ -24,12 +29,14 @@ export const ContainerSkeletonLoading = styled.div`
     }
 
     .card__title {
-        height: 15px;
-        margin-bottom: 15px;
+        height: 20px;
+        width: 100%;
     }
 
     .card__description {
-        height: 100px;
+        height: 45%;
+        width: 100%;
+        border-radius: 15px;
     }
 
     @keyframes shimmer {
