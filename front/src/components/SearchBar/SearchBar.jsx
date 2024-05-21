@@ -12,9 +12,6 @@ const SearchBar = () => {
 
    const [name,setName] = useState('');
    const dispatch = useDispatch();
-   const nameSearch = useSelector(state => state.nameSearch);
-
-   console.log(nameSearch);
 
    let handleChange = (event)=>{
       setName(event.target.value);
@@ -26,9 +23,9 @@ const SearchBar = () => {
    }
 
    const btnRemove = () => {
-      setName('')
-      dispatch(SearchName(name));
-      dispatch(getChar('','1'));
+      setName('');
+      dispatch(SearchName(''));
+      dispatch(getChar('', '1'));
    }
 
    return (

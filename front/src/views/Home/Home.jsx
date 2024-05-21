@@ -1,5 +1,5 @@
 //hook
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 //action
 import { getChar } from "../../redux/action";
@@ -16,6 +16,8 @@ import smile from '../../assets/img/smiley.svg';
 const Home = () => {
 
     const dispatch = useDispatch();
+    const pagNav = useSelector(state => state.pagesNavigation);
+    const charactersArr = useSelector(state => state.allCharacters);
 
     useEffect(() => {
        dispatch(getChar('','1'));
@@ -34,7 +36,7 @@ const Home = () => {
                 <h2 className='title'>Personajes</h2>
             </div>
             <Cards/>
-            <Pagination/>
+            {pagNav > 1 && <Pagination/>}
         </ContainerHome>
     )
 }

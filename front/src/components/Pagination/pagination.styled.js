@@ -57,8 +57,8 @@ export const ContainerPagination = styled.div`
         }
     
         .btn-nav:hover {
-            background-color: #d90429;
-            box-shadow: 0px 15px 20px #d9042950;
+            background-color: #11B0C8;
+            box-shadow: 0px 15px 20px #11B0C850;
             color: #fff;
             transform: translateY(-7px);
         }

@@ -2,7 +2,7 @@
 import { ContainerPagination } from "./pagination.styled";
 //hooks
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //actions
 import { getChar } from "../../redux/action";
 
@@ -12,6 +12,10 @@ const Pagination = () => {
     const dispatch = useDispatch();
     const pagesNavigation = useSelector(state => state.pagesNavigation);
     const nameSearch = useSelector(state => state.nameSearch);
+
+    useEffect(() => {
+        setCount(1);
+    }, [nameSearch]);
 
     const prevHandler = () => {
         if(count > 1){
@@ -32,11 +36,11 @@ const Pagination = () => {
     return(
         <ContainerPagination>
             <div className="pagination-btn">
-                <button className="btn-nav" onClick={() => {prevHandler()}}>&lt; Anterior</button>
+                <button className={count > 1?"btn-nav":"btn-none"} onClick={() => {prevHandler()}}>&lt; Anterior</button>
                 <div className="pagination-pag">
                     <span className="pag">{count}</span><span>de {pagesNavigation}</span>
                 </div>
-                <button className="btn-nav" onClick={() => {nextHandler()}}>Siguiente &gt;</button>
+                <button className={count < pagesNavigation?"btn-nav":"btn-none"} onClick={() => {nextHandler()}}>Siguiente &gt;</button>
             </div>
         </ContainerPagination>
     )
