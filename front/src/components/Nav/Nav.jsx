@@ -13,7 +13,7 @@ const Nav = () => {
                 </NavLink>
             </div>
             <div className="navBtn">
-                <BtnNav img={fav} alt="favoritos" text="Favoritos publicos" rute="/favorites" />
+                <BtnNav img={fav} alt="favoritos" text="Favoritos" rute="/favorites" />
             </div>
         </NavContainer>
     );

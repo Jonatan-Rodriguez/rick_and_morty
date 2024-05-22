@@ -104,61 +104,13 @@ export const CardContainer = styled.div`
             .likeIco{
                 font-size: 25px;
                 cursor: pointer;
+                border-radius: 20px;
+                transition: all 0.5s ease;
+
+                &:hover{
+                    background-color: #FFFFFF50;
+                }
             }
         }
     }
-
-    /* .btnDelete{
-        height: 10%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-
-        .button {
-            position: relative;
-            width: 100px;
-            height: 25px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #cc0000;
-            background-color: #e50000;
-            overflow: hidden;
-            border-radius: 40px;
-        }
-
-        .button, .button__icon, .button__text {
-            transition: all 0.3s;
-        }
-
-        .button .button__text {
-            color: white;
-            font-weight: 600;
-            font-size: 1.1em;
-        }
-
-        .button .button__icon {
-            position: absolute;
-            transform: translateX(100px);
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            img{
-                width: auto;
-                height: 90%;
-                color: white;
-            }
-        }
-
-        .button:hover .button__text {
-            color: transparent;
-        }
-
-        .button:hover .button__icon {
-            transform: translateX(0);
-        }
-    } */
 `

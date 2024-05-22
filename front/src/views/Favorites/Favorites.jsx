@@ -17,7 +17,7 @@ const Favorites = (props) => {
             <div className='titleFilter'>
                 <div className='containerTitle'>
                     <img src={fav} alt="favoritos" />
-                    <h2 className='title'>Favoritos publicos</h2>
+                    <h2 className='title'>Favoritos</h2>
                 </div>
                 {/* <FilterFav /> */}
             </div>

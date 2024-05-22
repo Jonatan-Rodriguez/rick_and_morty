@@ -12,6 +12,7 @@ export const ContainerBtnNav = styled.div`
     padding: 6px 12px;
     font-size: 1.9em;
     color: white;
+    transition: all 0.5s ease;
 
     &:hover{
         background-color: #FFFFFF50;
