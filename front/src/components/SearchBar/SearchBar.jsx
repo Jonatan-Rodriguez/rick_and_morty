@@ -1,5 +1,5 @@
 //hooks
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 //action
 import { getChar, SearchName } from "../../redux/action";
@@ -10,16 +10,16 @@ import search from '../../assets/img/search.svg'
 
 const SearchBar = () => {
 
-   const [name,setName] = useState('');
+   const [name, setName] = useState('');
    const dispatch = useDispatch();
 
-   let handleChange = (event)=>{
+   let handleChange = (event) => {
       setName(event.target.value);
    }
 
    const searchChar = () => {
       dispatch(SearchName(name));
-      dispatch(getChar(name,'1'));
+      dispatch(getChar(name, '1'));
    }
 
    const btnRemove = () => {
@@ -31,13 +31,13 @@ const SearchBar = () => {
    return (
       <ContainerSearch>
          <div className="input">
-            <input type="text" className="search__input" placeholder="Buscar" onChange={handleChange} value={name}/>
+            <input type="text" className="search__input" placeholder="Buscar" onChange={handleChange} value={name} />
          </div>
          <div className="buttons">
-            {name.length > 0 && <button className="clean__button" onClick={() => {btnRemove()}}>
+            {name.length > 0 && <button className="clean__button" onClick={() => { btnRemove() }}>
                X
             </button>}
-            <button className="search__button" onClick={() => {searchChar()}}>
+            <button className="search__button" onClick={() => { searchChar() }}>
                <img src={search} alt="search" className="search__icon" />
             </button>
          </div>

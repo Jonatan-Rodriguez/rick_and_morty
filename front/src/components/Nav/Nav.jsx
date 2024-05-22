@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
-import {NavContainer} from "./nav.style.js";
+import { NavContainer } from "./nav.style.js";
 import BtnNav from "../BtnNav/BtnNav.jsx";
 import logo from '../../assets/img/logo.svg';
 import fav from '../../assets/img/favoritos.svg';
 
-const Nav = ()=>{
-    return(
+const Nav = () => {
+    return (
         <NavContainer>
             <div className="logo">
                 <NavLink to='/home'>
@@ -13,7 +13,7 @@ const Nav = ()=>{
                 </NavLink>
             </div>
             <div className="navBtn">
-                <BtnNav img={fav} alt="favoritos" text="Favoritos" rute="/favorites"/>
+                <BtnNav img={fav} alt="favoritos" text="Favoritos publicos" rute="/favorites" />
             </div>
         </NavContainer>
     );

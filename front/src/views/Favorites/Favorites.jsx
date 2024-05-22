@@ -17,7 +17,7 @@ const Favorites = (props) => {
             <div className='titleFilter'>
                 <div className='containerTitle'>
                     <img src={fav} alt="favoritos" />
-                    <h2 className='title'>Favoritos</h2>
+                    <h2 className='title'>Favoritos publicos</h2>
                 </div>
                 {/* <FilterFav /> */}
             </div>
@@ -47,10 +47,10 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return{
-       getFav: () => {dispatch(getFav())},
+    return {
+        getFav: () => { dispatch(getFav()) },
     }
- }
+}
 
 export default connect(
     mapStateToProps,//me permite acceder al estado global
