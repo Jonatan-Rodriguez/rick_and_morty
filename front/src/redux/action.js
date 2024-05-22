@@ -1,4 +1,4 @@
-import {SET_LOADING, SEARCH_NAME, GET_CHAR, GET_FAV, ADD_FAV, REMOVE_FAV, FILTER, ORDER} from './actions-types';
+import { SET_LOADING, SEARCH_NAME, GET_CHAR, GET_FAV, ADD_FAV, REMOVE_FAV, FILTER, ORDER } from './actions-types';
 import axios from "axios";
 
 export const setLoading = (loading) => {
@@ -6,7 +6,7 @@ export const setLoading = (loading) => {
 }
 
 export const SearchName = (name) => {
-    return { type: SEARCH_NAME, payload:name };
+    return { type: SEARCH_NAME, payload: name };
 }
 
 export const getChar = (name, numPag) => {
@@ -31,7 +31,7 @@ export const getChar = (name, numPag) => {
 }
 
 export const getFav = () => {
-    const endpoint = 'http://localhost:3001/rickandmorty/fav';
+    const endpoint = 'http://localhost:3001/rickandmorty/favorite';
     return async (dispatch) => {
         try {
             const { data } = await axios.get(endpoint);
@@ -48,7 +48,7 @@ export const getFav = () => {
 }
 
 export const addFav = (character) => {
-    const endpoint = 'http://localhost:3001/rickandmorty/fav';
+    const endpoint = 'http://localhost:3001/rickandmorty/favorite';
     return async (dispatch) => {
         try {
             const { data } = await axios.post(endpoint, character);
@@ -64,14 +64,14 @@ export const addFav = (character) => {
 };
 
 export const removeFav = (id) => {
-    const endpoint = 'http://localhost:3001/rickandmorty/fav/' + id;
-    
+    const endpoint = `http://localhost:3001/rickandmorty/favorite/${id}`;
+
     return async (dispatch) => {
         try {
-            const { data } = await axios.delete(endpoint);
+            await axios.delete(endpoint);
             return dispatch({
                 type: REMOVE_FAV,
-                payload: data,
+                payload: id,
             });
         } catch (error) {
             throw Error(error.message);
@@ -80,9 +80,9 @@ export const removeFav = (id) => {
 };
 
 export const filterCards = (gender) => {
-    return { type: FILTER, payload:gender };
+    return { type: FILTER, payload: gender };
 };
 
 export const orderCards = (order) => {
-    return { type: ORDER, payload:order };
+    return { type: ORDER, payload: order };
 };
