@@ -9,6 +9,7 @@ import { ContainerHome } from "./home.styled";
 import Cards from "../../components/Cards/Cards";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Pagination from "../../components/Pagination/Pagination";
+import WarningMessage from "../../components/WarningMessage/WarningMessage";
 //assets
 import logoHome from '../../assets/img/rickLogo.svg';
 import smile from '../../assets/img/smiley.svg';
@@ -19,7 +20,7 @@ const Home = () => {
     const pagNav = useSelector(state => state.pagesNavigation);
 
     useEffect(() => {
-       dispatch(getChar('','1'));
+        dispatch(getChar('', '1'));
     }, [dispatch]);
 
     return (
@@ -27,15 +28,16 @@ const Home = () => {
             <div className='logoHome'>
                 <img src={logoHome} alt="logo rick and morty" className='logo' />
             </div>
+            <WarningMessage />
             <div className='search'>
-                <SearchBar/>
+                <SearchBar />
             </div>
             <div className='containerTitle'>
                 <img src={smile} alt="personajes" />
                 <h2 className='title'>Personajes</h2>
             </div>
-            <Cards/>
-            {pagNav > 1 && <Pagination/>}
+            <Cards />
+            {pagNav > 1 && <Pagination />}
         </ContainerHome>
     )
 }
