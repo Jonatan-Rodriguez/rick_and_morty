@@ -9,7 +9,7 @@ import fav from '../../assets/img/favoritos.svg';
 const Favorites = (props) => {
 
     useEffect(() => {
-        getFav();
+        props.getFav();
     }, []);
 
     return (

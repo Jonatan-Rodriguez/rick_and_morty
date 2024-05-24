@@ -13,8 +13,8 @@ import { ContainerCards } from './cards.style';
 const Cards = (props) => {
 
    useEffect(() => {
-      getFav();
-   }, []);
+      props.getFav();
+  }, []);
 
    if (props.loading) {
       return (
