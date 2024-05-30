@@ -24,6 +24,11 @@ server.use(express.json());
 server.use('/rickandmorty', router)
 
 server.listen(PORT, () => {
-   conn.sync({ force: true });
-   console.log('Server raised in port: ' + PORT);
+   conn.sync({ alter: true }) // Usa alter: true para actualizar sin borrar datos
+      .then(() => {
+         console.log('Server raised in port: ' + PORT);
+      })
+      .catch(err => {
+         console.error('Unable to connect to the database:', err);
+      });
 });

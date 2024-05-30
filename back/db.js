@@ -1,12 +1,26 @@
 require('dotenv').config();
 const { Sequelize } = require('sequelize');
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_BDD, DB_PORT } = process.env;
+const { DB_URL, DB_USER, DB_PASSWORD, DB_HOST, DB_BDD, DB_PORT } = process.env;
 const FavoriteModel = require('./src/models/Favorite');
 const UserModel = require('./src/models/User');
 
-const sequelize = new Sequelize(
+/* const sequelize = new Sequelize(
    `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_BDD}`,
    { logging: false, native: false }
+); */
+
+const sequelize = new Sequelize(
+   `${DB_URL}`,
+   {
+      logging: false,
+      native: false,
+      dialectOptions: {
+         ssl: {
+            require: true,
+            rejectUnauthorized: false // Solo si estás usando certificados autofirmados
+         }
+      }
+   }
 );
 
 FavoriteModel(sequelize);
