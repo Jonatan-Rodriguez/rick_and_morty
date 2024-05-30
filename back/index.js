@@ -2,7 +2,6 @@ const express = require('express');
 const server = express();
 const PORT = process.env.PORT || 3001;
 const { conn } = require('./db');
-
 const { router } = require('./src/routes/index');
 
 server.use((req, res, next) => {
@@ -21,7 +20,12 @@ server.use((req, res, next) => {
 
 server.use(express.json());
 
-server.use('/rickandmorty', router)
+server.use('/rickandmorty', router);
+
+
+server.get('/', (req, res) => {
+   res.send('Hello World!');
+});
 
 server.listen(PORT, () => {
    conn.sync({ alter: true }) // Usa alter: true para actualizar sin borrar datos
