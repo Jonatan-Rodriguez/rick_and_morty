@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
+//components
 import { NavContainer } from "./nav.style.js";
 import BtnNav from "../BtnNav/BtnNav.jsx";
+//img
 import logo from '../../assets/img/logo.svg';
 import fav from '../../assets/img/favoritos.svg';
 

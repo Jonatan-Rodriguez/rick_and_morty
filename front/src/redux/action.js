@@ -1,5 +1,9 @@
-import { SET_LOADING, SEARCH_NAME, GET_CHAR, GET_FAV, ADD_FAV, REMOVE_FAV, FILTER, ORDER } from './actions-types';
 import axios from "axios";
+//actions-types
+import { SET_LOADING, SEARCH_NAME, GET_CHAR, GET_FAV, ADD_FAV, REMOVE_FAV, FILTER, ORDER } from './actions-types';
+//const endpoint
+const ENDPOINT_LOCAL = `http://localhost:3001/rickandmorty`;
+const ENDPOINT_URL = `https://rick-and-morty-jea4.onrender.com/rickandmorty`;
 
 export const setLoading = (loading) => {
     return { type: SET_LOADING, payload: loading };
@@ -12,9 +16,8 @@ export const SearchName = (name) => {
 export const getChar = (name, numPag) => {
     return async (dispatch) => {
         dispatch(setLoading(true));
-        const endpoint = `http://localhost:3001/rickandmorty/character?name=${name}&&numPag=${numPag}`;
         try {
-            const { data } = await axios.get(endpoint);
+            const { data } = await axios.get(`${ENDPOINT_URL}/character?name=${name}&&numPag=${numPag}`);
             dispatch({
                 type: GET_CHAR,
                 payload: data,
@@ -31,10 +34,9 @@ export const getChar = (name, numPag) => {
 }
 
 export const getFav = () => {
-    const endpoint = 'http://localhost:3001/rickandmorty/favorite';
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(endpoint);
+            const { data } = await axios.get(`${ENDPOINT_URL}/favorite`);
 
             return dispatch({
                 type: GET_FAV,
@@ -48,10 +50,9 @@ export const getFav = () => {
 }
 
 export const addFav = (character) => {
-    const endpoint = 'http://localhost:3001/rickandmorty/favorite';
     return async (dispatch) => {
         try {
-            const { data } = await axios.post(endpoint, character);
+            const { data } = await axios.post(`${ENDPOINT_URL}/favorite`, character);
 
             return dispatch({
                 type: ADD_FAV,
@@ -64,11 +65,10 @@ export const addFav = (character) => {
 };
 
 export const removeFav = (id) => {
-    const endpoint = `http://localhost:3001/rickandmorty/favorite/${id}`;
 
     return async (dispatch) => {
         try {
-            await axios.delete(endpoint);
+            await axios.delete(`${ENDPOINT_URL}/favorite/${id}`);
             return dispatch({
                 type: REMOVE_FAV,
                 payload: id,

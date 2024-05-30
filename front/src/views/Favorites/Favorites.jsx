@@ -1,9 +1,14 @@
-import { ContainerFavorite } from './favorites.styled';
 import { connect } from 'react-redux';
+//styled
+import { ContainerFavorite } from './favorites.styled';
+//action
 import { getFav } from '../../redux/action';
+//hook
 import { useEffect } from 'react';
+//component
 import Card from '../../components/Card/Card';
 import FilterFav from '../../components/FilterFav/FilterFav';
+//img
 import fav from '../../assets/img/favoritos.svg';
 
 const Favorites = (props) => {

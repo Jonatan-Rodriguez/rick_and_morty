@@ -1,6 +1,10 @@
+//styled
 import { ContainerFilterFav } from "./filterFav.styled";
+//hook
 import { useDispatch} from 'react-redux';
+//action
 import { filterCards, orderCards } from "../../redux/action";
+//img
 import down from '../../assets/img/arrow.svg';
 
 const FilterFav = () => {

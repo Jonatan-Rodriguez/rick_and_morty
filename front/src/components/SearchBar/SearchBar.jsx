@@ -1,9 +1,10 @@
+//hooks
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 //action
 import { getChar, SearchName } from "../../redux/action";
 //styled
-import { ContainerSearch } from "./searBar.style";
+import { ContainerSearch } from "./searchBar.style";
 //assets
 import search from '../../assets/img/search.svg';
 

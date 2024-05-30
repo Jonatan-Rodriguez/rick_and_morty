@@ -1,6 +1,9 @@
-import { ContainerLanding } from './landing.styled';
 import { Link } from 'react-router-dom';
+//styled
+import { ContainerLanding } from './landing.styled';
+//component
 import ButtonPrimary from '../../components/ButtonPrimary/ButtonPrimary';
+//img
 import rick from '../../assets/img/rick2.png';
 import rickLogo from '../../assets/img/rickLogo.svg';
 

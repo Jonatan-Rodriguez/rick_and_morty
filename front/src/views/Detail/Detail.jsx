@@ -1,7 +1,10 @@
 import axios from 'axios';
+//hooks
 import { useParams } from 'react-router-dom';
 import { useState, useEffect} from 'react';
+//styled
 import { ContainerDetail } from './detail.styled';
+//img
 import pulso from '../../assets/img/pulse.svg';
 import alien from '../../assets/img/alien.svg';
 import planet from '../../assets/img/planet.svg';
@@ -13,9 +16,12 @@ import typ from '../../assets/img/type.svg';
 const Detail = () => {
     const {id} = useParams();
     const [character, setCharacter] = useState({});
+    //const endpoint
+    const ENDPOINT_LOCAL = `http://localhost:3001/rickandmorty/character/${id}`;
+    const ENDPOINT_URL = `https://rick-and-morty-jea4.onrender.com/rickandmorty/character/${id}`;
 
     useEffect(() => {
-        axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
+        axios.get(ENDPOINT_URL).then(({ data }) => {
             if (data.name) {
                 setCharacter(data);
             } else {

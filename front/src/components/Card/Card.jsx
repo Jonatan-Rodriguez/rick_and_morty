@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
+//action
 import { addFav, removeFav } from "../../redux/action";
+//hooks
 import { useState, useEffect } from "react";
+//styled
 import { CardContainer } from './card.style';
+//img
 import alien from '../../assets/img/alien.svg';
 import planet from '../../assets/img/planet.svg';
 import pulso from '../../assets/img/pulse.svg';

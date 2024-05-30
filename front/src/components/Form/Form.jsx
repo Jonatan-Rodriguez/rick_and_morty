@@ -1,6 +1,9 @@
-import { useState } from "react";
 import validation from "./validation";
+//hook
+import { useState } from "react";
+//styled
 import { DivContainer, DivContainerForm, DivContainerImg, LoginBox, UserBox, InputStyled, LabelStyled, LinkStyled, SpanStyled} from "./form.style";
+//img
 import rick from '../../assets/img/rick.svg'
 import rickLogo from '../../assets/img/rickLogo.svg'
 
