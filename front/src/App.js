@@ -66,6 +66,7 @@ function App() {
             <Route path='*' element={<Error />} />
             <Route path='/favorites' element={<Favorites />} />
             <Route path='/detail/:id' element={<Detail />} />
+            <Route component={Error} />
          </Routes>
       </div>
    );
