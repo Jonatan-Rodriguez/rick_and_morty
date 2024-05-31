@@ -25,7 +25,7 @@ const WarningMessage = () => {
                         </p>
                         <br />
                         <p>
-                            <b>Nota:</b> Es posible que la aplicación funcione un poco más lenta de lo esperado ya que el servidor está alojado en Render. <b>Agradezco tu paciencia con la velocidad del sitio.</b>
+                            Es posible que la aplicación funcione un poco más lenta de lo esperado ya que el servidor está alojado en Render. <b>Agradezco tu paciencia con la velocidad del sitio.</b>
                         </p>
                     </details>
                     <div className="btnDel" onClick={() => { setDeleteMessage(true) }}>X</div>
