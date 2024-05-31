@@ -21,7 +21,7 @@ const Detail = () => {
     const ENDPOINT_URL = `https://rick-and-morty-jea4.onrender.com/rickandmorty/character/${id}`;
 
     useEffect(() => {
-        axios.get(ENDPOINT_URL).then(({ data }) => {
+        axios.get(ENDPOINT_LOCAL).then(({ data }) => {
             if (data.name) {
                 setCharacter(data);
             } else {

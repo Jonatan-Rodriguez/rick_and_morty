@@ -17,7 +17,7 @@ export const getChar = (name, numPag) => {
     return async (dispatch) => {
         dispatch(setLoading(true));
         try {
-            const { data } = await axios.get(`${ENDPOINT_URL}/character?name=${name}&&numPag=${numPag}`);
+            const { data } = await axios.get(`${ENDPOINT_LOCAL}/character?name=${name}&&numPag=${numPag}`);
             dispatch({
                 type: GET_CHAR,
                 payload: data,
@@ -36,7 +36,7 @@ export const getChar = (name, numPag) => {
 export const getFav = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`${ENDPOINT_URL}/favorite`);
+            const { data } = await axios.get(`${ENDPOINT_LOCAL}/favorite`);
 
             return dispatch({
                 type: GET_FAV,
@@ -52,7 +52,7 @@ export const getFav = () => {
 export const addFav = (character) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.post(`${ENDPOINT_URL}/favorite`, character);
+            const { data } = await axios.post(`${ENDPOINT_LOCAL}/favorite`, character);
 
             return dispatch({
                 type: ADD_FAV,
@@ -68,7 +68,7 @@ export const removeFav = (id) => {
 
     return async (dispatch) => {
         try {
-            await axios.delete(`${ENDPOINT_URL}/favorite/${id}`);
+            await axios.delete(`${ENDPOINT_LOCAL}/favorite/${id}`);
             return dispatch({
                 type: REMOVE_FAV,
                 payload: id,
