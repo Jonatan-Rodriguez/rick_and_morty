@@ -4,7 +4,7 @@ import { useState } from "react";
 //styled
 import { DivContainer, DivContainerForm, DivContainerImg, LoginBox, UserBox, InputStyled, LabelStyled, LinkStyled, SpanStyled} from "./form.style";
 //img
-import rick from '../../assets/img/rick.svg'
+import rick from '../../assets/img/rickLogo.svg'
 import rickLogo from '../../assets/img/rickLogo.svg'
 
 const Form = ({login, loginInvited}) => {
