@@ -17,15 +17,15 @@ export const theme = {
       secondary: 'Courier, monospace',
     },
     sizes:{
-        fontXLarge: '5.0em',
-        fontLarge: '4.0em',
-        fontMedium: '2.4em',
-        fontBase: '1.6em',
-        fontSmall: '1.4em',
+      fontXLarge: '5.0em',
+      fontLarge: '4.0em',
+      fontMedium: '2.4em',
+      fontBase: '1.6em',
+      fontSmall: '1.4em',
     },
     spacings:{
-        small: '2.4rem',
-        medium: '2.8rem',
-        large: '3.5rem',
+      small: '2.4rem',
+      medium: '2.8rem',
+      large: '3.5rem',
     },
   };

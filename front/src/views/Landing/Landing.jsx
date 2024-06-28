@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom';
 import { ContainerLanding } from './landing.styled';
 //component
 import ButtonPrimary from '../../components/ButtonPrimary/ButtonPrimary';
+import ButtonSecondary from '../../components/ButtonSecondary/ButtonSecondary';
 //img
 import backgroundLanding from '../../assets/img/BackgroundLanding.svg';
 import imgLanding from '../../assets/img/imgLanding.svg';
+import location from '../../assets/img/location.svg';
+import rickLanding from '../../assets/img/RickLanding.jpg';
 
 const Landing = () => {
     return (
@@ -16,16 +19,7 @@ const Landing = () => {
                         <h1>ENTERATE DE TODO EN UN SOLO <span>LUGAR</span>.</h1>
                         <p>Personajes, ubicaciones, episodios y más.</p>
                         <Link to='/home'>
-                            <button className="uiverse">
-                                <div className="wrapper">
-                                    <span>EXPLORAR</span>
-                                    <div className="circle circle-5"></div>
-                                    <div className="circle circle-4"></div>
-                                    <div className="circle circle-3"></div>
-                                    <div className="circle circle-2"></div>
-                                    <div className="circle circle-1"></div>
-                                </div>
-                            </button>
+                            <ButtonPrimary name='EXPLORAR'/>
                         </Link>
                     </div>
                     <div className='imgLanding'></div>
@@ -39,13 +33,19 @@ const Landing = () => {
             <section className='section3'>
                 <div className='cardText'>
                     <div className='card'>
-
+                        <div className='img'>
+                            <img src={rickLanding} alt="Card Rinck And Morty" />
+                        </div>
+                        <div className='textInfo'>
+                            <p className='CardName'>Rick Ricoso</p>
+                            <p className='CardLocation'><img src={location} alt="" />C-145</p>
+                        </div>
                     </div>
                     <div className='text'>
                         <h2>
-
+                            Crea tu propio personaje
                         </h2>
-                        <ButtonPrimary name='Crea tu propio personaje'/>
+                        <ButtonSecondary name='Crea tu propio personaje'/>
                     </div>
                 </div>
             </section>
