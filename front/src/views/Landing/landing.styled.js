@@ -74,23 +74,56 @@ export const ContainerLanding = styled.div`
             display: flex;
             justify-content: space-evenly;
             align-items: center;
+            width: 100%;
+            height: 100%;
 
             .card{
                 display: flex;
                 justify-content: start;
                 align-items: center;
                 flex-direction: column;
+                row-gap: 15px;
                 width: 40%;
-                height: 80%;
+                height: 90%;
+                padding: 10px;
+                border-radius: 25px;
+                background-color: ${props => props.theme.colors.primary};
+                border: 1px solid red;
 
                 .img{
                     background-size: cover;
                     background-position: center center;
                     background-repeat: no-repeat;
+                    background-image: url(${props => props.imgCard});
                     width: 100%;
-                    height: 60%;
-                    img{
-                        width: 100%;
+                    height: 80%;
+                    border-radius: 15px;
+                }
+
+                .textInfo{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: start;
+                    row-gap: 10px;
+                    width: 100%;
+                    
+                    .cardName{
+                        font-family: ${props => props.theme.fonts.primary};
+                        font-size: ${props => props.theme.sizes.fontLarge};
+                        font-weight: bold;
+                    }
+                    .cardLocation{
+                        display: flex;
+                        align-items: center;
+                        column-gap: 7px;
+                        font-size: ${props => props.theme.sizes.fontMedium};
+                        font-family: ${props => props.theme.fonts.primary};
+                        
+
+                        img{
+                            height: 30px;
+                        }
                     }
                 }
             }
@@ -101,8 +134,8 @@ export const ContainerLanding = styled.div`
                 flex-direction: column;
 
                 h2{
-                    font-size: ${ props => props.theme.sizes.fontLarge};
-                    color: ${ props => props.theme.colors.textPrimary};
+                    font-size: ${props => props.theme.sizes.fontLarge};
+                    color: ${props => props.theme.colors.textPrimary};
                 }
             }
         }

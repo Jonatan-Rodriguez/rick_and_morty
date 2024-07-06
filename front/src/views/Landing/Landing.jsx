@@ -12,14 +12,14 @@ import rickLanding from '../../assets/img/RickLanding.jpg';
 
 const Landing = () => {
     return (
-        <ContainerLanding backgroundImage={backgroundLanding} imgLanding={imgLanding}>
+        <ContainerLanding backgroundImage={backgroundLanding} imgLanding={imgLanding} imgCard={rickLanding}>
             <section className='section1'>
                 <div className='section1ImgBackground'>
                     <div className='boxTextBtn'>
                         <h1>ENTERATE DE TODO EN UN SOLO <span>LUGAR</span>.</h1>
                         <p>Personajes, ubicaciones, episodios y más.</p>
                         <Link to='/home'>
-                            <ButtonPrimary name='EXPLORAR'/>
+                            <ButtonPrimary name='EXPLORAR' />
                         </Link>
                     </div>
                     <div className='imgLanding'></div>
@@ -33,19 +33,17 @@ const Landing = () => {
             <section className='section3'>
                 <div className='cardText'>
                     <div className='card'>
-                        <div className='img'>
-                            <img src={rickLanding} alt="Card Rinck And Morty" />
-                        </div>
+                        <div className='img' />
                         <div className='textInfo'>
-                            <p className='CardName'>Rick Ricoso</p>
-                            <p className='CardLocation'><img src={location} alt="" />C-145</p>
+                            <p className='cardName'>Rick Ricoso</p>
+                            <p className='cardLocation'><img src={location} alt="" />C-145</p>
                         </div>
                     </div>
                     <div className='text'>
                         <h2>
                             Crea tu propio personaje
                         </h2>
-                        <ButtonSecondary name='Crea tu propio personaje'/>
+                        <ButtonSecondary name='Crea tu propio personaje' />
                     </div>
                 </div>
             </section>
