@@ -43,6 +43,7 @@ const Landing = () => {
                         <h2>
                             Crea tu propio personaje
                         </h2>
+                        <p>Diseña tu propia tarjeta de Rick and Morty para la comunidad.</p>
                         <ButtonSecondary name='Crea tu propio personaje' />
                     </div>
                 </div>

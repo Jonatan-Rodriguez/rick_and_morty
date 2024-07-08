@@ -14,7 +14,7 @@ export const theme = {
   },
   fonts: {
     primary: 'Arial, sans-serif',
-    secondary: 'Courier, monospace',
+    secondary: 'fantasy, Courier, monospace',
   },
   sizes: {
     fontXLarge: '5.0em',

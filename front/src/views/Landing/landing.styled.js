@@ -72,10 +72,11 @@ export const ContainerLanding = styled.div`
 
         .cardText{
             display: flex;
-            justify-content: space-evenly;
+            justify-content: space-around;
             align-items: center;
             width: 100%;
             height: 100%;
+            column-gap: 50px;
 
             .card{
                 display: flex;
@@ -84,15 +85,18 @@ export const ContainerLanding = styled.div`
                 flex-direction: column;
                 row-gap: 15px;
                 width: 40%;
+                max-width: 350px;
                 height: 90%;
                 padding: 10px;
                 border-radius: 25px;
                 background-color: ${props => props.theme.colors.primary};
-                border: 1px solid red;
+                -webkit-box-shadow: -6px 5px 11px 3px rgba(89,89,89,1);
+                -moz-box-shadow: -6px 5px 11px 3px rgba(89,89,89,1);
+                box-shadow: -6px 5px 11px 3px rgba(89,89,89,1);
 
                 .img{
                     background-size: cover;
-                    background-position: center center;
+                    background-position: center top;
                     background-repeat: no-repeat;
                     background-image: url(${props => props.imgCard});
                     width: 100%;
@@ -112,30 +116,45 @@ export const ContainerLanding = styled.div`
                         font-family: ${props => props.theme.fonts.primary};
                         font-size: ${props => props.theme.sizes.fontLarge};
                         font-weight: bold;
+                        color: ${props => props.theme.colors.textPrimary};
                     }
                     .cardLocation{
                         display: flex;
                         align-items: center;
                         column-gap: 7px;
                         font-size: ${props => props.theme.sizes.fontMedium};
-                        font-family: ${props => props.theme.fonts.primary};
-                        
+                        font-family: ${props => props.theme.fonts.secondary};
+                        width: 100%;
+                        color: ${props => props.theme.colors.textSecondary};
 
                         img{
                             height: 30px;
+                            width: 30px;
                         }
                     }
                 }
             }
             .text{
                 display: flex;
-                justify-content: center;
+                justify-content: space-around;
                 align-items: center;
                 flex-direction: column;
+                height: 100%;
 
                 h2{
-                    font-size: ${props => props.theme.sizes.fontLarge};
+                    font-size: ${props => props.theme.sizes.fontXLarge};
                     color: ${props => props.theme.colors.textPrimary};
+                    text-align: center;
+                }
+                p{
+                    font-size: ${props => props.theme.sizes.fontLarge};
+                    font-family: ${props => props.theme.fonts.secondary};
+                    width: 100%;
+                    color: ${props => props.theme.colors.textSecondary};
+                    text-align: center;
+                }
+                button{
+                    width: 100%;
                 }
             }
         }
