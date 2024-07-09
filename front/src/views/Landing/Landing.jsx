@@ -37,6 +37,8 @@ const Landing = () => {
                     </div>
                     <div className='carrusel'>
                         <CardLandingTop key='1' name='Morty' image={rickLanding} location='C-123' like='20' />
+                        <CardLandingTop key='2' name='Morty' image={rickLanding} location='C-123' like='20' />
+                        <CardLandingTop key='3' name='Morty' image={rickLanding} location='C-123' like='20' />
                     </div>
                 </div>
             </section>

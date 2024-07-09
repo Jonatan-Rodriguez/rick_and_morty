@@ -68,15 +68,21 @@ export const ContainerLanding = styled.div`
         align-items: center;
         justify-content: center;
         width: 100%;
-        height: 50vh;
+        height: 80vh;
 
         .carruselText{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
             width: 100%;
+            height: 80%;
 
             .textBtn{
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                width: 100%;
 
                 p{
                     font-family: ${props => props.theme.fonts.primary};
@@ -122,6 +128,10 @@ export const ContainerLanding = styled.div`
 
             .carrusel{
                 width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                column-gap: 30px;
                 padding: 20px 0;
             }
         }
@@ -148,6 +158,7 @@ export const ContainerLanding = styled.div`
                 align-items: center;
                 flex-direction: column;
                 row-gap: 15px;
+                min-width: 300px;
                 width: 40%;
                 max-width: 350px;
                 height: 90%;
