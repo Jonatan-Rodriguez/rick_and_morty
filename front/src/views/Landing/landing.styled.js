@@ -63,6 +63,70 @@ export const ContainerLanding = styled.div`
         }
     }
 
+    .section2{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 50vh;
+
+        .carruselText{
+            width: 100%;
+
+            .textBtn{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                p{
+                    font-family: ${props => props.theme.fonts.primary};
+                    font-size: ${props => props.theme.sizes.fontLarge};
+                    font-weight: bold;
+                    color: ${props => props.theme.colors.textPrimary};
+                }
+
+                .btn{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    column-gap: 15px;
+
+                    .btnPrev{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 40px;
+                        height: 40px;
+                        color: white;
+                        background-color: black;
+                        border-radius: 30px;
+                        text-align: center;
+                        font-size: 1.3em;
+                        cursor: pointer;
+                    }
+                    .btnNext{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 40px;
+                        height: 40px;
+                        color: white;
+                        background-color: black;
+                        border-radius: 30px;
+                        text-align: center;
+                        font-size: 1.3em;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .carrusel{
+                width: 100%;
+                padding: 20px 0;
+            }
+        }
+    }
+
     .section3{
         display: flex;
         align-items: center;

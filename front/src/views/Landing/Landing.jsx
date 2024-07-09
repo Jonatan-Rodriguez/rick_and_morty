@@ -4,6 +4,7 @@ import { ContainerLanding } from './landing.styled';
 //component
 import ButtonPrimary from '../../components/ButtonPrimary/ButtonPrimary';
 import ButtonSecondary from '../../components/ButtonSecondary/ButtonSecondary';
+import CardLandingTop from '../../components/CardLandingTop/CardLandingTop';
 //img
 import backgroundLanding from '../../assets/img/BackgroundLanding.svg';
 import imgLanding from '../../assets/img/imgLanding.svg';
@@ -26,8 +27,17 @@ const Landing = () => {
                 </div>
             </section>
             <section className='section2'>
-                <div className='carrusel'>
-
+                <div className='carruselText'>
+                    <div className='textBtn'>
+                        <p>Personajes Populares</p>
+                        <div className='btn'>
+                            <div className='btnPrev'>Prev</div>
+                            <div className='btnNext'>Next</div>
+                        </div>
+                    </div>
+                    <div className='carrusel'>
+                        <CardLandingTop key='1' name='Morty' image={rickLanding} location='C-123' like='20' />
+                    </div>
                 </div>
             </section>
             <section className='section3'>
@@ -35,7 +45,7 @@ const Landing = () => {
                     <div className='card'>
                         <div className='img' />
                         <div className='textInfo'>
-                            <p className='cardName'>Rick Ricoso</p>
+                            <p className='cardName'>Rick Criminal</p>
                             <p className='cardLocation'><img src={location} alt="" />C-145</p>
                         </div>
                     </div>
