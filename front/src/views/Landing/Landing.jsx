@@ -11,11 +11,17 @@ import imgLanding from '../../assets/img/imgLanding.svg';
 import location from '../../assets/img/location.svg';
 import rickLanding from '../../assets/img/RickLanding.jpg';
 
+// import Swiper core and required modules
+import { Navigation, Pagination, Autoplay, Zoom, Grid } from 'swiper/modules';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/zoom';
+import 'swiper/css/grid';
 
 const Landing = () => {
     return (
@@ -37,16 +43,21 @@ const Landing = () => {
                     <div className='textBtn'>
                         <p>Personajes Populares</p>
                         <div className='btn'>
-                            <div className='btnPrev'>Prev</div>
-                            <div className='btnNext'>Next</div>
+                            <div className='btnPrev swiper-button-prev'></div>
+                            <div className='btnNext swiper-button-next'></div>
                         </div>
                     </div>
                     <div className='carrusel'>
                     <Swiper
-      spaceBetween={50}
+      // install Swiper modules
+      modules={[Navigation, Pagination, Autoplay, Zoom, Grid]}
+      spaceBetween={20}
       slidesPerView={3}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
+      navigation={{nextEl:'.swiper-button-next', prevEl:'.swiper-button-prev'}}
+      pagination={{ clickable: true }}/* 
+      autoplay={{delay:5000, disableOnInteraction:true}} */
+      zoom={{maxRatio:5}}
+      grid={{rows:1}}
     >
       <SwiperSlide><CardLandingTop key='1' name='Morty' image={rickLanding} location='C-123' like='20' /></SwiperSlide>
       <SwiperSlide><CardLandingTop key='2' name='Morty' image={rickLanding} location='C-123' like='20' /></SwiperSlide>
