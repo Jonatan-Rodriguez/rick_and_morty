@@ -11,6 +11,12 @@ import imgLanding from '../../assets/img/imgLanding.svg';
 import location from '../../assets/img/location.svg';
 import rickLanding from '../../assets/img/RickLanding.jpg';
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+
 const Landing = () => {
     return (
         <ContainerLanding backgroundImage={backgroundLanding} imgLanding={imgLanding} imgCard={rickLanding}>
@@ -36,9 +42,21 @@ const Landing = () => {
                         </div>
                     </div>
                     <div className='carrusel'>
-                        <CardLandingTop key='1' name='Morty' image={rickLanding} location='C-123' like='20' />
+                    <Swiper
+      spaceBetween={50}
+      slidesPerView={3}
+      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => console.log(swiper)}
+    >
+      <SwiperSlide><CardLandingTop key='1' name='Morty' image={rickLanding} location='C-123' like='20' /></SwiperSlide>
+      <SwiperSlide><CardLandingTop key='2' name='Morty' image={rickLanding} location='C-123' like='20' /></SwiperSlide>
+      <SwiperSlide><CardLandingTop key='3' name='Morty' image={rickLanding} location='C-123' like='20' /></SwiperSlide>
+      <SwiperSlide><CardLandingTop key='4' name='Morty' image={rickLanding} location='C-123' like='20' /></SwiperSlide>
+      
+    </Swiper>
+                        {/* <CardLandingTop key='1' name='Morty' image={rickLanding} location='C-123' like='20' />
                         <CardLandingTop key='2' name='Morty' image={rickLanding} location='C-123' like='20' />
-                        <CardLandingTop key='3' name='Morty' image={rickLanding} location='C-123' like='20' />
+                        <CardLandingTop key='3' name='Morty' image={rickLanding} location='C-123' like='20' /> */}
                     </div>
                 </div>
             </section>
