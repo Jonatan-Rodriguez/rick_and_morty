@@ -48,26 +48,21 @@ const Landing = () => {
                         </div>
                     </div>
                     <div className='carrusel'>
-                    <Swiper
-      // install Swiper modules
-      modules={[Navigation, Pagination, Autoplay, Zoom, Grid]}
-      spaceBetween={20}
-      slidesPerView={3}
-      navigation={{nextEl:'.swiper-button-next', prevEl:'.swiper-button-prev'}}
-      pagination={{ clickable: true }}/* 
-      autoplay={{delay:5000, disableOnInteraction:true}} */
-      zoom={{maxRatio:5}}
-      grid={{rows:1}}
-    >
-      <SwiperSlide><CardLandingTop key='1' name='Morty' image={rickLanding} location='C-123' like='20' /></SwiperSlide>
-      <SwiperSlide><CardLandingTop key='2' name='Morty' image={rickLanding} location='C-123' like='20' /></SwiperSlide>
-      <SwiperSlide><CardLandingTop key='3' name='Morty' image={rickLanding} location='C-123' like='20' /></SwiperSlide>
-      <SwiperSlide><CardLandingTop key='4' name='Morty' image={rickLanding} location='C-123' like='20' /></SwiperSlide>
-      
-    </Swiper>
-                        {/* <CardLandingTop key='1' name='Morty' image={rickLanding} location='C-123' like='20' />
-                        <CardLandingTop key='2' name='Morty' image={rickLanding} location='C-123' like='20' />
-                        <CardLandingTop key='3' name='Morty' image={rickLanding} location='C-123' like='20' /> */}
+                        <Swiper
+                            modules={[Navigation, Pagination, Autoplay, Zoom, Grid]}
+                            spaceBetween={25}
+                            slidesPerView={3}
+                            navigation={{nextEl:'.swiper-button-next', prevEl:'.swiper-button-prev'}}
+                            pagination={{ clickable: true }}/* 
+                            autoplay={{delay:5000, disableOnInteraction:true}} */
+                            zoom={{maxRatio:5}}
+                            grid={{rows:1}}
+                        >
+                            <SwiperSlide><CardLandingTop key='1' name='Morty' image={rickLanding} location='C-123' like='20' /></SwiperSlide>
+                            <SwiperSlide><CardLandingTop key='2' name='Rick' image={rickLanding} location='C-321' like='10' /></SwiperSlide>
+                            <SwiperSlide><CardLandingTop key='3' name='Jhon' image={rickLanding} location='C-987' like='7' /></SwiperSlide>
+                            <SwiperSlide><CardLandingTop key='4' name='Morty' image={rickLanding} location='C-543' like='5' /></SwiperSlide>
+                        </Swiper>
                     </div>
                 </div>
             </section>

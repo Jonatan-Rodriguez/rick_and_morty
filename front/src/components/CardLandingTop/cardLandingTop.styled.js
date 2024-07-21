@@ -13,9 +13,9 @@ export const ContainerCardLandingTop = styled.div`
     padding: 10px;
     border-radius: 25px;
     background-color: ${props => props.theme.colors.primary};
-    -webkit-box-shadow: -6px 5px 11px 3px rgba(89,89,89,1);
+    /* -webkit-box-shadow: -6px 5px 11px 3px rgba(89,89,89,1);
     -moz-box-shadow: -6px 5px 11px 3px rgba(89,89,89,1);
-    box-shadow: -6px 5px 11px 3px rgba(89,89,89,1);
+    box-shadow: -6px 5px 11px 3px rgba(89,89,89,1); */
 
     .img{
         background-size: cover;

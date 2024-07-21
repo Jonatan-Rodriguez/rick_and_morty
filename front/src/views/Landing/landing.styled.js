@@ -109,6 +109,7 @@ export const ContainerLanding = styled.div`
                         text-align: center;
                         font-size: 1.3em;
                         cursor: pointer;
+                        padding: 3px;
                     }
                     .btnNext{
                         display: flex;
@@ -122,7 +123,23 @@ export const ContainerLanding = styled.div`
                         text-align: center;
                         font-size: 1.3em;
                         cursor: pointer;
+                            
                     }
+                    .swiper-button-prev, .swiper-button-next{
+                        position: unset;
+                    }
+                    .swiper-button-prev::after{
+                        height: 20px;
+                        width: 20px;
+                        font-size: 20px;
+                    }
+    
+                    .swiper-button-next::after{
+                        height: 20px;
+                        width: 20px;
+                        font-size: 20px;
+                    }
+
                 }
             }
 
@@ -133,6 +150,17 @@ export const ContainerLanding = styled.div`
                 justify-content: start;
                 column-gap: 30px;
                 padding: 20px 0;
+
+                .swiper{
+                    padding: 20px;
+                }
+                .swiper-wrapper{
+                    margin-bottom: 20px;
+
+                }
+                .swiper-pagination-bullet-active{
+                    background: ${props => props.theme.colors.tertiary};
+                }
             }
         }
     }
