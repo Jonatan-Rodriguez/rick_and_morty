@@ -5,6 +5,7 @@ import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 //components
 import Nav from './components/Nav/Nav';
 import Form from './components/Form/Form';
+import Footer from './components/Footer/Footer.jsx';
 //views
 import About from './views/About';
 import Error from './views/Error';
@@ -68,6 +69,7 @@ function App() {
             <Route path='/detail/:id' element={<Detail />} />
             <Route component={Error} />
          </Routes>
+         <Footer/>
       </div>
    );
 }
