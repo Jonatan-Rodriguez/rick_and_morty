@@ -51,14 +51,21 @@ export const ContainerFooter = styled.div`
                 column-gap: 15px;
                 
                 .ico{
-                    width: 30px;
-                    height: 30px;
+                    width: 35px;
+                    height: 35px;
                     border-radius: 50px;
-                    background-color: aquamarine;
+                    background-color: ${props => props.theme.colors.base};
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     cursor: pointer;
+                    font-size: 20px;
+                    border: 1px solid white;
+                    transition: all .5s ease-out;
+                }
+                .ico:hover{
+                    border: 1px solid black;
+                    transform: scale(1.2);
                 }
             }
         }

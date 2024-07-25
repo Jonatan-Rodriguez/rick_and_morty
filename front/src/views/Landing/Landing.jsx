@@ -10,9 +10,13 @@ import backgroundLanding from '../../assets/img/BackgroundLanding.svg';
 import imgLanding from '../../assets/img/imgLanding.svg';
 import location from '../../assets/img/location.svg';
 import rickLanding from '../../assets/img/RickLanding.jpg';
+import top1 from '../../assets/img/265.jpeg';
+import top2 from '../../assets/img/118.jpeg';
+import top3 from '../../assets/img/119.jpeg';
+import top4 from '../../assets/img/242.jpeg';
 
 // import Swiper core and required modules
-import { Navigation, Pagination, Autoplay, Zoom, Grid } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay} from 'swiper/modules';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -20,8 +24,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/zoom';
-import 'swiper/css/grid';
 
 const Landing = () => {
     return (
@@ -49,19 +51,49 @@ const Landing = () => {
                     </div>
                     <div className='carrusel'>
                         <Swiper
-                            modules={[Navigation, Pagination, Autoplay, Zoom, Grid]}
+                            modules={[Navigation, Pagination, Autoplay]}
                             spaceBetween={25}
                             slidesPerView={3}
                             navigation={{nextEl:'.swiper-button-next', prevEl:'.swiper-button-prev'}}
-                            pagination={{ clickable: true }}/* 
-                            autoplay={{delay:5000, disableOnInteraction:true}} */
-                            zoom={{maxRatio:5}}
-                            grid={{rows:1}}
+                            pagination={{ clickable: true }}
+                            autoplay={{delay:3000, disableOnInteraction:false}}
+                            breakpoints={{
+                                "@0.00":{
+                                    slidesPerView:1,
+                                    spaceBetween:25,
+                                },
+                                "@0.50":{
+                                    slidesPerView:1,
+                                    spaceBetween:25,
+                                },
+                                "@1.00":{
+                                    slidesPerView:1.5,
+                                    spaceBetween:25,
+                                },
+                                "@1.50":{
+                                    slidesPerView:2,
+                                    spaceBetween:25,
+                                },
+                                "@1.60":{
+                                    slidesPerView:2.5,
+                                    spaceBetween:25,
+                                },
+                                "@1.75":{
+                                    slidesPerView:3,
+                                    spaceBetween:25,
+                                },
+                            }}
                         >
-                            <SwiperSlide><CardLandingTop key='1' name='Morty' image={rickLanding} location='C-123' like='20' /></SwiperSlide>
-                            <SwiperSlide><CardLandingTop key='2' name='Rick' image={rickLanding} location='C-321' like='10' /></SwiperSlide>
-                            <SwiperSlide><CardLandingTop key='3' name='Jhon' image={rickLanding} location='C-987' like='7' /></SwiperSlide>
-                            <SwiperSlide><CardLandingTop key='4' name='Morty' image={rickLanding} location='C-543' like='5' /></SwiperSlide>
+                            <SwiperSlide><CardLandingTop key='1' name='Pickle Rick' image={top1} location='Tierra (C-137)' like='5' /></SwiperSlide>
+                            <SwiperSlide><CardLandingTop key='2' name='Evil Morty' image={top2} location='Desconocido' like='4' /></SwiperSlide>
+                            <SwiperSlide><CardLandingTop key='3' name='Evil Rick' image={top3} location='Desconocido' like='3.5' /></SwiperSlide>
+                            <SwiperSlide><CardLandingTop key='4' name='Mr. Meeseeks' image={top4} location='Mr. Meeseeks Box.' like='3' /></SwiperSlide>
+                            <SwiperSlide><CardLandingTop key='5' name='Morty' image={rickLanding} location='C-123' like='2.5' /></SwiperSlide>
+                            <SwiperSlide><CardLandingTop key='6' name='Rick' image={rickLanding} location='C-321' like='2.4' /></SwiperSlide>
+                            <SwiperSlide><CardLandingTop key='7' name='Jhon' image={rickLanding} location='C-987' like='2' /></SwiperSlide>
+                            <SwiperSlide><CardLandingTop key='8' name='Morty' image={rickLanding} location='C-543' like='1.8' /></SwiperSlide>
+                            <SwiperSlide><CardLandingTop key='9' name='Morty' image={rickLanding} location='C-123' like='1.3' /></SwiperSlide>
+                            <SwiperSlide><CardLandingTop key='10' name='Rick' image={rickLanding} location='C-321' like='1' /></SwiperSlide>
                         </Swiper>
                     </div>
                 </div>
