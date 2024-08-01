@@ -14,6 +14,8 @@ import top1 from '../../assets/img/265.jpeg';
 import top2 from '../../assets/img/118.jpeg';
 import top3 from '../../assets/img/119.jpeg';
 import top4 from '../../assets/img/242.jpeg';
+import top5 from '../../assets/img/672.jpeg';
+import top6 from '../../assets/img/175.jpeg';
 
 // import Swiper core and required modules
 import { Navigation, Pagination, Autoplay} from 'swiper/modules';
@@ -88,12 +90,8 @@ const Landing = () => {
                             <SwiperSlide><CardLandingTop key='2' name='Evil Morty' image={top2} location='Desconocido' like='4' /></SwiperSlide>
                             <SwiperSlide><CardLandingTop key='3' name='Evil Rick' image={top3} location='Desconocido' like='3.5' /></SwiperSlide>
                             <SwiperSlide><CardLandingTop key='4' name='Mr. Meeseeks' image={top4} location='Mr. Meeseeks Box.' like='3' /></SwiperSlide>
-                            <SwiperSlide><CardLandingTop key='5' name='Morty' image={rickLanding} location='C-123' like='2.5' /></SwiperSlide>
-                            <SwiperSlide><CardLandingTop key='6' name='Rick' image={rickLanding} location='C-321' like='2.4' /></SwiperSlide>
-                            <SwiperSlide><CardLandingTop key='7' name='Jhon' image={rickLanding} location='C-987' like='2' /></SwiperSlide>
-                            <SwiperSlide><CardLandingTop key='8' name='Morty' image={rickLanding} location='C-543' like='1.8' /></SwiperSlide>
-                            <SwiperSlide><CardLandingTop key='9' name='Morty' image={rickLanding} location='C-123' like='1.3' /></SwiperSlide>
-                            <SwiperSlide><CardLandingTop key='10' name='Rick' image={rickLanding} location='C-321' like='1' /></SwiperSlide>
+                            <SwiperSlide><CardLandingTop key='5' name='Mr. Nimbus' image={top5} location='El océano' like='2' /></SwiperSlide>
+                            <SwiperSlide><CardLandingTop key='6' name='Jerry Smith' image={top6} location='Tierra (C-137)' like='1.5' /></SwiperSlide>
                         </Swiper>
                     </div>
                 </div>

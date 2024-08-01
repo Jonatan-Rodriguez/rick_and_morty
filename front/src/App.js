@@ -58,7 +58,8 @@ function App() {
    
    return (
       <div className='App'>
-         {location.pathname !== '/' && <Nav />}
+         {/* {location.pathname !== '/' && <Nav />} */}
+         <Nav />
          <Routes>
             <Route path='/' element={<Landing />} />
             <Route path='/form' element={<Form login={login} loginInvited={loginInvited}/>}/>

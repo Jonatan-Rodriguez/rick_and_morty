@@ -14,8 +14,22 @@ const Nav = () => {
                     <img src={logo} alt="logo" />
                 </NavLink>
             </div>
-            <div className="navBtn">
-                <BtnNav img={fav} alt="favoritos" text="Favoritos" rute="/favorites" />
+            <div className="pages">
+                <NavLink to='/about'>
+                    <p>About</p>
+                </NavLink>
+                <NavLink to='/home'>
+                    <p>Home</p>
+                </NavLink>
+                <NavLink to='/'>
+                    <p>Creaciones</p>
+                </NavLink>
+            </div>
+            <div className="btnLogIn">
+                <p>REGISTRATE</p>
+                <div className="navBtn">
+                    <BtnNav img={fav} alt="favoritos" text="Ingresar" rute="/" />
+                </div>
             </div>
         </NavContainer>
     );
