@@ -26,6 +26,7 @@ export const NavContainer = styled.div`
             text-align: center;
             font-weight: bold;
             cursor: pointer;
+            text-transform: uppercase;
         }
     }
 
@@ -41,24 +42,11 @@ export const NavContainer = styled.div`
             text-align: center;
             font-weight: bold;
             cursor: pointer;
+            text-transform: uppercase;
         }
 
-        .navBtn{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            flex-direction: row;
-    
-            .navIco{
-                cursor: pointer;
-                border-radius: 20px;
-    
-                .ico{
-                    width: 32px;
-                    height: 32px;
-                }
-            }
+        button{
+            padding: 8px 16px;
         }
     }
 

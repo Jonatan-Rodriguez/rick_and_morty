@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 //components
 import { NavContainer } from "./nav.style.js";
-import BtnNav from "../BtnNav/BtnNav.jsx";
+import ButtonSecondary from "../ButtonSecondary/ButtonSecondary.jsx";
 //img
 import logo from '../../assets/img/logo.svg';
 import fav from '../../assets/img/favoritos.svg';
@@ -27,9 +27,8 @@ const Nav = () => {
             </div>
             <div className="btnLogIn">
                 <p>REGISTRATE</p>
-                <div className="navBtn">
-                    <BtnNav img={fav} alt="favoritos" text="Ingresar" rute="/" />
-                </div>
+                <ButtonSecondary name='Ingresar' />
+                
             </div>
         </NavContainer>
     );
