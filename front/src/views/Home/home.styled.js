@@ -9,18 +9,26 @@ export const ContainerHome = styled.div`
     align-items: start;
     flex-direction:column;
     gap: 20px;
-    background-color: #18191a;
+    background-color: ${props => props.theme.colors.base};
     padding: 2% 5%;
 
-    .logoHome{
+    .boxExplorer{
         width: 100%;
+        height: 150px;
+        background-color: aquamarine;
+        border-radius: 50px;
         display: flex;
-        align-items: center;
+        align-items: end;
         justify-content: center;
-        margin: 20px 0;
 
-        .logo{
-            height: 150px;
+        .boxInputs{
+            width: 90%;
+            height: 70px;
+            background-color: blueviolet;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
     

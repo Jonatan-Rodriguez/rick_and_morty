@@ -10,8 +10,7 @@ import Cards from "../../components/Cards/Cards";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Pagination from "../../components/Pagination/Pagination";
 import WarningMessage from "../../components/WarningMessage/WarningMessage";
-//assets
-import logoHome from '../../assets/img/rickLogo.svg';
+//img
 import smile from '../../assets/img/smiley.svg';
 
 const Home = () => {
@@ -25,10 +24,12 @@ const Home = () => {
 
     return (
         <ContainerHome>
-            <div className='logoHome'>
-                <img src={logoHome} alt="logo rick and morty" className='logo' />
-            </div>
             <WarningMessage />
+            <div className="boxExplorer">
+                <div className="boxInputs">
+                    
+                </div>
+            </div>
             <div className='search'>
                 <SearchBar />
             </div>

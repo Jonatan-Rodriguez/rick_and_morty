@@ -4,7 +4,6 @@ import { NavContainer } from "./nav.style.js";
 import ButtonSecondary from "../ButtonSecondary/ButtonSecondary.jsx";
 //img
 import logo from '../../assets/img/logo.svg';
-import fav from '../../assets/img/favoritos.svg';
 
 const Nav = () => {
     return (
