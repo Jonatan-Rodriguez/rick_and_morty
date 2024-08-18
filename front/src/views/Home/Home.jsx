@@ -26,12 +26,13 @@ const Home = () => {
         <ContainerHome>
             <WarningMessage />
             <div className="boxExplorer">
-                <div className="boxInputs">
-                    
+                <div className="boxInputs">        
+                    <div className='search'>
+                        <SearchBar />
+                    </div>
+
+                    <div className="btnFilter">FILTROS</div>
                 </div>
-            </div>
-            <div className='search'>
-                <SearchBar />
             </div>
             <div className='containerTitle'>
                 <img src={smile} alt="personajes" />
