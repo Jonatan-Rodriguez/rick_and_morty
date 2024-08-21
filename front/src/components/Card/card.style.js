@@ -6,29 +6,30 @@ export const CardContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     /* max-width: 200px; */
-    width: 220px;
+    width: 250px;
     min-width: 200px;
     height: 350px;
-    background-color: #242526;
-    border-radius: 8px;
-    padding: 13px;
+    background-color: ${props => props.theme.colors.primary};
+    border-radius: 30px;
+    padding: 8px;
     gap: 10px;
+    
 
     .imgContainer{
         width: 100%;
-        height: 45%;
+        height: 65%;
         position: relative;
-        border-radius: 15px;
+        border-radius: 22px;
 
         img{
-            border-radius: 15px;
+            border-radius: 22px;
             height: 100%;
             width: 100%;
             background-position: center top;
             background-size: cover;
         }
 
-        .overlay{
+        /* .overlay{
             position: absolute;
             border-radius: 15px;
             width: 0;
@@ -54,25 +55,25 @@ export const CardContainer = styled.div`
             height: auto;
             width: 20px;
             margin-right: 5px;
-        }
+        } */
 
     }
 
-    .imgContainer:hover .overlay{
+    /* .imgContainer:hover .overlay{
         height: 100%;
         width: 100%;
     }
 
     .imgContainer:hover .overlay p{
         opacity: 1;
-    }
+    } */
 
     .dataContainer{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         width: 100%;
-        height: 45%;
+        height: 35%;
 
         .dataInfo{
             display: flex;
@@ -81,20 +82,23 @@ export const CardContainer = styled.div`
             gap: 10px;
             
             h2{
-                font-style: bold;
-                color: white;
-                font-size: 1.5em;
+                color: ${props => props.theme.colors.textPrimary};
+                font-size: ${props => props.theme.sizes.fontMedium};
                 margin: 0;
                 padding: 0;
+                font-weight: bold;
             }
             
             p{
                 display: flex;
-                color: white;
-                font-size: 1.3em;
+                color: ${props => props.theme.colors.textSecondary};
+                font-size: ${props => props.theme.sizes.fontBase};
+                font-weight: bold;
+                align-items: center;
                 
                 img{
-                    width: 20px;
+                    width: ${props => props.theme.sizes.fontBase};
+                    height: ${props => props.theme.sizes.fontBase};
                     margin-right:5px;
                 }
             }

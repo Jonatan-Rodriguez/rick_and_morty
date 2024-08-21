@@ -13,8 +13,12 @@ export const ContainerHome = styled.div`
     padding: 2% 5%;
 
     .boxExplorer{
+        background-image: url(${props => props.rickAndMortyHome});
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         width: 100%;
-        height: 180px;
+        height: 200px;
         background-color: aquamarine;
         border-radius: 50px;
         display: flex;

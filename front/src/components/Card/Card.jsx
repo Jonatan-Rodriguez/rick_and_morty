@@ -39,17 +39,15 @@ function Card(props) {
          <div className="imgContainer">
             <Link to={`/detail/${id}`}>
                <img src={image} alt={name} />
-               <div className="overlay">
+               {/* <div className="overlay">
                   <img className='infoIco' alt="ico" src={info} />
                   <p>Saber más</p>
-               </div>
+               </div> */}
             </Link>
          </div>
          <div className="dataContainer">
             <div className="dataInfo">
                <h2>{name}</h2>
-               <p><img src={pulso} alt="pulso" />{status}</p>
-               <p><img src={alien} alt="alien" />{species}</p>
                <p><img src={planet} alt="planet" />{origin}</p>
             </div>
             <div className="btnLike">

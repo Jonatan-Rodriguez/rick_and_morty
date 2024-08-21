@@ -12,6 +12,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import WarningMessage from "../../components/WarningMessage/WarningMessage";
 //img
 import smile from '../../assets/img/smiley.svg';
+import rickAndMortyHome from '../../assets/img/rickAndMortyHome.jpg';
 
 const Home = () => {
 
@@ -23,7 +24,7 @@ const Home = () => {
     }, [dispatch]);
 
     return (
-        <ContainerHome>
+        <ContainerHome rickAndMortyHome={rickAndMortyHome}>
             <WarningMessage />
             <div className="boxExplorer">
                 <div className="boxInputs">        
