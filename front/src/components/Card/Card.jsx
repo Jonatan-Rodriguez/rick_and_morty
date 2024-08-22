@@ -7,10 +7,7 @@ import { useState, useEffect } from "react";
 //styled
 import { CardContainer } from './card.style';
 //img
-import alien from '../../assets/img/alien.svg';
 import planet from '../../assets/img/planet.svg';
-import pulso from '../../assets/img/pulse.svg';
-import info from '../../assets/img/info.svg';
 
 function Card(props) {
    const { id, name, status, species, origin, image, myFavorites, addFav, removeFav } = props;
@@ -39,10 +36,6 @@ function Card(props) {
          <div className="imgContainer">
             <Link to={`/detail/${id}`}>
                <img src={image} alt={name} />
-               {/* <div className="overlay">
-                  <img className='infoIco' alt="ico" src={info} />
-                  <p>Saber más</p>
-               </div> */}
             </Link>
          </div>
          <div className="dataContainer">
