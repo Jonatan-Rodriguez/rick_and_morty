@@ -34,7 +34,7 @@ export const ContainerPagination = styled.div`
                 text-transform: uppercase;
                 font-weight: 700;
                 color: #000;
-                background-color: #fff;
+                background-color: ${props => props.theme.colors.primary};
                 border-radius: 45px;
                 box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
             }
@@ -57,9 +57,8 @@ export const ContainerPagination = styled.div`
         }
     
         .btn-nav:hover {
-            background-color: #11B0C8;
-            box-shadow: 0px 15px 20px #11B0C850;
-            color: #fff;
+            background-color: ${props => props.theme.colors.tertiary}80;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
             transform: translateY(-7px);
         }
     

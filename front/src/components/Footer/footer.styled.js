@@ -42,6 +42,12 @@ export const ContainerFooter = styled.div`
                     text-align: center;
                     font-weight: bold;
                     cursor: pointer;
+                    transition: all 0.4s ease-in-out;
+
+                    &:hover{
+                        color: ${props => props.theme.colors.tertiary}50;
+                        transform: scale(1.05);
+                    }
                 }
             }
             .social{
