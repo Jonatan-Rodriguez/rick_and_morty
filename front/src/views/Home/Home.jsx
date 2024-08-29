@@ -10,6 +10,7 @@ import Cards from "../../components/Cards/Cards";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Pagination from "../../components/Pagination/Pagination";
 import WarningMessage from "../../components/WarningMessage/WarningMessage";
+import Filter from '../../components/Filter/Filter';
 //img
 import smile from '../../assets/img/smiley.svg';
 import rickAndMortyHome from '../../assets/img/rickAndMortyHome.jpg';
@@ -31,8 +32,7 @@ const Home = () => {
                     <div className='search'>
                         <SearchBar />
                     </div>
-
-                    <div className="btnFilter">FILTROS</div>
+                    <Filter/>
                 </div>
             </div>
             <div className='containerTitle'>

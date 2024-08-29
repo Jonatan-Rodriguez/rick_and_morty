@@ -8,11 +8,12 @@ export const ContainerSkeletonLoading = styled.div`
         align-items: center;
         flex-direction: column;
         row-gap: 16px;
-        width: 220px;
+        width: 240px;
+        min-width: 200px;
         height: 350px;
-        padding: 13px;
-        border-radius: 8px;
-        background-color: white;
+        padding: 8px;
+        border-radius: 30px;
+        background-color: ${props => props.theme.colors.primary};
     }
 
     .card__skeleton {
@@ -29,14 +30,14 @@ export const ContainerSkeletonLoading = styled.div`
     }
 
     .card__title {
-        height: 20px;
+        height: 30px;
         width: 100%;
     }
 
     .card__description {
-        height: 45%;
+        height: 65%;
         width: 100%;
-        border-radius: 15px;
+        border-radius: 22px;
     }
 
     @keyframes shimmer {
