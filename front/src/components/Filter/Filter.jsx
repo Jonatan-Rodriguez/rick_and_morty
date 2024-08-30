@@ -18,20 +18,32 @@ const Filter = () => {
             </button>
             {showFilters && (
                 <FilterOptions>
+                    <p>Ordenar:</p>
                     <select>
+                        <option value="">-</option>
+                        <option value="">A-Z</option>
+                        <option value="">Z-A</option>
+                    </select>
+                    <p>Especie:</p>
+                    <select>
+                        <option value="">-</option>
                         <option value="">Opción 1</option>
                         <option value="">Opción 2</option>
                         <option value="">Opción 3</option>
                     </select>
+                    <p>Genero:</p>
                     <select>
-                        <option value="">Opción 1</option>
-                        <option value="">Opción 2</option>
-                        <option value="">Opción 3</option>
+                        <option value="">-</option>
+                        <option value="">Femenino</option>
+                        <option value="">Masculino</option>
+                        <option value="">Desconocido</option>
                     </select>
+                    <p>Tipo:</p>
                     <select>
-                        <option value="">Opción 1</option>
-                        <option value="">Opción 2</option>
-                        <option value="">Opción 3</option>
+                        <option value="">-</option>
+                        <option value="">Todos</option>
+                        <option value="">Comunidad</option>
+                        <option value="">Oficial</option>
                     </select>
                     <button className="filter-btn">Filtrar</button>
                     <button className="clear-btn">Limpiar</button>
