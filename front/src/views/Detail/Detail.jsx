@@ -35,16 +35,16 @@ const Detail = () => {
         <ContainerDetail >
             <div className='infoChar'>
                 <div className='imgChar'><img className='img' src={character?.image} alt={character?.name} /></div>
-                <h1 className='name box'>{character?.name}</h1>
-                <div className='data box'><img src={pulso} alt="estado" /><p>Status: {character?.status}.</p></div>
-                <div className='data box'><img src={alien} alt="especie" /><p>Species: {character?.species}.</p></div>
+                <h1 className='name'>{character?.name}</h1>
+                <div className='data'><img src={pulso} alt="estado" /><p><b>Estado:</b> {character?.status}.</p></div>
+                <div className='data'><img src={alien} alt="especie" /><p><b>Especie:</b> {character?.species}.</p></div>
                 {character?.type ?
-                    <div className='data box'><img src={typ} alt="tipo" /><p>Type: {character?.type}.</p></div>
+                    <div className='data'><img src={typ} alt="tipo" /><p><b>Tipo:</b> {character?.type}.</p></div>
                     : <></>
                 }
-                <div className='data box'><img src={gender} alt="genero" /><p>Gender: {character?.gender}.</p></div>
-                <div className='data box'><img src={planet} alt="origen" /><p>Origin: {character?.origin?.name}.</p></div>
-                <div className='data box'><img src={mapPin} alt="localizacion" /><p>Location: {character?.location?.name}.</p></div>
+                <div className='data'><img src={gender} alt="genero" /><p><b>Genero:</b> {character?.gender}.</p></div>
+                <div className='data'><img src={planet} alt="origen" /><p><b>Origen:</b> {character?.origin?.name}.</p></div>
+                <div className='data'><img src={mapPin} alt="localizacion" /><p><b>Ubicacion:</b> {character?.location?.name}.</p></div>
             </div>
             <div className='carrusel'>
 

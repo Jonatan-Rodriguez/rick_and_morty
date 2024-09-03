@@ -12,17 +12,17 @@ export const ContainerDetail = styled.div`
 
     .infoChar {
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* Cuatro columnas iguales */
-        grid-template-rows: repeat(3, auto); /* Tres filas automáticas */
-        gap: 20px; /* Espacio entre los elementos */
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(4, auto);
+        gap: 20px;
         width: 100%;
         max-width: 1200px;
-        justify-content: center; /* Centrar contenido horizontalmente */
-        align-items: center; /* Centrar contenido verticalmente */
+        justify-content: center;
+        align-items: center;
 
         .imgChar {
-            grid-column: 2 / span 2; /* Comienza en la columna 2 y ocupa 2 columnas */
-            grid-row: span 2; /* Ocupa dos filas */
+            grid-column: 1 / span 3;
+            grid-row: span 4;
             width: 100%;
             height: auto;
 
@@ -35,7 +35,7 @@ export const ContainerDetail = styled.div`
         }
 
         .name {
-            grid-column: span 4; /* Ocupa cuatro columnas */
+            grid-column: span 4;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -50,10 +50,11 @@ export const ContainerDetail = styled.div`
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: ${props => props.theme.colors.secondary};
+            grid-column: span 2;
+            background-color: ${props => props.theme.colors.primary};
             color: ${props => props.theme.colors.textSecondary};
             padding: 15px;
-            font-size: 1.2em;
+            font-size: 1.5em;
             border-radius: 8px;
             gap: 10px;
 
@@ -63,13 +64,13 @@ export const ContainerDetail = styled.div`
             }
         }
 
-        .data:nth-child(3) {
-            grid-column: span 2; /* Ajuste para manejar correctamente la estructura cuando hay 6 o más items */
+        /* .data:nth-child(3) {
+            grid-column: span 2;
         }
 
         .data:nth-child(4) {
-            grid-column: span 2; /* Ajuste para manejar correctamente la estructura cuando hay 6 o más items */
-        }
+            grid-column: span 2;
+        } */
     }
 
     @media (max-width: 768px) {
