@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from './config/axiosConfig';
 //hooks
 import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
@@ -23,31 +23,33 @@ function App() {
    async function login(userData) {
       try {
          const { email, password } = userData;
-         const URL = 'http://localhost:3001/rickandmorty/login/';
-         const { data } = await axios(URL + `?email=${email}&password=${password}`);
+         // Usamos la instancia configurada
+         const { data } = await axios.get(`/login?email=${email}&password=${password}`);
 
          const { access } = data;
          setAccess(data);
          access && navigate('/home');
 
       } catch (error) {
-         throw Error(error.message);
+         // Es buena práctica manejar el error visualmente o por consola
+         console.log(error);
       }
    }
 
    async function loginInvited() {
       try {
          const email = "joe@gmail.com";
-         const password = "joe123"
-         const URL = 'http://localhost:3001/rickandmorty/login/';
-         const { data } = await axios(URL + `?email=${email}&password=${password}`);
+         const password = "joe123";
+         
+         // Usamos la instancia de axios configurada (ya incluye la URL base)
+         const { data } = await axios.get(`/login?email=${email}&password=${password}`);
 
          const { access } = data;
          setAccess(data);
          access && navigate('/home');
 
       } catch (error) {
-         throw Error(error.message);
+         console.log(error.message);
       }
    }
 
