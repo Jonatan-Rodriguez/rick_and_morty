@@ -3,7 +3,8 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
    sequelize.define('Favorite', {
       id: {
-         type: DataTypes.INTEGER,
+         type: DataTypes.STRING, // Cambiamos a String para aceptar UUIDs y Números
+         defaultValue: DataTypes.UUIDV4, // Genera un UUID automáticamente
          allowNull: false,
          primaryKey: true,
       },
@@ -26,6 +27,11 @@ module.exports = (sequelize) => {
       image: {
          type: DataTypes.STRING,
          allowNull: false,
+      },
+      createdInDb: {
+         type: DataTypes.BOOLEAN,
+         allowNull: false,
+         defaultValue: true, // Por defecto, asumimos que se creó en DB
       }
    }, { timestamps: false });
 };

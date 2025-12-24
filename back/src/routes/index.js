@@ -5,6 +5,7 @@ const { login } = require('../controllers/login');
 const { postFavorite } = require('../controllers/postFavorite');
 const { deleteFavorite } = require('../controllers/deleteFavorite');
 const { getFavorite } = require('../controllers/getFavorite');
+const { postChar } = require('../controllers/postChar');
 
 /* Express config */
 const express = require('express');
@@ -17,6 +18,8 @@ router.get('/character/:id', getCharById);
 router.get('/character', getCharAll);
 
 router.get('/login', login);
+
+router.post('/character', postChar);
 
 router.post('/favorite', postFavorite);
 

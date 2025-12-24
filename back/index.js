@@ -28,7 +28,7 @@ server.get('/', (req, res) => {
 });
 
 server.listen(PORT, () => {
-   conn.sync({ alter: true }) // Usa alter: true para actualizar sin borrar datos
+   conn.sync({ force: true }) // Usa alter: true para actualizar sin borrar datos
       .then(() => {
          console.log('Server raised in port: ' + PORT);
       })
