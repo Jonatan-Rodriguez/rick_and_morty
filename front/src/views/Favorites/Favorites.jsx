@@ -7,7 +7,6 @@ import { getFav } from '../../redux/action';
 import { useEffect } from 'react';
 //component
 import Card from '../../components/Card/Card';
-import FilterFav from '../../components/FilterFav/FilterFav';
 //img
 import fav from '../../assets/img/favoritos.svg';
 

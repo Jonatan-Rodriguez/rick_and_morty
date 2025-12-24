@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "../../config/axiosConfig";
 //hooks
 import { useParams } from 'react-router-dom';
 import { useState, useEffect} from 'react';
@@ -14,23 +14,26 @@ import mapPin from '../../assets/img/mapPin.svg';
 import typ from '../../assets/img/type.svg';
 
 const Detail = () => {
-    const {id} = useParams();
+    const { id } = useParams();
     const [character, setCharacter] = useState({});
-    //const endpoint
-    const ENDPOINT_LOCAL = `http://localhost:3001/rickandmorty/character/${id}`;
-    const ENDPOINT_URL = `https://rick-and-morty-jea4.onrender.com/rickandmorty/character/${id}`;
 
     useEffect(() => {
-        axios.get(ENDPOINT_URL).then(({ data }) => {
-            if (data.name) {
-                setCharacter(data);
-            } else {
-                window.alert('No hay personajes con ese ID');
-            }
-        });
-        return setCharacter({});
-    }, [id]);
+        // Usamos la instancia de axios, ya no necesitamos escribir toda la URL
+        axios.get(`/character/${id}`)
+            .then(({ data }) => {
+                if (data.name) {
+                    setCharacter(data);
+                } else {
+                    window.alert('No hay personajes con ese ID');
+                }
+            })
+            .catch(() => {
+                window.alert('Error al cargar el personaje');
+            });
 
+        return setCharacter({});
+    }, [id]); // Solo depende del ID
+    
     return(
         <ContainerDetail>
             <div className="card">

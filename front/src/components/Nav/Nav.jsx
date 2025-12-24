@@ -17,6 +17,9 @@ const Nav = () => {
             <div className="navBtn">
                 <BtnNav img={fav} alt="favoritos" text="Favoritos" rute="/favorites" />
             </div>
+            <div className="navBtn">
+                <BtnNav img={fav} alt="Crear personaje" text="Crear Personaje" rute="/create" />
+            </div>
         </NavContainer>
     );
 }

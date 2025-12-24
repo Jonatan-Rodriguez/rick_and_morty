@@ -12,6 +12,7 @@ import Detail from './views/Detail/Detail.jsx';
 import Favorites from './views/Favorites/Favorites.jsx';
 import Landing from './views/Landing/Landing.jsx';
 import Home from './views/Home/Home.jsx';
+import Create from './views/Create/Create.jsx';
 
 
 function App() {
@@ -55,7 +56,7 @@ function App() {
 
    useEffect(() => {
       !access && navigate('/');
-   }, [access]);
+   }, [access]); 
    
    return (
       <div className='App'>
@@ -68,6 +69,7 @@ function App() {
             <Route path='*' element={<Error />} />
             <Route path='/favorites' element={<Favorites />} />
             <Route path='/detail/:id' element={<Detail />} />
+            <Route path='/create' element={<Create />} />
             <Route component={Error} />
          </Routes>
       </div>
