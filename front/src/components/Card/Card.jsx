@@ -27,8 +27,11 @@ function Card(props) {
    }
 
    useEffect(() => {
+      // Recorremos los favoritos
       myFavorites.forEach((fav) => {
-         if (fav.id === id) {
+         // SOLUCIÓN: Convertimos ambos a String para comparar
+         // Así "1" (String DB) será igual a "1" (String convertido de la API)
+         if (fav.id.toString() === id.toString()) {
             setIsFav(true);
          }
       });
