@@ -42,7 +42,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { User, Favorite } = sequelize.models;
+const { User, Favorite, Character } = sequelize.models;
 
 // Relaciones
 // User.belongsToMany(Favorite, { through: "user_favorite" });

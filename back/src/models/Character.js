@@ -1,0 +1,42 @@
+const { DataTypes } = require('sequelize');
+
+module.exports = (sequelize) => {
+   sequelize.define('Character', {
+      id: {
+         type: DataTypes.UUID,
+         defaultValue: DataTypes.UUIDV4,
+         primaryKey: true,
+         allowNull: false,
+      },
+      name: {
+         type: DataTypes.STRING,
+         allowNull: false,
+      },
+      status: {
+         type: DataTypes.ENUM("Alive", "Dead", "unknown"),
+         allowNull: false,
+      },
+      species: {
+         type: DataTypes.STRING,
+         allowNull: false,
+      },
+      gender: {
+         type: DataTypes.ENUM("Male", "Female", "Genderless", "unknown"),
+         allowNull: false,
+      },
+      origin: {
+         type: DataTypes.STRING,
+         allowNull: false,
+      },
+      image: {
+         type: DataTypes.STRING,
+         allowNull: false,
+      },
+      // Esta bandera nos sirve para el front sepa que viene de la DB
+      createdInDb: {
+         type: DataTypes.BOOLEAN,
+         defaultValue: true,
+         allowNull: false,
+      }
+   }, { timestamps: false });
+};
