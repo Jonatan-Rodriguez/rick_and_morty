@@ -6,6 +6,7 @@ const { postFavorite } = require('../controllers/postFavorite');
 const { deleteFavorite } = require('../controllers/deleteFavorite');
 const { getFavorite } = require('../controllers/getFavorite');
 const { postChar } = require('../controllers/postChar');
+const { deleteCharacter } = require('../controllers/deleteCharacter');
 
 /* Express config */
 const express = require('express');
@@ -24,6 +25,8 @@ router.post('/character', postChar);
 router.post('/favorite', postFavorite);
 
 router.delete('/favorite/:id', deleteFavorite);
+
+router.delete('/character/:id', deleteCharacter);
 
 router.get('/favorite', getFavorite);
 
