@@ -13,7 +13,7 @@ export const SearchName = (name) => {
     return { type: SEARCH_NAME, payload: name };
 }
 
-export const getChar = (name, numPag) => {
+export const getChar = (name = "", numPag = 1) => {
     return async (dispatch) => {
         dispatch(setLoading(true));
         try {
@@ -72,6 +72,25 @@ export const removeFav = (id) => {
             });
         } catch (error) {
             console.error(error.message);
+        }
+    };
+};
+
+export const deleteChar = (id) => {
+    return async (dispatch) => {
+        try {
+            // Llamamos al backend
+            await axios.delete(`/character/${id}`);
+            
+            // Avisamos al reducer que elimine ese personaje del estado global
+            // (Ojo: Tendrás que crear este case en tu reducer)
+            return dispatch({
+                type: "DELETE_CHAR",
+                payload: id,
+            });
+        } catch (error) {
+            console.error(error.message);
+            alert("Error al eliminar personaje");
         }
     };
 };

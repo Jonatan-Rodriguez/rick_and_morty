@@ -13,7 +13,7 @@ import pulso from '../../assets/img/pulse.svg';
 import info from '../../assets/img/info.svg';
 
 function Card(props) {
-   const { id, name, status, species, origin, image, myFavorites, addFav, removeFav } = props;
+   const { id, name, status, species, origin, image, myFavorites, addFav, removeFav, onClose } = props;
    const [isFav, setIsFav] = useState(false);
 
    const handleFavorite = () => {
@@ -40,6 +40,26 @@ function Card(props) {
    return (
       <CardContainer>
          <div className="imgContainer">
+            {onClose && (
+               <button 
+                  className="btnDelete" 
+                  onClick={() => onClose(id)} 
+                  style={{ 
+                     position: 'absolute', 
+                     top: '10px', 
+                     right: '10px', 
+                     background: 'red', 
+                     color: 'white', 
+                     border: 'none', 
+                     borderRadius: '5px',
+                     cursor: 'pointer',
+                     padding: '5px 10px',
+                     zIndex: 10
+                  }}
+               >
+                  X
+               </button>
+            )}
             <Link to={`/detail/${id}`}>
                <img src={image} alt={name} />
                <div className="overlay">

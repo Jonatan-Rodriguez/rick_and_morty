@@ -20,6 +20,9 @@ const Nav = () => {
             <div className="navBtn">
                 <BtnNav img={fav} alt="Crear personaje" text="Crear Personaje" rute="/create" />
             </div>
+            <div className="navBtn">
+                <BtnNav img={fav} alt="Mis personajes" text="Mis Personajes" rute="/my-creations" />
+            </div>
         </NavContainer>
     );
 }

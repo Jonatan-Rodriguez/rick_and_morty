@@ -13,7 +13,7 @@ import Favorites from './views/Favorites/Favorites.jsx';
 import Landing from './views/Landing/Landing.jsx';
 import Home from './views/Home/Home.jsx';
 import Create from './views/Create/Create.jsx';
-
+import MyCreations from './views/MyCreations/MyCreations';
 
 function App() {
 
@@ -70,6 +70,7 @@ function App() {
             <Route path='/favorites' element={<Favorites />} />
             <Route path='/detail/:id' element={<Detail />} />
             <Route path='/create' element={<Create />} />
+            <Route path='/my-creations' element={<MyCreations />} />
             <Route component={Error} />
          </Routes>
       </div>

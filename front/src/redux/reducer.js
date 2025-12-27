@@ -18,9 +18,6 @@ const reducer = (state = initialState, action) => {
         case SEARCH_NAME:
             return { ...state, nameSearch: action.payload };
 
-        case GET_CHAR:
-            return { ...state, pagesNavigation: action.payload.pages, allCharacters: action.payload.allCharacters, noResults: action.payload.allCharacters.length === 0 };
-
         case GET_FAV:
             return { ...state, favoriteCopy: action.payload, myFavorites: action.payload };
 
@@ -46,6 +43,27 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 myFavorites: action.payload === 'A' ? allCharactersFavCopy.sort((a, b) => a.name.localeCompare(b.name)) :
                     allCharactersFavCopy.sort((a, b) => b.name.localeCompare(a.name))
+            };
+
+        case GET_CHAR:
+            return {
+                ...state,
+                // Corregido: Ahora leemos .allCharacters que es como lo manda tu Backend
+                characters: action.payload.allCharacters || action.payload,
+                allCharacters: action.payload.allCharacters || action.payload
+            };
+
+        case "DELETE_CHAR":
+            return {
+                ...state,
+                // 1. Lo borramos de la lista que se ve en pantalla
+                characters: state.characters.filter(char => char.id !== action.payload),
+                
+                // 2. Lo borramos de la copia de seguridad
+                allCharacters: state.allCharacters.filter(char => char.id !== action.payload),
+                
+                // 3. --- EL FIX ---: También lo sacamos de Favoritos si estaba ahí
+                myFavorites: state.myFavorites.filter(fav => fav.id.toString() !== action.payload.toString())
             };
 
         default:
