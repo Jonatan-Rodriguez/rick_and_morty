@@ -14,7 +14,7 @@ const Cards = (props) => {
 
    useEffect(() => {
       props.getFav();
-  }, []);
+   }, []);
 
    if (props.loading) {
       return (
@@ -36,7 +36,8 @@ const Cards = (props) => {
 
    return (
       <ContainerCards>
-         {props.allCharacters.map(element => {
+         {/* CAMBIO 1: Ahora recorremos 'props.characters' (la lista filtrada) */}
+         {props.characters && props.characters.map(element => {
             return (
                <Card
                   key={element.id}
@@ -56,7 +57,9 @@ const Cards = (props) => {
 
 const mapStateToProps = (state) => {
    return {
-      allCharacters: state.allCharacters,
+      // CAMBIO 2: Conectamos a 'state.characters' (la que cambia con los filtros)
+      // en lugar de 'state.allCharacters' (la copia de seguridad)
+      characters: state.characters, 
       loading: state.loading,
       noResults: state.noResults
    };
@@ -69,6 +72,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(
-   mapStateToProps,//me permite acceder al estado global
-   mapDispatchToProps//me permite despachar action
+   mapStateToProps,
+   mapDispatchToProps
 )(Cards);

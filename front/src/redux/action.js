@@ -1,4 +1,4 @@
-import axios from "axios"; // <--- CAMBIO 1: Usamos la librería directa, no tu config
+import axios from "axios";
 import { SET_LOADING, SEARCH_NAME, GET_CHAR, GET_FAV, ADD_FAV, REMOVE_FAV, FILTER, ORDER } from './actions-types';
 
 // <--- CAMBIO 2: Definimos la URL de tu computadora (Localhost)
@@ -12,27 +12,48 @@ export const SearchName = (name) => {
     return { type: SEARCH_NAME, payload: name };
 }
 
-export const getChar = (name = "", numPag = 1) => {
+export const getChar = (params = {}) => {
     return async (dispatch) => {
         dispatch(setLoading(true));
         try {
-            // Usamos URL_BASE para asegurar que busque en tu PC
-            const { data } = await axios.get(`${URL_BASE}/character?name=${name}&numPag=${numPag}`);
+            // Valores por defecto
+            const { name = "", numPag = 1, gender = "all", status = "all", source = "all", order = "def" } = params;
+
+            // Petición al Backend
+            const query = `/character?name=${name}&numPag=${numPag}&gender=${gender}&status=${status}&source=${source}`;
+            const { data } = await axios.get(`${URL_BASE}${query}`);
+            
             dispatch({
                 type: GET_CHAR,
-                payload: data,
+                payload: { 
+                    ...data, 
+                    // ⚠️ AQUÍ ESTABA EL ERROR: Faltaba incluir 'numPag'
+                    activeFilters: { 
+                        name, 
+                        numPag, // <--- ¡ESTO ES VITAL!
+                        gender, 
+                        status, 
+                        source, 
+                        order 
+                    } 
+                } 
             });
+
         } catch (error) {
-            console.log("Error al obtener personajes:", error.message);
+            console.log(error);
             dispatch({
                 type: GET_CHAR,
-                payload: { allCharacters: [], pages: 0 },
+                payload: { 
+                    allCharacters: [], 
+                    pages: 0, 
+                    activeFilters: params 
+                },
             });
         } finally {
             dispatch(setLoading(false));
         }
     }
-}
+};
 
 export const getFav = () => {
     return async (dispatch) => {

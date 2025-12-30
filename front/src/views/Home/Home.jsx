@@ -10,6 +10,7 @@ import Cards from "../../components/Cards/Cards";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Pagination from "../../components/Pagination/Pagination";
 import WarningMessage from "../../components/WarningMessage/WarningMessage";
+import Filters from "../../components/Filters/Filters";
 //assets
 import logoHome from '../../assets/img/rickLogo.svg';
 import smile from '../../assets/img/smiley.svg';
@@ -20,7 +21,9 @@ const Home = () => {
     const pagNav = useSelector(state => state.pagesNavigation);
 
     useEffect(() => {
-        dispatch(getChar('', '1'));
+        // CORRECCIÓN IMPORTANTE:
+        // Ahora getChar espera un OBJETO, no strings sueltos.
+        dispatch(getChar({ numPag: 1 }));
     }, [dispatch]);
 
     return (
@@ -32,12 +35,21 @@ const Home = () => {
             <div className='search'>
                 <SearchBar />
             </div>
+            
+            {/* Filtros Profesionales */}
+            <Filters />
+            
             <div className='containerTitle'>
                 <img src={smile} alt="personajes" />
                 <h2 className='title'>Personajes</h2>
             </div>
+            
             <Cards />
+
+            {/* CORRECCIÓN: Dejamos solo una condición limpia.
+                Si hay más de 1 página, mostramos el componente. */}
             {pagNav > 1 && <Pagination />}
+            
         </ContainerHome>
     )
 }

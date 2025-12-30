@@ -1,13 +1,30 @@
-import { SET_LOADING, SEARCH_NAME, GET_CHAR, GET_FAV, ADD_FAV, REMOVE_FAV, FILTER, ORDER } from './actions-types';
+import { 
+    SET_LOADING, 
+    SEARCH_NAME, 
+    GET_CHAR, 
+    GET_FAV, 
+    ADD_FAV, 
+    REMOVE_FAV
+} from './actions-types';
 
 const initialState = {
     myFavorites: [],
     favoriteCopy: [],
+    characters: [],
     allCharacters: [],
     pagesNavigation: 0,
+    currentPage: 1, 
+    activeFilters: {
+        name: "",
+        gender: "all",
+        status: "all",
+        source: "all",
+        order: "def"
+    },
+    
     nameSearch: '',
     loading: false,
-    noResults: false
+    noResults: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,42 +45,32 @@ const reducer = (state = initialState, action) => {
             const updatedFavorites = state.myFavorites.filter(fav => fav.id !== action.payload);
             return { ...state, favoriteCopy: updatedFavorites, myFavorites: updatedFavorites };
 
-        case FILTER:
-            let filteredCharacters = [];
-            if (action.payload === 'all') {
-                filteredCharacters = state.favoriteCopy;
-            } else {
-                filteredCharacters = state.favoriteCopy.filter((character) => character.gender === action.payload);
-            }
-            return { ...state, myFavorites: filteredCharacters };
-
-        case ORDER:
-            const allCharactersFavCopy = [...state.myFavorites];
-            return {
-                ...state,
-                myFavorites: action.payload === 'A' ? allCharactersFavCopy.sort((a, b) => a.name.localeCompare(b.name)) :
-                    allCharactersFavCopy.sort((a, b) => b.name.localeCompare(a.name))
-            };
-
         case GET_CHAR:
+            let characters = action.payload.allCharacters || action.payload;
+            const { activeFilters } = action.payload; // Recibimos los filtros del action
+
+            // Ordenamiento Visual
+            if (activeFilters.order === "A") {
+                characters.sort((a, b) => a.name.localeCompare(b.name));
+            } else if (activeFilters.order === "D") {
+                characters.sort((a, b) => b.name.localeCompare(a.name));
+            }
+
             return {
                 ...state,
                 pagesNavigation: action.payload.pages,
-                // Corregido: Ahora leemos .allCharacters que es como lo manda tu Backend
-                characters: action.payload.allCharacters || action.payload,
-                allCharacters: action.payload.allCharacters || action.payload
+                characters: characters,
+                allCharacters: characters,
+                // GUARDAMOS EL ESTADO ACTUAL
+                activeFilters: activeFilters,
+                currentPage: parseInt(activeFilters.numPag || 1) // Guardamos la página actual
             };
 
         case "DELETE_CHAR":
             return {
                 ...state,
-                // 1. Lo borramos de la lista que se ve en pantalla
                 characters: state.characters.filter(char => char.id !== action.payload),
-                
-                // 2. Lo borramos de la copia de seguridad
                 allCharacters: state.allCharacters.filter(char => char.id !== action.payload),
-                
-                // 3. --- EL FIX ---: También lo sacamos de Favoritos si estaba ahí
                 myFavorites: state.myFavorites.filter(fav => fav.id.toString() !== action.payload.toString())
             };
 

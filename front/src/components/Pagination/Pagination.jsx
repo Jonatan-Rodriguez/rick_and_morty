@@ -1,49 +1,91 @@
-//styled
-import { ContainerPagination } from "./pagination.styled";
-//hooks
-import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from "react";
-//actions
-import { getChar } from "../../redux/action";
+import React from 'react';
+import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { getChar } from '../../redux/action';
+
+// --- TUS ESTILOS (Puedes reemplazar esto con tu código anterior si prefieres) ---
+
+const ContainerPagination = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 40px 0;
+    
+    span {
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+`;
+
+const Button = styled.button`
+    background-color: #00b5cc; /* Rick Blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0px 0px 10px #00b5cc;
+
+    &:hover {
+        background-color: #0098ac;
+        transform: scale(1.1);
+    }
+
+    &:disabled {
+        background-color: #555;
+        box-shadow: none;
+        cursor: not-allowed;
+        transform: none;
+    }
+`;
+
+// --- COMPONENTE LÓGICO ---
 
 const Pagination = () => {
-
-    const [count, setCount] = useState(1);
     const dispatch = useDispatch();
-    const pagesNavigation = useSelector(state => state.pagesNavigation);
-    const nameSearch = useSelector(state => state.nameSearch);
     
-    useEffect(() => {
-        setCount(1);
-    }, [nameSearch]);
+    // Traemos: 
+    // - pagesNavigation (Total de páginas)
+    // - currentPage (Página actual donde estás parado)
+    // - activeFilters (Para no perder el filtro al cambiar de página)
+    const { pagesNavigation, currentPage, activeFilters } = useSelector(state => state);
 
-    const prevHandler = () => {
-        if(count > 1){
-            let countCopy = count -1;
-            setCount(countCopy);
-            dispatch(getChar(nameSearch,countCopy));
-        }
-    }
+    const handlePageChange = (newPage) => {
+        if (newPage < 1 || newPage > pagesNavigation) return;
 
-    const nextHandler = () => {
-        if(count < pagesNavigation){
-            let countCopy = count +1;
-            setCount(countCopy);
-            dispatch(getChar(nameSearch,countCopy));
-        }
-    }
+        // Llamamos a la acción enviando los filtros actuales + la nueva página
+        dispatch(getChar({ 
+            ...activeFilters, 
+            numPag: newPage 
+        }));
+        
+        // Scroll suave hacia arriba para mejorar la UX
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
-    return(
+    return (
         <ContainerPagination>
-            <div className="pagination-btn">
-                <button className={count > 1?"btn-nav":"btn-none"} onClick={() => {prevHandler()}}>&lt; Anterior</button>
-                <div className="pagination-pag">
-                    <span className="pag">{count}</span><span>de {pagesNavigation}</span>
-                </div>
-                <button className={count < pagesNavigation?"btn-nav":"btn-none"} onClick={() => {nextHandler()}}>Siguiente &gt;</button>
-            </div>
+            <Button 
+                onClick={() => handlePageChange(currentPage - 1)} 
+                disabled={currentPage <= 1}
+            >
+                PREV
+            </Button>
+            
+            <span>{currentPage} de {pagesNavigation}</span>
+
+            <Button 
+                onClick={() => handlePageChange(currentPage + 1)} 
+                disabled={currentPage >= pagesNavigation}
+            >
+                NEXT
+            </Button>
         </ContainerPagination>
-    )
-}
+    );
+};
 
 export default Pagination;
