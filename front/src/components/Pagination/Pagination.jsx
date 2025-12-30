@@ -12,7 +12,7 @@ const Pagination = () => {
     const dispatch = useDispatch();
     const pagesNavigation = useSelector(state => state.pagesNavigation);
     const nameSearch = useSelector(state => state.nameSearch);
-
+    
     useEffect(() => {
         setCount(1);
     }, [nameSearch]);

@@ -48,6 +48,7 @@ const reducer = (state = initialState, action) => {
         case GET_CHAR:
             return {
                 ...state,
+                pagesNavigation: action.payload.pages,
                 // Corregido: Ahora leemos .allCharacters que es como lo manda tu Backend
                 characters: action.payload.allCharacters || action.payload,
                 allCharacters: action.payload.allCharacters || action.payload
