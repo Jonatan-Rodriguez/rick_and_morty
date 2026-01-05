@@ -9,7 +9,6 @@ import { ContainerHome } from "./home.styled";
 import Cards from "../../components/Cards/Cards";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Pagination from "../../components/Pagination/Pagination";
-import WarningMessage from "../../components/WarningMessage/WarningMessage";
 import Filters from "../../components/Filters/Filters";
 //assets
 import logoHome from '../../assets/img/rickLogo.svg';
@@ -31,7 +30,6 @@ const Home = () => {
             <div className='logoHome'>
                 <img src={logoHome} alt="logo rick and morty" className='logo' />
             </div>
-            <WarningMessage />
             <div className='search'>
                 <SearchBar />
             </div>
