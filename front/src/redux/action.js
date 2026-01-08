@@ -2,7 +2,7 @@ import axios from "axios";
 import { SET_LOADING, SEARCH_NAME, GET_CHAR, GET_FAV, ADD_FAV, REMOVE_FAV, FILTER, ORDER } from './actions-types';
 
 // <--- CAMBIO 2: Definimos la URL de tu computadora (Localhost)
-const URL_BASE = "http://localhost:3001/rickandmorty";
+const URL_BASE = process.env.REACT_APP_API_URL || "http://localhost:3001/rickandmorty";
 
 export const setLoading = (loading) => {
     return { type: SET_LOADING, payload: loading };
