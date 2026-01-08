@@ -1,7 +1,7 @@
 import axios from "axios";
 import { SET_LOADING, SEARCH_NAME, GET_CHAR, GET_FAV, ADD_FAV, REMOVE_FAV, FILTER, ORDER } from './actions-types';
 
-// <--- CAMBIO 2: Definimos la URL de tu computadora (Localhost)
+// CONFIGURACIÓN DE URL (Inteligente: Nube vs Local)
 const URL_BASE = process.env.REACT_APP_API_URL || "http://localhost:3001/rickandmorty";
 
 export const setLoading = (loading) => {
@@ -12,6 +12,7 @@ export const SearchName = (name) => {
     return { type: SEARCH_NAME, payload: name };
 }
 
+// ACCIÓN PRINCIPAL (Carga, Filtros, Paginación y Ordenamiento)
 export const getChar = (params = {}) => {
     return async (dispatch) => {
         dispatch(setLoading(true));
@@ -21,16 +22,18 @@ export const getChar = (params = {}) => {
 
             // Petición al Backend
             const query = `/character?name=${name}&numPag=${numPag}&gender=${gender}&status=${status}&source=${source}`;
+            
+            // Usamos URL_BASE para que funcione en Render
             const { data } = await axios.get(`${URL_BASE}${query}`);
             
             dispatch({
                 type: GET_CHAR,
                 payload: { 
                     ...data, 
-                    // ⚠️ AQUÍ ESTABA EL ERROR: Faltaba incluir 'numPag'
+                    // Guardamos los filtros activos (Vital para la paginación)
                     activeFilters: { 
                         name, 
-                        numPag, // <--- ¡ESTO ES VITAL!
+                        numPag, 
                         gender, 
                         status, 
                         source, 
@@ -46,7 +49,7 @@ export const getChar = (params = {}) => {
                 payload: { 
                     allCharacters: [], 
                     pages: 0, 
-                    activeFilters: params 
+                    activeFilters: params // Mantenemos filtros visuales aunque falle la red
                 },
             });
         } finally {
@@ -54,6 +57,8 @@ export const getChar = (params = {}) => {
         }
     }
 };
+
+// --- SECCIÓN FAVORITOS Y ELIMINACIÓN (Con URL_BASE) ---
 
 export const getFav = () => {
     return async (dispatch) => {
@@ -113,6 +118,7 @@ export const deleteChar = (id) => {
     };
 };
 
+// Acciones Legacy (Si usas el nuevo filtro server-side, estas ya no se usan, pero las dejo por compatibilidad)
 export const filterCards = (gender) => {
     return { type: FILTER, payload: gender };
 };
