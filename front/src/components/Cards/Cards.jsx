@@ -1,77 +1,76 @@
 import { connect } from 'react-redux';
-//hooks
 import { useEffect } from 'react';
-//actions
+// Actions
 import { getFav } from '../../redux/action';
-//components
+// Components
 import Card from '../Card/Card';
 import SkeletonLoading from '../SkeletonLoading/SkeletonLoading';
 import NoResults from '../NoResults/NoResults';
-//styled
-import { ContainerCards } from './cards.style';
+// Styled
+import { ContainerCards } from './cards.styled'; // Asegúrate de que coincida el nombre del archivo
 
 const Cards = (props) => {
+    const { characters, loading, noResults, getFav } = props;
 
-   useEffect(() => {
-      props.getFav();
-   }, []);
+    useEffect(() => {
+        // Traemos favoritos al montar para saber qué corazones pintar
+        getFav();
+    }, [getFav]);
 
-   if (props.loading) {
-      return (
-         <ContainerCards>
-            {Array(20).fill(0).map((_, index) => (
-               <SkeletonLoading key={index} />
+    // 1. Estado de Carga (Skeletons)
+    if (loading) {
+        return (
+            <ContainerCards>
+                {/* Generamos 8 skeletons para que coincida visualmente con la grid */}
+                {Array(8).fill(0).map((_, index) => (
+                    <SkeletonLoading key={index} />
+                ))}
+            </ContainerCards>
+        );
+    }
+
+    // 2. Estado Sin Resultados
+    if (noResults) {
+        return (
+            <ContainerCards style={{ display: 'flex', justifyContent: 'center' }}>
+                 <NoResults />
+            </ContainerCards>
+        );
+    }
+
+    // 3. Grid de Personajes
+    return (
+        <ContainerCards>
+            {characters && characters.map((char) => (
+                <Card
+                    key={char.id}
+                    id={char.id}
+                    name={char.name}
+                    status={char.status}
+                    species={char.species}
+                    origin={char.origin?.name || 'Unknown'} // Protección opcional por si origin viene null
+                    image={char.image}
+                />
             ))}
-         </ContainerCards>
-      );
-   }
-
-   if (props.noResults) {
-      return (
-         <ContainerCards>
-            <NoResults />
-         </ContainerCards>
-      );
-   }
-
-   return (
-      <ContainerCards>
-         {/* CAMBIO 1: Ahora recorremos 'props.characters' (la lista filtrada) */}
-         {props.characters && props.characters.map(element => {
-            return (
-               <Card
-                  key={element.id}
-                  id={element.id}
-                  name={element.name}
-                  status={element.status}
-                  species={element.species}
-                  origin={element.origin.name}
-                  image={element.image}
-               />
-            )
-         })
-         }
-      </ContainerCards>
-   );
+        </ContainerCards>
+    );
 }
 
 const mapStateToProps = (state) => {
-   return {
-      // CAMBIO 2: Conectamos a 'state.characters' (la que cambia con los filtros)
-      // en lugar de 'state.allCharacters' (la copia de seguridad)
-      characters: state.characters, 
-      loading: state.loading,
-      noResults: state.noResults
-   };
+    return {
+        characters: state.characters,
+        loading: state.loading,
+        noResults: state.noResults
+    };
 }
 
 const mapDispatchToProps = (dispatch) => {
-   return {
-      getFav: () => { dispatch(getFav()) },
-   }
+    return {
+        getFav: () => dispatch(getFav()),
+    }
 }
 
 export default connect(
-   mapStateToProps,
-   mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Cards);

@@ -1,86 +1,87 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ContainerPagination = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin: 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* Espacio entre botoncitos */
+  margin: 3rem 0;
+  flex-wrap: wrap; /* Por si en móviles son muchos números */
+`;
 
-    .pagination-btn{
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        width: 80%;
-        min-width: 450px;
-        max-width: 550px;
+/* Botón base para Prev/Next (Flechas) */
+export const ArrowButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem; /* Cuadrado redondeado estilo v0 */
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: #9ca3af; /* muted-foreground */
+  cursor: pointer;
+  transition: all 0.2s ease;
 
-        .pagination-pag{
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            border-radius: 45px;
-            border: 2px solid #fff;
-            background-color: #ffffff50;
+  &:hover:not(:disabled) {
+    color: var(--foreground);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
 
-            span{
-                font-size: 25px;
-                padding: 0 7px;
-            }
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+  
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+`;
 
-            .pag{
-                padding: 0em 0.4em;
-                font-size: 25px;
-                text-transform: uppercase;
-                font-weight: 700;
-                color: #000;
-                background-color: #fff;
-                border-radius: 45px;
-                box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-            }
-        }
+/* Botón para los Números (1, 2, 3...) */
+export const NumberButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0 0.5rem;
+  border-radius: 0.5rem;
+  font-family: monospace; /* Fuente técnica */
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  /* Estado Normal */
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: #9ca3af;
 
-        .btn-nav {
-            padding: 1em 1.5em;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            font-weight: 500;
-            color: #000;
-            background-color: #fff;
-            border: none;
-            border-radius: 45px;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease 0s;
-            cursor: pointer;
-            outline: none;
-        }
-    
-        .btn-nav:hover {
-            background-color: #11B0C8;
-            box-shadow: 0px 15px 20px #11B0C850;
-            color: #fff;
-            transform: translateY(-7px);
-        }
-    
-        .btn-nav:active {
-            transform: translateY(-1px);
-        }
+  /* Estado Hover */
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--foreground);
+  }
 
-        .btn-none{
-            padding: 1em 1.5em;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            font-weight: 500;
-            color: #000;
-            background-color: #ffffff40;
-            border: none;
-            border-radius: 45px;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease 0s;
-            cursor: default;
-            outline: none;
-        }
-    }
-`
+  /* Estado ACTIVO (La página actual) */
+  &.active {
+    background-color: rgba(134, 239, 172, 0.1); /* primary/10 */
+    border: 1px solid rgba(134, 239, 172, 0.5); /* border-primary */
+    color: var(--primary); /* Verde Neón */
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
+  }
+`;
+
+/* Puntos suspensivos (...) */
+export const Ellipsis = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2.5rem;
+  color: #6b7280; /* gris oscuro */
+  font-weight: bold;
+  letter-spacing: 2px;
+`;

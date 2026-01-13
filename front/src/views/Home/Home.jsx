@@ -9,7 +9,6 @@ import { ContainerHome } from "./home.styled";
 import Cards from "../../components/Cards/Cards";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Pagination from "../../components/Pagination/Pagination";
-import Filters from "../../components/Filters/Filters";
 //assets
 import logoHome from '../../assets/img/rickLogo.svg';
 import smile from '../../assets/img/smiley.svg';
@@ -33,9 +32,6 @@ const Home = () => {
             <div className='search'>
                 <SearchBar />
             </div>
-            
-            {/* Filtros Profesionales */}
-            <Filters />
             
             <div className='containerTitle'>
                 <img src={smile} alt="personajes" />

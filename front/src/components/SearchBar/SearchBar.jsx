@@ -1,63 +1,68 @@
-//hooks
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
-//action
+// Actions
 import { getChar, SearchName } from "../../redux/action";
-//styled
-import { ContainerSearch } from "./searchBar.style";
-//assets
-import search from '../../assets/img/search.svg';
+// Styled Components
+import { 
+  SearchContainer, 
+  InputGroup, 
+  StyledInput
+} from "./searchBar.style"; // Nota: Quitamos FiltersGroup y StyledSelect de aquí porque ahora usamos el componente Filters
+// Componentes
+import Filters from "../Filters/Filters"; // <--- IMPORTAMOS TUS FILTROS AQUÍ
+// Icons
+import { Search, X } from "lucide-react";
 
 const SearchBar = () => {
+    const [name, setName] = useState('');
+    const dispatch = useDispatch();
 
-   const [name, setName] = useState('');
-   const dispatch = useDispatch();
+    const handleChange = (event) => {
+        setName(event.target.value);
+    }
 
-   const handleChange = (event) => {
-      setName(event.target.value);
-   }
+    const searchChar = () => {
+        dispatch(SearchName(name));
+        dispatch(getChar(name, '1'));
+    }
 
-   const searchChar = () => {
-      dispatch(SearchName(name));
-      dispatch(getChar(name, '1'));
-   }
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            searchChar();
+        }
+    }
 
-   const handleKeyDown = (event) => {
-      if (event.key === 'Enter') {
-         searchChar();
-      }
-   }
+    const btnRemove = () => {
+        setName('');
+        dispatch(SearchName(''));
+        dispatch(getChar('', '1'));
+    }
 
-   const btnRemove = () => {
-      setName('');
-      dispatch(SearchName(''));
-      dispatch(getChar('', '1'));
-   }
+    return (
+        <SearchContainer>
+            {/* IZQUIERDA: Input de Búsqueda */}
+            <InputGroup>
+                <Search className="search-icon" />
+                <StyledInput
+                    type="text"
+                    placeholder="Buscar personaje..."
+                    value={name}
+                    onChange={handleChange}
+                    onKeyDown={handleKeyDown}
+                />
+                
+                {name.length > 0 && (
+                    <button className="clear-btn" onClick={btnRemove}>
+                        <X size={16} />
+                    </button>
+                )}
+            </InputGroup>
 
-   return (
-      <ContainerSearch>
-         <div className="input">
-            <input
-               type="text"
-               className="search__input"
-               placeholder="Buscar"
-               onChange={handleChange}
-               onKeyDown={handleKeyDown}
-               value={name}
-            />
-         </div>
-         <div className="buttons">
-            {name.length > 0 && (
-               <button className="clean__button" onClick={btnRemove}>
-                  X
-               </button>
-            )}
-            <button className="search__button" onClick={searchChar}>
-               <img src={search} alt="search" className="search__icon" />
-            </button>
-         </div>
-      </ContainerSearch>
-   );
+            {/* DERECHA: Tus Filtros (Orden, Origen, Género) */}
+            <Filters />
+            
+        </SearchContainer>
+    );
 }
 
 export default SearchBar;

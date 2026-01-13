@@ -1,10 +1,45 @@
+/* 1. VARIABLES GLOBALES (El "ADN" del nuevo diseño) */
+:root {
+  /* Colores del tema Rick & Morty v0 */
+  --background: #0b0218; /* Fondo oscuro principal */
+  --foreground: #ffffff; /* Texto principal */
+  --primary: #86efac;    /* Verde neón */
+  --primary-foreground: #000000;
+  --accent: #60a5fa;     /* Azul neón */
+  
+  /* Colores del Portal */
+  --portal-green: #22c55e;
+  --portal-cyan: #06b6d4;
+  --glass: rgba(20, 5, 40, 0.6);
+  --glass-border: rgba(100, 100, 100, 0.3);
+}
+
+/* 2. RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 3. CONFIGURACIÓN BASE */
+html {
+  font-family: 'Raleway', sans-serif;
+  font-size: 62.5%; /* Truco para que 1rem = 10px */
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
+  /* Mantenemos tus fuentes de sistema para lectura */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  /* IMPORTANTE: Usamos la variable nueva para el fondo */
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 code {
@@ -12,23 +47,33 @@ code {
     monospace;
 }
 
-*{
-  margin:0;
-  padding: 0;
-  box-sizing: border-box;
+/* 4. ELEMENTOS GLOBALES */
+a {
+  text-decoration: none;
+  color: inherit; /* Hereda el color blanco por defecto */
 }
-html{
-  font-family: Raleway, sans-serif;
-  font-size: 62.5%;
-  scroll-behavior: smooth;
-  body{
-      margin: 0;
-      background-color: #264653;
-  }
-  a{
-      text-decoration: none;
-  }
-  img{
-      width: 100%;
-  }
+
+img {
+  width: 100%;
+  display: block; /* Evita espacios extraños debajo de las imágenes */
+}
+
+/* 5. ANIMACIONES Y UTILIDADES DE V0 */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.stars-bg {
+  background-color: var(--background);
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.2), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.4), transparent);
+  background-size: 200px 200px;
 }

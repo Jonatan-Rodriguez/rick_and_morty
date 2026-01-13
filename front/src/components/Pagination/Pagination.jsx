@@ -1,89 +1,108 @@
 import React from 'react';
-import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { getChar } from '../../redux/action';
-
-// --- TUS ESTILOS (Puedes reemplazar esto con tu código anterior si prefieres) ---
-
-const ContainerPagination = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin: 40px 0;
-    
-    span {
-        color: white;
-        font-size: 1.2rem;
-        font-weight: bold;
-    }
-`;
-
-const Button = styled.button`
-    background-color: #00b5cc; /* Rick Blue */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s ease;
-    box-shadow: 0px 0px 10px #00b5cc;
-
-    &:hover {
-        background-color: #0098ac;
-        transform: scale(1.1);
-    }
-
-    &:disabled {
-        background-color: #555;
-        box-shadow: none;
-        cursor: not-allowed;
-        transform: none;
-    }
-`;
-
-// --- COMPONENTE LÓGICO ---
+// Iconos
+import { ChevronLeft, ChevronRight } from "lucide-react";
+// Estilos
+import { ContainerPagination, ArrowButton, NumberButton, Ellipsis } from './pagination.styled';
 
 const Pagination = () => {
     const dispatch = useDispatch();
-    
-    // Traemos: 
-    // - pagesNavigation (Total de páginas)
-    // - currentPage (Página actual donde estás parado)
-    // - activeFilters (Para no perder el filtro al cambiar de página)
     const { pagesNavigation, currentPage, activeFilters } = useSelector(state => state);
 
+    // --- FUNCIÓN DE CAMBIO DE PÁGINA ---
     const handlePageChange = (newPage) => {
+        if (newPage === currentPage) return; // Si clickeas la misma, no hace nada
         if (newPage < 1 || newPage > pagesNavigation) return;
 
-        // Llamamos a la acción enviando los filtros actuales + la nueva página
         dispatch(getChar({ 
             ...activeFilters, 
             numPag: newPage 
         }));
         
-        // Scroll suave hacia arriba para mejorar la UX
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
+    // --- LÓGICA MATEMÁTICA PARA GENERAR LOS NÚMEROS ---
+    const getPageNumbers = () => {
+        const total = pagesNavigation;
+        const current = currentPage;
+        const delta = 2; // Cuántos números mostrar a los lados del actual
+        const range = [];
+        const rangeWithDots = [];
+
+        /* Si el total es pequeño (ej: 7 paginas), mostramos todas.
+           Si es grande, aplicamos la lógica de puntos.
+        */
+        if (total <= 7) {
+            for (let i = 1; i <= total; i++) {
+                range.push(i);
+            }
+            return range; // Devuelve [1, 2, 3, 4, 5, 6, 7] directos
+        }
+
+        // 1. Siempre incluimos la pagina 1, la ultima, y el rango alrededor de la actual
+        for (let i = 1; i <= total; i++) {
+            if (i === 1 || i === total || (i >= current - 1 && i <= current + 1)) {
+                range.push(i);
+            }
+        }
+
+        // 2. Insertamos los puntos suspensivos (...)
+        let l; // Variable temporal para guardar el número anterior
+        for (let i of range) {
+            if (l) {
+                if (i - l === 2) {
+                    rangeWithDots.push(l + 1); // Si hay un hueco de solo 1 numero, lo rellenamos
+                } else if (i - l !== 1) {
+                    rangeWithDots.push('...'); // Si el hueco es grande, ponemos puntos
+                }
+            }
+            rangeWithDots.push(i);
+            l = i;
+        }
+
+        return rangeWithDots;
+    };
+
+    const pages = getPageNumbers();
+
     return (
         <ContainerPagination>
-            <Button 
+            {/* Botón ANTERIOR */}
+            <ArrowButton 
                 onClick={() => handlePageChange(currentPage - 1)} 
                 disabled={currentPage <= 1}
+                aria-label="Previous Page"
             >
-                PREV
-            </Button>
+                <ChevronLeft />
+            </ArrowButton>
             
-            <span>{currentPage} de {pagesNavigation}</span>
+            {/* MAPEO DE NÚMEROS */}
+            {pages.map((page, index) => {
+                if (page === '...') {
+                    return <Ellipsis key={`dots-${index}`}>...</Ellipsis>;
+                }
 
-            <Button 
+                return (
+                    <NumberButton
+                        key={page}
+                        onClick={() => handlePageChange(page)}
+                        className={currentPage === page ? 'active' : ''}
+                    >
+                        {page}
+                    </NumberButton>
+                );
+            })}
+
+            {/* Botón SIGUIENTE */}
+            <ArrowButton 
                 onClick={() => handlePageChange(currentPage + 1)} 
                 disabled={currentPage >= pagesNavigation}
+                aria-label="Next Page"
             >
-                NEXT
-            </Button>
+                <ChevronRight />
+            </ArrowButton>
         </ContainerPagination>
     );
 };

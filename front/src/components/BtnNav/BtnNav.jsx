@@ -1,17 +1,13 @@
-import { ContainerBtnNav } from "./btnNav.styled";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { StyledLink } from "./btnNav.styled";
 
-const BtnNav = ({img, alt, text, rute}) => {
-
+const BtnNav = ({ Icon, text, rute, onClick, className }) => {
     return(
-        <>
-            <NavLink to={rute}>
-                <ContainerBtnNav>
-                    <img className="ico" src={img} alt={alt}/>
-                    <span>{text}</span>
-                </ContainerBtnNav>
-            </NavLink>
-        </>
+        <StyledLink to={rute} onClick={onClick} className={className}>
+            {/* Renderizamos el componente del Icono directamente */}
+            <Icon className="ico" />
+            <span>{text}</span>
+        </StyledLink>
     )
 }
 
