@@ -24,7 +24,7 @@
 /* 3. CONFIGURACIÓN BASE */
 html {
   font-family: 'Raleway', sans-serif;
-  font-size: 62.5%; /* Truco para que 1rem = 10px */
+  /* font-size: 62.5%;  Truco para que 1rem = 10px  */
   scroll-behavior: smooth;
 }
 

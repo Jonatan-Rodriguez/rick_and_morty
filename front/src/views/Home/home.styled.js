@@ -1,72 +1,52 @@
 import styled from 'styled-components';
 
+// El wrapper principal que contiene todo el fondo y estructura
 export const ContainerHome = styled.div`
-    width: 100%;
-    min-height: 100vh;
-    height: 100%;
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    flex-direction:column;
-    gap: 20px;
-    background-color: #18191a;
-    padding: 2% 5%;
+  width: 100%;
+  min-height: 100vh;
+  /* Fondo oscuro base (ya lo tienes en globals, pero reforzamos) */
+  background-color: var(--background); 
+  
+  /* Patrón de estrellas (Opcional, si quieres mantener el look espacial) */
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.2), transparent);
+  background-size: 200px 200px;
 
-    .logoHome{
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 20px 0;
+  /* Padding interno para que no toque los bordes en móviles */
+  padding: 2rem 1rem; 
+  
+  @media (min-width: 1024px) {
+    padding: 3rem 2rem;
+  }
+`;
 
-        .logo{
-            height: 150px;
-        }
-    }
+// Contenedor "Límite" (Max Width) para centrar el contenido en pantallas grandes
+export const ContentWrapper = styled.div`
+  max-width: 80rem; /* max-w-7xl (aprox 1280px) */
+  margin: 0 auto;   /* Centrado horizontal automático */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Espacio vertical entre secciones */
+`;
+
+// Cabecera simple de texto (Estilo v0)
+export const HeaderSection = styled.div`
+  margin-bottom: 1rem;
+  
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--foreground);
+    margin-bottom: 0.5rem;
     
-    .search{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 20px;
-
-        .btnRandom:hover {
-            background: #11B0C890;
-        }
-
-        .btnRandom:hover .icon {
-          animation: spin 2s linear infinite;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(-360deg);
-            }
-        }
+    @media (min-width: 768px) {
+      font-size: 2.5rem; /* text-3xl/4xl */
     }
+  }
 
-    .containerTitle{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-
-        img{
-            height: 3em;
-            width: 3em;
-        }
-
-        .title{
-            color: white;
-            font-size: 2em;
-            margin: 0;
-            padding: 0;
-            font-weight: 600;
-            letter-spacing: 3px;
-        }
-    }
-`
+  p {
+    color: #9ca3af; /* muted-foreground */
+    font-size: 1.1rem;
+  }
+`;

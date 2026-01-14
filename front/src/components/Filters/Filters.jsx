@@ -1,68 +1,121 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { getChar } from "../../redux/action";
-import { FiltersContainer, StyledSelect, ResetButton } from "./filters.styled";
+// Importamos los iconos de Lucide
+import { ArrowUpDown, Globe, Users, Trash2, ChevronDown } from "lucide-react";
+
+import { 
+  FiltersContainer, 
+  StyledSelect, 
+  ResetButton, 
+  SelectWrapper,
+  IconLeft,
+  IconRight
+} from "./filters.styled";
 
 const Filters = () => {
     const dispatch = useDispatch();
 
-    // Estado local para mantener los valores controlados
     const [filters, setFilters] = React.useState({
         order: 'def',
         source: 'all',
         gender: 'all'
     });
 
-    // Manejador único: Actualiza estado Y dispara la acción (Auto-Apply)
     const handleFilterChange = (e) => {
         const { name, value } = e.target;
-        
-        // 1. Actualizamos el estado visual
         const newFilters = { ...filters, [name]: value };
         setFilters(newFilters);
-
-        // 2. Disparamos la acción a Redux automáticamente
         dispatch(getChar({ ...newFilters, numPag: 1 }));
     };
 
-    // Resetear filtros
     const handleReset = () => {
         const defaultFilters = { order: 'def', source: 'all', gender: 'all' };
         setFilters(defaultFilters);
         dispatch(getChar({ ...defaultFilters, numPag: 1 }));
     };
 
-    // Verificamos si hay algún filtro activo para mostrar el botón de limpiar
     const hasActiveFilters = filters.order !== 'def' || filters.source !== 'all' || filters.gender !== 'all';
 
     return (
         <FiltersContainer>
-            {/* SELECT: ORDEN */}
-            <StyledSelect name="order" value={filters.order} onChange={handleFilterChange}>
-                <option value="def">Orden: Default</option>
-                <option value="A">A-Z (Ascendente)</option>
-                <option value="D">Z-A (Descendente)</option>
-            </StyledSelect>
+            {/* 1. ORDENAMIENTO */}
+            <SelectWrapper>
+                {/* Icono Izquierdo (Descriptivo) */}
+                <IconLeft>
+                    <ArrowUpDown size={16} />
+                </IconLeft>
+                
+                <StyledSelect 
+                    name="order" 
+                    value={filters.order === 'def' ? "" : filters.order} 
+                    onChange={handleFilterChange}
+                    $isPlaceholder={filters.order === 'def'}
+                >
+                    <option value="" disabled hidden>Orden</option>
+                    <option value="def">Por defecto</option>
+                    <option value="A">Ascendente (A-Z)</option>
+                    <option value="D">Descendente (Z-A)</option>
+                </StyledSelect>
 
-            {/* SELECT: ORIGEN */}
-            <StyledSelect name="source" value={filters.source} onChange={handleFilterChange}>
-                <option value="all">Origen: Todos</option>
-                <option value="api">API Oficial</option>
-                <option value="created">Mis Creaciones</option>
-            </StyledSelect>
+                {/* Icono Derecho (Flecha personalizada) */}
+                <IconRight>
+                    <ChevronDown size={16} />
+                </IconRight>
+            </SelectWrapper>
 
-            {/* SELECT: GÉNERO */}
-            <StyledSelect name="gender" value={filters.gender} onChange={handleFilterChange}>
-                <option value="all">Género: Todos</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Genderless">Genderless</option>
-                <option value="unknown">Unknown</option>
-            </StyledSelect>
+            {/* 2. ORIGEN */}
+            <SelectWrapper>
+                <IconLeft>
+                    <Globe size={16} />
+                </IconLeft>
+                
+                <StyledSelect 
+                    name="source" 
+                    value={filters.source === 'all' ? "" : filters.source} 
+                    onChange={handleFilterChange}
+                    $isPlaceholder={filters.source === 'all'}
+                >
+                    <option value="" disabled hidden>Origen</option>
+                    <option value="all">Todos</option>
+                    <option value="api">Base de datos (API)</option>
+                    <option value="created">Creados por mí</option>
+                </StyledSelect>
 
-            {/* BOTÓN LIMPIAR (Solo visible si hay filtros) */}
+                <IconRight>
+                    <ChevronDown size={16} />
+                </IconRight>
+            </SelectWrapper>
+
+            {/* 3. GÉNERO */}
+            <SelectWrapper>
+                <IconLeft>
+                    <Users size={16} />
+                </IconLeft>
+                
+                <StyledSelect 
+                    name="gender" 
+                    value={filters.gender === 'all' ? "" : filters.gender} 
+                    onChange={handleFilterChange}
+                    $isPlaceholder={filters.gender === 'all'}
+                >
+                    <option value="" disabled hidden>Género</option>
+                    <option value="all">Todos</option>
+                    <option value="Male">Masculino</option>
+                    <option value="Female">Femenino</option>
+                    <option value="Genderless">Sin género</option>
+                    <option value="unknown">Desconocido</option>
+                </StyledSelect>
+
+                <IconRight>
+                    <ChevronDown size={16} />
+                </IconRight>
+            </SelectWrapper>
+
+            {/* 4. RESET */}
             {hasActiveFilters && (
                 <ResetButton onClick={handleReset}>
+                    <Trash2 size={16} />
                     Limpiar
                 </ResetButton>
             )}

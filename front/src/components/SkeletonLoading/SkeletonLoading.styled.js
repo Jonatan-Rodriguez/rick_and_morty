@@ -1,47 +1,64 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const shimmer = keyframes`
+  to {
+    background-position: -200% 0;
+  }
+`;
 
 export const ContainerSkeletonLoading = styled.div`
+  /* Mismas dimensiones y estructura base que la Card real */
+  width: 100%;
+  max-width: 300px;
+  background-color: rgba(30, 41, 59, 0.4); /* Fondo base oscuro */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem; /* rounded-xl */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 
-    .card {
-        display: flex;
-        justify-content: start;
-        align-items: center;
-        flex-direction: column;
-        row-gap: 16px;
-        width: 220px;
-        height: 350px;
-        padding: 13px;
-        border-radius: 8px;
-        background-color: white;
-    }
+  /* IMITACIÓN DE LA IMAGEN (Cuadrado perfecto) */
+  .skeleton-image {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Mantiene la proporción cuadrada */
+    position: relative;
+    overflow: hidden;
+  }
 
-    .card__skeleton {
-        background-image: linear-gradient(
-                90deg,
-                #ccc 0px,
-                rgb(229 229 229 / 90%) 40px,
-                #ccc 80px
-            );
-        background-size: 300%;
-        background-position: 100% 0;
-        border-radius: inherit;
-        animation: shimmer 1.5s infinite;
-    }
+  /* CONTENEDOR DE TEXTO */
+  .skeleton-info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    background: rgba(30, 41, 59, 0.6);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
 
-    .card__title {
-        height: 20px;
-        width: 100%;
-    }
+  /* BARRA DE TÍTULO (Nombre) */
+  .skeleton-title {
+    height: 1.5rem; /* Altura similar a un h3 */
+    width: 75%;
+    border-radius: 0.25rem;
+  }
 
-    .card__description {
-        height: 45%;
-        width: 100%;
-        border-radius: 15px;
-    }
+  /* BARRA DE DETALLE (Status) */
+  .skeleton-text {
+    height: 1rem;
+    width: 50%;
+    border-radius: 0.25rem;
+  }
 
-    @keyframes shimmer {
-        to {
-            background-position: -100% 0;
-        }
-    }
-`
+  /* ANIMACIÓN SHIMMER (Efecto de carga oscuro) */
+  .skeleton-pulse {
+    background-color: #1e293b; /* Color base oscuro (slate-800) */
+    background-image: linear-gradient(
+      90deg,
+      #1e293b 0px,
+      #334155 50%, /* Un poco más claro (slate-700) para el brillo */
+      #1e293b 100%
+    );
+    background-size: 200% 100%;
+    animation: ${shimmer} 1.5s infinite linear;
+  }
+`;

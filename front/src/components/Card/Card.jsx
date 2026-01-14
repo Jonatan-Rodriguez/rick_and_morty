@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { addFav, removeFav } from "../../redux/action";
 // Iconos
-import { Heart, X } from "lucide-react";
+import { Heart, Trash2 } from "lucide-react";
 // Estilos
 import { 
   CardWrapper, 
@@ -64,7 +64,7 @@ function Card(props) {
                 {/* Botón Eliminar (Solo si existe la función onClose) */}
                 {onClose && (
                     <ActionButton onClick={handleClose} aria-label="Delete">
-                        <X size={18} />
+                        <Trash2 size={18} />
                     </ActionButton>
                 )}
             </ActionsGroup>

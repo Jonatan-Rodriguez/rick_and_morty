@@ -1,49 +1,49 @@
-//hook
+import React, { useEffect } from "react";
+// Redux
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-//action
 import { getChar } from "../../redux/action";
-//style
-import { ContainerHome } from "./home.styled";
-//components
+// Styled Components
+import { ContainerHome, ContentWrapper, HeaderSection } from "./home.styled";
+// Components
 import Cards from "../../components/Cards/Cards";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Pagination from "../../components/Pagination/Pagination";
-//assets
-import logoHome from '../../assets/img/rickLogo.svg';
-import smile from '../../assets/img/smiley.svg';
 
 const Home = () => {
-
     const dispatch = useDispatch();
     const pagNav = useSelector(state => state.pagesNavigation);
 
     useEffect(() => {
-        // CORRECCIÓN IMPORTANTE:
-        // Ahora getChar espera un OBJETO, no strings sueltos.
+        // Carga inicial
         dispatch(getChar({ numPag: 1 }));
     }, [dispatch]);
 
     return (
         <ContainerHome>
-            <div className='logoHome'>
-                <img src={logoHome} alt="logo rick and morty" className='logo' />
-            </div>
-            <div className='search'>
-                <SearchBar />
-            </div>
+            {/* Navbar ya debería estar en tu App.js o Layout principal, no aquí dentro */}
             
-            <div className='containerTitle'>
-                <img src={smile} alt="personajes" />
-                <h2 className='title'>Personajes</h2>
-            </div>
-            
-            <Cards />
+            <ContentWrapper>
+                {/* 1. TÍTULO Y SUBTÍTULO (Estilo limpio v0) */}
+                <HeaderSection>
+                    <h1>Personajes</h1>
+                    <p>Explora la base de datos del multiverso</p>
+                </HeaderSection>
 
-            {/* CORRECCIÓN: Dejamos solo una condición limpia.
-                Si hay más de 1 página, mostramos el componente. */}
-            {pagNav > 1 && <Pagination />}
-            
+                {/* 2. BARRA DE BÚSQUEDA + FILTROS (Ya integrados) */}
+                {/* Ocupará el ancho disponible hasta su max-width definido */}
+                <SearchBar />
+                
+                {/* 3. GRID DE CARTAS */}
+                {/* Se expandirá automáticamente gracias a CSS Grid */}
+                <Cards />
+
+                {/* 4. PAGINACIÓN (Centrada al final) */}
+                {pagNav > 1 && (
+                    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
+                        <Pagination />
+                    </div>
+                )}
+            </ContentWrapper>
         </ContainerHome>
     )
 }

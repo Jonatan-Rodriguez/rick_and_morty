@@ -1,13 +1,18 @@
+import React from 'react';
 import { ContainerSkeletonLoading } from "./SkeletonLoading.styled";
+
 const SkeletonLoading = () => {
     return(
         <ContainerSkeletonLoading>
-            <div className="card">
-                <div className="card__skeleton card__description"></div>
-                <div className="card__skeleton card__title"></div>
-                <div className="card__skeleton card__title"></div>
-                <div className="card__skeleton card__title"></div>
-                <div className="card__skeleton card__title"></div>
+            {/* 1. Bloque de Imagen Cuadrada */}
+            <div className="skeleton-image skeleton-pulse"></div>
+            
+            {/* 2. Bloque de Información */}
+            <div className="skeleton-info">
+                {/* Título (Nombre del personaje) */}
+                <div className="skeleton-title skeleton-pulse"></div>
+                {/* Subtítulo (Status - Species) */}
+                <div className="skeleton-text skeleton-pulse"></div>
             </div>
         </ContainerSkeletonLoading>
     )

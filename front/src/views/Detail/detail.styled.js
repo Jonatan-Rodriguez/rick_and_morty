@@ -1,136 +1,241 @@
 import styled from 'styled-components';
 
-export const ContainerDetail = styled.div`
-    min-height: 91vh;
-    height: 100%;
-    max-height: 170%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #18191a;
-    padding: 5%;
+export const PageContainer = styled.div`
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background-color: var(--background);
+  overflow: hidden; 
+`;
 
-    .card {
-        width: 75%;
-        height: 60%;
-        transition: all 0.2s;
-        position: relative;
+export const BackgroundBlur = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image: url(${props => props.$imageUrl});
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  filter: blur(60px);
+  transform: scale(1.1); 
+`;
 
-        .circle {
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(#b0e633, #53ef7d);
-            border-radius: 50%;
-            position: absolute;
-            animation: move-up6 2s ease-in infinite alternate-reverse;
-        }
+export const ContentWrapper = styled.div`
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 56rem; 
+`;
 
-        .circle:nth-child(1) {
-            top: -25px;
-            left: -25px;
-        }
+export const BackButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  color: #9ca3af; 
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
 
-        .circle:nth-child(2) {
-            bottom: -25px;
-            right: -25px;
-            animation-name: move-down1;
-        }
+  &:hover {
+    color: var(--foreground);
+  }
+`;
 
-        .card-inner {
-            width: 100%;
-            height: 100%;
-            background: rgba(255,255,255,.05);
-            box-shadow: 0 0 10px rgba(0,0,0,0.25);
-            backdrop-filter: blur(10px);
-            border-radius: 8px;
+export const GlassCard = styled.div`
+  background: rgba(30, 41, 59, 0.4); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem; 
+  padding: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 3%;
+  @media (min-width: 1024px) {
+    padding: 2rem;
+  }
+`;
 
-            .containerCard{
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                flex-direction: row;
-                width: 100%;
-                height: 100%;
-                background-color: #313234;
-                border-radius: 8px;
-                flex-wrap:wrap;
-                padding: 3%;
-                gap: 20px 20px;
+export const CardLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 
-                .containerImg{
-                    border-radius: 15px;
-                    min-width: 200px;
-                    width: 275px;
-                    max-width: 350px;
-                    min-height: 200px;
-                    height: 275px;
-                    max-height: 350px;
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    gap: 3rem;
+  }
+`;
 
-                    .img{
-                        border-radius: 15px;
-                        width: 100%;
-                        height: 100%;
-                        background-position: center top;
-                        background-size: cover;
-                    }
-                }
+export const ImageSection = styled.div`
+  width: 100%;
+  @media (min-width: 1024px) {
+    width: 50%;
+  }
+`;
 
-                .containerData{
-                    min-width: 200px;
-                    max-width: 350px;
-                    min-height: 200px;
-                    height: 275px;
-                    max-height: 350px;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    flex-direction: column;
+export const ImageWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; 
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(34, 197, 94, 0.3); 
+  border: 4px solid rgba(134, 239, 172, 0.3); 
+`;
 
-                    .name{
-                        color: #ffffff;
-                        font-size: 2.5em;
-                    }
+export const StyledImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
 
-                    .data{
-                        display: flex;
-                        align-items: center;
-                        gap: 10px;
+export const InfoSection = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  @media (min-width: 1024px) {
+    width: 50%;
+  }
+`;
 
-                        img{
-                            width: 20px;
-                        }
+export const Header = styled.div`
+  margin-bottom: 1.5rem;
+`;
 
-                        p{
-                            font-size: 1.7em;
-                            color: #ffffff;
-                        }
-                    }
-                }
-            }
-            
-        }
+export const NameTitle = styled.h1`
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
 
-        @keyframes move-up6 {
-            to {
-                transform: translateY(-10px);
-            }
-        }
+  @media (min-width: 1024px) {
+    font-size: 2.5rem;
+  }
+`;
 
-        @keyframes move-down1 {
-            to {
-                transform: translateY(10px);
-            }
-        }
-    }
+export const EpisodeBadge = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(134, 239, 172, 0.5); 
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(34, 197, 94, 0.1);
+`;
 
-    .card:hover {
-        transform: scale(1.02) rotate(1deg);
-    }
+export const StatsGrid = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1; 
+`;
 
-`
+export const StatRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  background-color: rgba(30, 41, 59, 0.3); 
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgba(30, 41, 59, 0.5);
+  }
+`;
+
+export const IconBox = styled.div`
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  background-color: rgba(30, 41, 59, 1); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+`;
+
+export const StatContent = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const StatLabel = styled.span`
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #9ca3af;
+  font-weight: 600;
+  margin-bottom: 0.1rem;
+`;
+
+export const StatValue = styled.span`
+  font-size: 1rem;
+  color: var(--foreground);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+export const StatusDot = styled.span`
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: ${props => props.$color};
+  box-shadow: 0 0 8px ${props => props.$color};
+`;
+
+// Botón de Favorito Inteligente
+export const FavoriteButton = styled.button`
+  margin-top: 1.5rem;
+  width: 100%;
+  height: 3.5rem; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  
+  /* LÓGICA DE COLOR */
+  background-color: ${props => props.$isFav ? 'rgba(239, 68, 68, 0.1)' : 'var(--accent)'};
+  color: ${props => props.$isFav ? '#ef4444' : 'white'};
+  border: 1px solid ${props => props.$isFav ? 'rgba(239, 68, 68, 0.5)' : 'transparent'};
+  
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: ${props => props.$isFav ? 'none' : '0 4px 15px rgba(96, 165, 250, 0.3)'};
+
+  &:hover {
+    transform: translateY(-2px);
+    background-color: ${props => props.$isFav ? 'rgba(239, 68, 68, 0.2)' : 'var(--accent)'};
+    opacity: ${props => props.$isFav ? 1 : 0.9};
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  svg {
+    transition: transform 0.2s;
+  }
+  
+  &:active svg {
+    transform: scale(0.8);
+  }
+`;

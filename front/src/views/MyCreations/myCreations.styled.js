@@ -6,7 +6,7 @@ export const PageContainer = styled.div`
   width: 100%;
   background-color: var(--background);
   
-  /* Patrón de estrellas */
+  /* Patrón de estrellas consistente */
   background-image: 
     radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
     radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.2), transparent);
@@ -38,14 +38,13 @@ export const TitleGroup = styled.div`
 export const IconBox = styled.div`
   padding: 0.5rem;
   border-radius: 0.5rem;
-  background-color: rgba(239, 68, 68, 0.2);
+  background-color: rgba(96, 165, 250, 0.2); /* blue/20 (color Accent) */
   display: flex;
   align-items: center;
   justify-content: center;
 
   svg {
-    color: #ef4444;
-    fill: #ef4444; 
+    color: #60a5fa; /* blue-400 */
   }
 `;
 
@@ -58,14 +57,17 @@ export const Title = styled.h1`
 export const Subtitle = styled.p`
   color: #9ca3af;
   font-size: 1rem;
-
-  b{
-    color: var(--portal-green);
-  }
 `;
 
-// --- GRID DE CARTAS ---
-export const FavoritesGrid = styled.div`
+// El texto rojo que pediste
+export const DestructiveText = styled.span`
+  color: #ef4444; /* Rojo destructive */
+  margin-left: 0.5rem;
+  font-weight: 500;
+`;
+
+// --- GRID ---
+export const CreationsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
@@ -81,5 +83,18 @@ export const FavoritesGrid = styled.div`
 
   @media (min-width: 1280px) {
     grid-template-columns: repeat(5, 1fr);
+  }
+`;
+
+// --- MENSAJE VACÍO SIMPLE (Por si no quieres usar el componente EmptyState completo) ---
+export const EmptyMessageContainer = styled.div`
+  text-align: center;
+  padding: 4rem 1rem;
+  color: #9ca3af;
+  
+  h2 {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
   }
 `;

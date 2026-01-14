@@ -1,10 +1,21 @@
-import { ContainerNoResults } from "./NoResults.styled";
+import React from 'react';
+// Icono
+import { SearchX } from "lucide-react";
+// Estilos
+import { ContainerNoResults } from "./noResults.styled";
 
 const NoResults = () => {
-
     return(
         <ContainerNoResults>
-            <h1>Los resultados no fueron encontrados</h1>
+            <div className="icon-wrapper">
+                <SearchX />
+            </div>
+            
+            <h2>Sin resultados</h2>
+            <p>
+                Parece que este personaje está en otra dimensión. 
+                Intenta ajustar tu búsqueda o los filtros.
+            </p>
         </ContainerNoResults>
     )
 }

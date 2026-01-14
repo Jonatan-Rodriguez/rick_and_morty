@@ -4,43 +4,91 @@ export const FiltersContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: 100%;
 
-  @media (min-width: 640px) {
+  @media (min-width: 768px) {
     flex-direction: row;
+    width: auto;
     align-items: center;
   }
 `;
 
+export const SelectWrapper = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    width: auto;
+  }
+`;
+
+// Wrapper para el icono de la izquierda (Descriptivo)
+export const IconLeft = styled.div`
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af; /* muted-foreground */
+  pointer-events: none; /* El click pasa a través de él */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+`;
+
+// Wrapper para el icono de la derecha (Flecha)
+export const IconRight = styled.div`
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+`;
+
 export const StyledSelect = styled.select`
   width: 100%;
-  min-width: 120px; /* Ancho mínimo para que se lea el texto */
-  height: 2.5rem; /* h-10 */
-  padding: 0 0.75rem;
+  height: 2.5rem;
+  padding-left: 2.5rem;  /* Espacio para icono izq */
+  padding-right: 2.5rem; /* Espacio para icono der (flecha) */
   
-  /* Estilo Glassmorphism (Igual que el SearchBar) */
   background-color: rgba(30, 41, 59, 0.5); 
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.5rem;
-  color: var(--foreground);
+  
+  color: ${props => props.$isPlaceholder ? '#9ca3af' : 'var(--foreground)'};
   font-size: 0.875rem;
+  font-family: inherit;
   
   cursor: pointer;
   outline: none;
-  appearance: none; /* Quitamos la flecha por defecto */
   
-  /* Icono de flecha personalizado (SVG Base64) */
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22gray%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%2F%3E%3C%2Fsvg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.5rem center;
-  background-size: 1rem;
-  transition: all 0.2s;
+  /* IMPORTANTE: Quitamos la apariencia nativa y la imagen de fondo anterior */
+  appearance: none; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: none; /* Ya no usamos URL de SVG */
+
+  @media (min-width: 768px) {
+    width: 150px;
+  }
+
+  &:hover {
+    background-color: rgba(30, 41, 59, 0.7);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
 
   &:focus {
     border-color: var(--accent);
     box-shadow: 0 0 0 1px var(--accent);
   }
 
-  /* Opciones oscuras para que se lean bien */
   option {
     background-color: #0b0218;
     color: white;
@@ -48,21 +96,25 @@ export const StyledSelect = styled.select`
 `;
 
 export const ResetButton = styled.button`
-  background: transparent;
-  border: 1px solid rgba(239, 68, 68, 0.3); /* destructive/30 */
-  color: #ef4444; /* destructive */
-  height: 2.5rem;
-  padding: 0 0.75rem;
-  border-radius: 0.5rem;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: all 0.2s;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  height: 2.5rem;
+  padding: 0 1rem;
+  
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #ef4444; 
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
 
   &:hover {
-    background-color: rgba(239, 68, 68, 0.1);
+    background-color: rgba(239, 68, 68, 0.2);
     border-color: #ef4444;
   }
 `;
