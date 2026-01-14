@@ -50,15 +50,12 @@ const Detail = () => {
     const [character, setCharacter] = useState({});
     const [isFav, setIsFav] = useState(false);
 
-    console.log('Character Data:', character); // Debugging
-
     // 1. Cargar datos del personaje
     useEffect(() => {
         axios.get(`/character/${id}`)
             .then(({ data }) => {
                 if (data.name) {
                     setCharacter(data);
-                    console.log('Fetched Character:', data); // Debugging
                 } else {
                     window.alert('No hay personajes con ese ID');
                 }
