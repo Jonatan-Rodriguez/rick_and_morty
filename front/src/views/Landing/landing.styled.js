@@ -197,23 +197,34 @@ export const Footer = styled.footer`
 `;
 
 export const SocialGlass = styled.div`
-  background: var(--glass);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: 0.75rem;
-  padding: 1rem 1.5rem;
   display: flex;
-  gap: 1.5rem;
   align-items: center;
+  gap: 1.5rem; /* Espacio entre iconos */
+  padding: 0.75rem 1.5rem;
+  
+  /* Glassmorphism */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px; /* Forma de píldora */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
   a {
-    color: #9ca3af;
-    transition: color 0.3s;
-    font-size: 0.875rem;
-    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af; /* Color gris inicial */
+    transition: all 0.3s ease;
     
+    /* Efecto al pasar el mouse */
     &:hover {
-      color: var(--primary);
+      color: white; /* Se pone blanco brillante */
+      transform: translateY(-3px) scale(1.1); /* Sube un poquito y crece */
+      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5)); /* Resplandor */
+    }
+
+    p{
+      margin-left: 0.5rem;
     }
   }
 `;

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// Iconos
+import { Github, Linkedin } from 'lucide-react';
 
 import {
   ContainerLanding,
@@ -19,7 +21,7 @@ const Landing = () => {
             <NebulaLayer />
             <NebulaLayer className="secondary" />
             
-            {/* CORRECCIÓN AQUÍ: Usamos $size, $variant, $reverse, $duration */}
+            {/* Anillos del Portal de fondo */}
             <div style={{ position: 'absolute', display: 'flex', alignItems: 'center', justifyContent: 'center', inset: 0, pointerEvents: 'none' }}>
                 <PortalRing $size="600px" />
                 <PortalRing $size="500px" $variant="accent" $reverse $duration="25s" />
@@ -29,7 +31,6 @@ const Landing = () => {
             <MainContent>
                 <Title>
                     <span className="title-glow">Rick & Morty</span>
-                    <br />
                     <span className="subtitle-glow">Wiki</span>
                 </Title>
 
@@ -54,8 +55,25 @@ const Landing = () => {
 
             <Footer>
                 <SocialGlass>
-                    <a href="#" onClick={(e) => e.preventDefault()}>GitHub</a>
-                    <a href="#" onClick={(e) => e.preventDefault()}>Linkdin</a>
+                    {/* GitHub */}
+                    <a 
+                        href="https://github.com/Jonatan-Rodriguez/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        aria-label="GitHub Profile"
+                    >
+                        <Github size={24} /><p>GitHub</p>
+                    </a>
+
+                    {/* LinkedIn */}
+                    <a 
+                        href="https://www.linkedin.com/in/jonatan-j-rodriguez/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn Profile"
+                    >
+                        <Linkedin size={24} /><p>LinkedIn</p>
+                    </a>
                 </SocialGlass>
             </Footer>
         </ContainerLanding>
