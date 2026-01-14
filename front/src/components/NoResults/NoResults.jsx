@@ -2,7 +2,7 @@ import React from 'react';
 // Icono
 import { SearchX } from "lucide-react";
 // Estilos
-import { ContainerNoResults } from "./noResults.styled";
+import { ContainerNoResults } from "./noResult.styled";
 
 const NoResults = () => {
     return(
