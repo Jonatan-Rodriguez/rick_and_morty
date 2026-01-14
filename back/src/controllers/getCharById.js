@@ -40,7 +40,8 @@ const getCharById = async (req, res) => {
                 image: data.image,
                 gender: data.gender,
                 status: data.status,
-                location: data.location
+                location: data.location,
+                episode: data.episode
             }
             return res.status(200).json(charFromApi);
         }
