@@ -3,7 +3,7 @@ import axios from "../../config/axiosConfig";
 import { useParams, Link } from 'react-router-dom';
 // Redux Hooks
 import { useDispatch, useSelector } from 'react-redux';
-import { addFav, removeFav } from '../../redux/action'; // Importamos las acciones
+import { addFav, removeFav } from '../../redux/action';
 // Iconos
 import { 
   ArrowLeft, 
@@ -50,12 +50,15 @@ const Detail = () => {
     const [character, setCharacter] = useState({});
     const [isFav, setIsFav] = useState(false);
 
+    console.log('Character Data:', character); // Debugging
+
     // 1. Cargar datos del personaje
     useEffect(() => {
         axios.get(`/character/${id}`)
             .then(({ data }) => {
                 if (data.name) {
                     setCharacter(data);
+                    console.log('Fetched Character:', data); // Debugging
                 } else {
                     window.alert('No hay personajes con ese ID');
                 }
