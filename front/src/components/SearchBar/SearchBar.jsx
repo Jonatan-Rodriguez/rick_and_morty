@@ -23,7 +23,7 @@ const SearchBar = () => {
 
     const searchChar = () => {
         dispatch(SearchName(name));
-        dispatch(getChar(name, '1'));
+        dispatch(getChar({ name: name, numPag: 1 }));
     }
 
     const handleKeyDown = (event) => {
@@ -35,7 +35,7 @@ const SearchBar = () => {
     const btnRemove = () => {
         setName('');
         dispatch(SearchName(''));
-        dispatch(getChar('', '1'));
+        dispatch(getChar({ name: '', numPag: 1 }));
     }
 
     return (
