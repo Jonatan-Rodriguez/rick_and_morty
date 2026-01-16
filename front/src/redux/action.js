@@ -132,13 +132,14 @@ export const updateChar = (id, charData) => {
         try {
             const { data } = await axios.put(`${URL_BASE}/character/${id}`, charData);
             
-            return dispatch({
+            dispatch({
                 type: UPDATE_CHAR,
-                payload: data // El personaje actualizado
+                payload: data
             });
+            return true; // ÉXITO: Devolvemos true para que el componente sepa
         } catch (error) {
             console.error(error.message);
-            alert("Error al actualizar el personaje");
+            return false; // ERROR: Devolvemos false
         }
     };
 };

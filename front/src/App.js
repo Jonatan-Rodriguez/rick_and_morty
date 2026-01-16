@@ -14,6 +14,7 @@ import Landing from './views/Landing/Landing.jsx';
 import Home from './views/Home/Home.jsx';
 import Create from './views/Create/Create.jsx';
 import MyCreations from './views/MyCreations/MyCreations';
+import Footer from './components/Footer/Footer';
 
 function App() {
    const location = useLocation();
@@ -55,23 +56,27 @@ function App() {
    }
    
    return (
-      <div className='App'>
+      <div className='App' style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
          {showNav() && <Nav />}
 
-         <Routes>
-            <Route path='/' element={<Landing />} />
-            <Route path='/form' element={<Form login={login} loginInvited={loginInvited}/>}/>
-            
-            <Route path='/home' element={<Home />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/favorites' element={<Favorites />} />
-            <Route path='/detail/:id' element={<Detail />} />
-            <Route path='/create' element={<Create />} />
-            <Route path='/my-creations' element={<MyCreations />} />
+         <div style={{ flex: 1 }}>
+            <Routes>
+               <Route path='/' element={<Landing />} />
+               <Route path='/form' element={<Form login={login} loginInvited={loginInvited}/>}/>
+               
+               <Route path='/home' element={<Home />} />
+               <Route path='/about' element={<About />} />
+               <Route path='/favorites' element={<Favorites />} />
+               <Route path='/detail/:id' element={<Detail />} />
+               <Route path='/create' element={<Create />} />
+               <Route path='/my-creations' element={<MyCreations />} />
 
-            <Route path='*' element={<Error />} />
-         </Routes>
+               <Route path='*' element={<Error />} />
+            </Routes>
+         </div>
+         <Footer />
       </div>
+      
    );
 }
 

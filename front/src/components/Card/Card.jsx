@@ -2,18 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { addFav, removeFav } from "../../redux/action";
-// Iconos
-import { Heart, Trash2, Pencil } from "lucide-react"; // Importamos Pencil
-// Componente Modal
+import { Heart, Trash2, Pencil } from "lucide-react";
 import EditModal from "../EditModal/EditModal"; 
-
-// Estilos
 import { 
   CardWrapper, 
   ImageContainer, 
   ActionsGroup, 
   ActionButton, 
-  EditButton, // Importamos el nuevo estilo
+  EditButton, 
   InfoContainer, 
   StatusRow, 
   StatusDot 
@@ -21,16 +17,16 @@ import {
 
 function Card(props) {
     const { 
-        id, name, status, species, origin, image, gender, // Agregamos gender si lo necesitamos para el edit
-        myFavorites, addFav, removeFav, onClose 
+        id, name, status, species, origin, image, gender,
+        myFavorites, addFav, removeFav, onClose, 
+        allowEdit // <--- NUEVA PROP: Controla si se muestra el lápiz
     } = props;
     
     const [isFav, setIsFav] = useState(false);
-    const [showEdit, setShowEdit] = useState(false); // Estado para abrir modal
+    const [showEdit, setShowEdit] = useState(false);
 
-    // Determinamos si es editable: Si tiene onClose (significa que estamos en MyCreations) 
-    // O si el ID no es un número (la API usa números, la DB usa UUIDs)
-    const isEditable = isNaN(id); 
+    // Es editable SI: Nos permiten editar (allowEdit) Y es un personaje de DB (ID string)
+    const isEditable = allowEdit && isNaN(id); 
 
     useEffect(() => {
         myFavorites.forEach((fav) => {
@@ -57,7 +53,7 @@ function Card(props) {
     }
 
     const handleEditClick = (e) => {
-        e.preventDefault(); // Evitamos ir al detalle
+        e.preventDefault();
         setShowEdit(true);
     }
 
@@ -65,7 +61,6 @@ function Card(props) {
         <>
             <CardWrapper>
                 <ActionsGroup className="actions-group">
-                    {/* Botón Favorito */}
                     <ActionButton 
                         onClick={handleFavorite}
                         className={isFav ? "is-favorite" : ""}
@@ -74,14 +69,13 @@ function Card(props) {
                         <Heart size={18} />
                     </ActionButton>
 
-                    {/* BOTÓN EDITAR (Solo si es editable) */}
+                    {/* Lógica Estricta: Solo mostramos lápiz si isEditable es true */}
                     {isEditable && (
                         <EditButton onClick={handleEditClick} aria-label="Edit">
                             <Pencil size={18} />
                         </EditButton>
                     )}
 
-                    {/* Botón Eliminar */}
                     {onClose && (
                         <ActionButton onClick={handleClose} aria-label="Delete">
                             <Trash2 size={18} />
@@ -104,7 +98,6 @@ function Card(props) {
                 </Link>
             </CardWrapper>
 
-            {/* Renderizado condicional del Modal de Edición */}
             {showEdit && (
                 <EditModal 
                     char={{ id, name, status, species, origin, image, gender }} 
@@ -115,17 +108,10 @@ function Card(props) {
     );
 }
 
-const mapStateToProps = (state) => {
-    return {
-        myFavorites: state.myFavorites
-    };
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addFav: (character) => dispatch(addFav(character)),
-        removeFav: (id) => dispatch(removeFav(id))
-    };
-}
+const mapStateToProps = (state) => ({ myFavorites: state.myFavorites });
+const mapDispatchToProps = (dispatch) => ({
+    addFav: (character) => dispatch(addFav(character)),
+    removeFav: (id) => dispatch(removeFav(id))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card);

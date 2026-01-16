@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from "../../config/axiosConfig";
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom'; // <--- Importamos useNavigate
 // Redux Hooks
 import { useDispatch, useSelector } from 'react-redux';
 import { addFav, removeFav } from '../../redux/action';
+// components
+import EditModal from '../../components/EditModal/EditModal';
+import FeedbackModal from '../../components/FeedbackModal/FeedbackModal'; // <--- Importamos el FeedbackModal
 // Iconos
 import { 
   ArrowLeft, 
@@ -13,7 +16,8 @@ import {
   User, 
   Dna, 
   Activity, 
-  Tv 
+  Tv,
+  Pencil
 } from "lucide-react";
 // Estilos
 import {
@@ -37,51 +41,75 @@ import {
   StatLabel,
   StatValue,
   StatusDot,
-  FavoriteButton
+  FavoriteButton,
+  EditDetailButton
 } from './detail.styled';
 
 const Detail = () => {
     const { id } = useParams();
+    const navigate = useNavigate(); // Hook para redirección
     const dispatch = useDispatch();
     
-    // Obtenemos favoritos del estado global
     const myFavorites = useSelector(state => state.myFavorites);
 
     const [character, setCharacter] = useState({});
     const [isFav, setIsFav] = useState(false);
+    const [showEdit, setShowEdit] = useState(false);
 
-    // 1. Cargar datos del personaje
-    useEffect(() => {
+    // Estado para controlar el Feedback (Errores de carga)
+    const [feedback, setFeedback] = useState({
+        isOpen: false,
+        type: 'error', 
+        title: '',
+        message: ''
+    });
+
+    const isCreatedCharacter = isNaN(id);
+
+    // Memorizamos la función con useCallback
+    const fetchCharacter = useCallback(() => {
         axios.get(`/character/${id}`)
             .then(({ data }) => {
                 if (data.name) {
                     setCharacter(data);
                 } else {
-                    window.alert('No hay personajes con ese ID');
+                    // Reemplazo de alert por Modal
+                    setFeedback({
+                        isOpen: true,
+                        type: 'error',
+                        title: 'Personaje no encontrado',
+                        message: 'La pistola de portales no encuentra este destino. Es probable que este personaje haya sido borrado de la línea temporal o nunca existió en este universo.'
+                    });
                 }
             })
             .catch(() => {
-                window.alert('Error al cargar el personaje');
+                // Reemplazo de alert por Modal
+                setFeedback({
+                    isOpen: true,
+                    type: 'error',
+                    title: 'Error de Conexión',
+                    message: 'Parece que Jerry tocó algo que no debía. Hubo un problema al cargar la información. Inténtalo de nuevo más tarde.'
+                });
             });
-        return () => setCharacter({});
     }, [id]);
 
-    // 2. Verificar si ya es favorito (Igual que en Card.jsx)
     useEffect(() => {
-        // Usamos .some() que es más eficiente para verificar existencia
+        fetchCharacter();
+        return () => setCharacter({});
+    }, [fetchCharacter]);
+
+    useEffect(() => {
         if (myFavorites) {
             const exists = myFavorites.some(fav => fav.id.toString() === id.toString());
             setIsFav(exists);
         }
     }, [myFavorites, id]);
 
-    // 3. Manejador del botón Favoritos
     const handleFavorite = () => {
         if (isFav) {
-            dispatch(removeFav(id)); // Usamos removeFav como en tu Card
+            dispatch(removeFav(id));
             setIsFav(false);
         } else {
-            // Enviamos todos los datos necesarios para la Card
             dispatch(addFav({
                 id: character.id,
                 name: character.name,
@@ -95,18 +123,28 @@ const Detail = () => {
         }
     };
 
-    // Traductor de colores para el estado
+    const handleEditClose = () => {
+        setShowEdit(false);
+        fetchCharacter(); 
+    };
+
+    // Manejador para cerrar el Modal de Error
+    const handleCloseFeedback = () => {
+        setFeedback({ ...feedback, isOpen: false });
+        // Si falló la carga, es mejor sacar al usuario de esta pantalla rota
+        navigate('/home');
+    };
+
     const getStatusColor = (status) => {
         switch(status) {
-            case 'Alive': return '#22c55e'; // Verde
-            case 'Dead': return '#ef4444';  // Rojo
-            default: return '#9ca3af';      // Gris
+            case 'Alive': return '#22c55e';
+            case 'Dead': return '#ef4444';
+            default: return '#9ca3af';
         }
     };
 
     return (
         <PageContainer>
-            {/* Fondo Blur */}
             {character.image && (
                 <BackgroundBlur $imageUrl={character.image} />
             )}
@@ -121,7 +159,6 @@ const Detail = () => {
 
                 <GlassCard>
                     <CardLayout>
-                        {/* IMAGEN */}
                         <ImageSection>
                             <ImageWrapper>
                                 <StyledImage 
@@ -131,23 +168,18 @@ const Detail = () => {
                             </ImageWrapper>
                         </ImageSection>
 
-                        {/* INFORMACIÓN */}
                         <InfoSection>
                             <Header>
                                 <NameTitle>{character.name}</NameTitle>
                                 <EpisodeBadge>
                                     <Tv size={14} />
-                                    {/* Corrección del contador de episodios */}
                                     {character.episode?.length || 0} Episodios
                                 </EpisodeBadge>
                             </Header>
 
                             <StatsGrid>
-                                {/* Estado */}
                                 <StatRow>
-                                    <IconBox>
-                                        <Activity size={20} color="#60a5fa" />
-                                    </IconBox>
+                                    <IconBox><Activity size={20} color="#60a5fa" /></IconBox>
                                     <StatContent>
                                         <StatLabel>Estado</StatLabel>
                                         <StatValue>
@@ -157,63 +189,71 @@ const Detail = () => {
                                     </StatContent>
                                 </StatRow>
 
-                                {/* Especie */}
                                 <StatRow>
-                                    <IconBox>
-                                        <Dna size={20} color="#c084fc" />
-                                    </IconBox>
+                                    <IconBox><Dna size={20} color="#c084fc" /></IconBox>
                                     <StatContent>
                                         <StatLabel>Especie</StatLabel>
                                         <StatValue>{character.species}</StatValue>
                                     </StatContent>
                                 </StatRow>
 
-                                {/* Género */}
                                 <StatRow>
-                                    <IconBox>
-                                        <User size={20} color="#f472b6" />
-                                    </IconBox>
+                                    <IconBox><User size={20} color="#f472b6" /></IconBox>
                                     <StatContent>
                                         <StatLabel>Género</StatLabel>
                                         <StatValue>{character.gender}</StatValue>
                                     </StatContent>
                                 </StatRow>
 
-                                {/* Origen */}
                                 <StatRow>
-                                    <IconBox>
-                                        <Globe size={20} color="#34d399" />
-                                    </IconBox>
+                                    <IconBox><Globe size={20} color="#34d399" /></IconBox>
                                     <StatContent>
                                         <StatLabel>Origen</StatLabel>
-                                        <StatValue>{character.origin?.name}</StatValue>
+                                        <StatValue>{character.origin?.name || character.origin}</StatValue>
                                     </StatContent>
                                 </StatRow>
 
-                                {/* Ubicación */}
                                 <StatRow>
-                                    <IconBox>
-                                        <MapPin size={20} color="#fbbf24" />
-                                    </IconBox>
+                                    <IconBox><MapPin size={20} color="#fbbf24" /></IconBox>
                                     <StatContent>
                                         <StatLabel>Ubicación</StatLabel>
-                                        <StatValue>{character.location?.name}</StatValue>
+                                        <StatValue>{character.location?.name || "Desconocida"}</StatValue>
                                     </StatContent>
                                 </StatRow>
                             </StatsGrid>
 
-                            {/* BOTÓN FAVORITO DINÁMICO */}
                             <FavoriteButton onClick={handleFavorite} $isFav={isFav}>
-                                <Heart 
-                                    size={18} 
-                                    fill={isFav ? "currentColor" : "none"} 
-                                />
+                                <Heart size={18} fill={isFav ? "currentColor" : "none"} />
                                 {isFav ? "Eliminar de Favoritos" : "Agregar a Favoritos"}
                             </FavoriteButton>
+
+                            {isCreatedCharacter && (
+                                <EditDetailButton onClick={() => setShowEdit(true)}>
+                                    <Pencil size={18} />
+                                    Editar Personaje
+                                </EditDetailButton>
+                            )}
                         </InfoSection>
                     </CardLayout>
                 </GlassCard>
             </ContentWrapper>
+
+            {/* Modal de Edición */}
+            {showEdit && (
+                <EditModal 
+                    char={character}
+                    onClose={handleEditClose}
+                />
+            )}
+
+            {/* Modal de Feedback (Errores de carga) */}
+            <FeedbackModal 
+                isOpen={feedback.isOpen}
+                type={feedback.type}
+                title={feedback.title}
+                message={feedback.message}
+                onClose={handleCloseFeedback}
+            />
         </PageContainer>
     );
 }

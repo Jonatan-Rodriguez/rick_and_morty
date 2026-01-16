@@ -98,7 +98,8 @@ const MyCreations = () => {
                                 origin={char.origin?.name}
                                 status={char.status}
                                 // Aquí pasamos la función que abre el modal
-                                onClose={() => handleDeleteClick(char.id)} 
+                                onClose={() => handleDeleteClick(char.id)}
+                                allowEdit={true}
                             />
                         ))}
                     </CreationsGrid>

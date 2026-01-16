@@ -239,3 +239,34 @@ export const FavoriteButton = styled.button`
     transform: scale(0.8);
   }
 `;
+
+export const EditDetailButton = styled.button`
+  margin-top: 1rem; /* Separación del botón de favoritos */
+  width: 100%;
+  height: 3.5rem; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  
+  /* Color Ámbar para editar */
+  background-color: rgba(245, 158, 11, 0.1); /* Amber-500 muy suave */
+  color: #f59e0b; /* Amber-500 */
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: translateY(-2px);
+    background-color: rgba(245, 158, 11, 0.2);
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+`;
