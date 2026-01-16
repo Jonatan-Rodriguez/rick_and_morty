@@ -1,5 +1,5 @@
 import axios from "../config/axiosConfig";
-import { SET_LOADING, SEARCH_NAME, GET_CHAR, GET_FAV, ADD_FAV, REMOVE_FAV, FILTER, ORDER } from './actions-types';
+import { SET_LOADING, SEARCH_NAME, GET_CHAR, GET_FAV, ADD_FAV, REMOVE_FAV, FILTER, ORDER, UPDATE_CHAR } from './actions-types';
 
 // CONFIGURACIÓN DE URL (Inteligente: Nube vs Local)
 const URL_BASE = process.env.REACT_APP_API_URL || "http://localhost:3001/rickandmorty";
@@ -125,4 +125,20 @@ export const filterCards = (gender) => {
 
 export const orderCards = (order) => {
     return { type: ORDER, payload: order };
+};
+
+export const updateChar = (id, charData) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.put(`${URL_BASE}/character/${id}`, charData);
+            
+            return dispatch({
+                type: UPDATE_CHAR,
+                payload: data // El personaje actualizado
+            });
+        } catch (error) {
+            console.error(error.message);
+            alert("Error al actualizar el personaje");
+        }
+    };
 };

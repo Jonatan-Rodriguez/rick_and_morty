@@ -4,7 +4,8 @@ import {
     GET_CHAR, 
     GET_FAV, 
     ADD_FAV, 
-    REMOVE_FAV
+    REMOVE_FAV,
+    UPDATE_CHAR
 } from './actions-types';
 
 const initialState = {
@@ -72,6 +73,19 @@ const reducer = (state = initialState, action) => {
                 characters: state.characters.filter(char => char.id !== action.payload),
                 allCharacters: state.allCharacters.filter(char => char.id !== action.payload),
                 myFavorites: state.myFavorites.filter(fav => fav.id.toString() !== action.payload.toString())
+            };
+
+        case UPDATE_CHAR:
+            return {
+                ...state,
+                // Actualizamos en la lista general
+                allCharacters: state.allCharacters.map(char => 
+                    char.id === action.payload.id ? action.payload : char
+                ),
+                // Actualizamos también si está en favoritos
+                myFavorites: state.myFavorites.map(fav => 
+                    fav.id === action.payload.id ? action.payload : fav
+                )
             };
 
         default:

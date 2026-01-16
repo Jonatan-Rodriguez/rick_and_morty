@@ -59,9 +59,14 @@ export const Subtitle = styled.p`
   font-size: 1rem;
 `;
 
-// El texto rojo que pediste
 export const DestructiveText = styled.span`
-  color: #ef4444; /* Rojo destructive */
+  color: #ef4444;
+  margin-left: 0.5rem;
+  font-weight: 500;
+`;
+
+export const EditText = styled.span`
+  color: #f59e0b;
   margin-left: 0.5rem;
   font-weight: 500;
 `;

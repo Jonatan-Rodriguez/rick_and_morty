@@ -12,6 +12,7 @@ import {
   Title, 
   Subtitle, 
   DestructiveText,
+  EditText,
   CreationsGrid
 } from "./myCreations.styled";
 // Components
@@ -70,9 +71,13 @@ const MyCreations = () => {
                     <Subtitle>
                         Personajes que has agregado a la base de datos de la Ciudadela.
                         {myCharacters.length > 0 && (
-                            <DestructiveText>
-                                Haz clic en el ícono de la papelera para eliminar.
+                            <>
+                            <EditText>
+                                Haz clic en el ícono del lápiz para editar,
+                            </EditText>
+                            <DestructiveText>o en el ícono de la papelera para eliminar.
                             </DestructiveText>
+                            </>
                         )}
                     </Subtitle>
                 </HeaderSection>

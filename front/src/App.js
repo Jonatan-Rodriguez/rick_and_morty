@@ -6,7 +6,7 @@ import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Nav from './components/Nav/Nav';
 import Form from './components/Form/Form';
 // views
-import About from './views/About';
+import About from './views/About/About.jsx';
 import Error from './views/Error/Error.jsx';
 import Detail from './views/Detail/Detail.jsx';
 import Favorites from './views/Favorites/Favorites.jsx';

@@ -137,3 +137,10 @@ export const StatusDot = styled.span`
   
   box-shadow: ${props => props.$status === 'Alive' ? '0 0 8px var(--primary)' : 'none'};
 `;
+
+export const EditButton = styled(ActionButton)`
+  &:hover {
+    background: rgba(251, 191, 36, 0.8); /* Amber-400 */
+    color: white;
+  }
+`;

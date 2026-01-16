@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-// Iconos modernos (Instalar con: npm install lucide-react)
-import { Home, Heart, User, Plus, LogOut, Menu, X } from "lucide-react";
+// Iconos modernos (Lucide)
+import { Home, Heart, User, Plus, LogOut, Menu, X, Info } from "lucide-react"; // <-- Agregamos 'Info'
 
 import { 
   NavContainer, 
@@ -9,7 +9,7 @@ import {
   DesktopMenu, 
   MobileToggle, 
   MobileMenu 
-} from "./nav.style.js"; // Asegúrate de que coincida con el nombre de tu archivo (nav.style.js o nav.styled.js)
+} from "./nav.style.js";
 import BtnNav from "../BtnNav/BtnNav.jsx";
 
 const Nav = () => {
@@ -20,13 +20,15 @@ const Nav = () => {
         { href: "/favorites", label: "Favoritos", icon: Heart },
         { href: "/my-creations", label: "Mis Personajes", icon: User },
         { href: "/create", label: "Crear", icon: Plus },
+        // AGREGADO: Enlace a About
+        { href: "/about", label: "Sobre Mí", icon: Info }, 
     ];
 
     return (
         <>
             <NavContainer>
                 <NavContent>
-                    {/* LOGO (Diseño CSS puro, sin imágenes) */}
+                    {/* LOGO */}
                     <LogoLink to='/home'>
                         <div className="logo-circle">
                             <span>RM</span>
