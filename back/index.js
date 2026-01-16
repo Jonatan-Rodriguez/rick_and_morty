@@ -28,7 +28,7 @@ server.get('/', (req, res) => {
 });
 
 server.listen(PORT, () => {
-   conn.sync({ force: true }) // Usa alter: true para actualizar sin borrar datos o force: true para reiniciar la base de datos
+   conn.sync({ alter: true }) // Usa alter: true para actualizar sin borrar datos o force: true para reiniciar la base de datos
       .then(() => {
          console.log('Server raised in port: ' + PORT);
       })
