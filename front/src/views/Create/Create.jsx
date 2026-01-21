@@ -19,8 +19,9 @@ import {
 } from './create.styled';
 // Componentes
 import FeedbackModal from '../../components/FeedbackModal/FeedbackModal';
+import ImageUploader from '../../components/ImageUploader/ImageUploader';
 // Iconos
-import { User, Globe, Dna, Image as ImageIcon, Activity, ChevronDown } from "lucide-react";
+import { User, Globe, Dna, Image as Activity, ChevronDown } from "lucide-react";
 
 const Create = () => {
     const navigate = useNavigate();
@@ -92,6 +93,10 @@ const Create = () => {
         if (modal.type === 'success') {
             navigate('/home');
         }
+    };
+
+    const handleImageUpload = (url) => {
+        setInput({ ...input, image: url });
     };
 
     return (
@@ -178,19 +183,13 @@ const Create = () => {
                             </InputWrapper>
                         </InputGroup>
 
-                        {/* 6. IMAGEN URL (Ancho completo) */}
+                        {/* 6. IMAGEN URL */}
                         <InputGroup className="full-width">
-                            <Label>URL de la Imagen</Label>
-                            <InputWrapper>
-                                <ImageIcon className="icon" size={18} />
-                                <StyledInput 
-                                    type="text" 
-                                    name="image" 
-                                    value={input.image} 
-                                    onChange={handleChange} 
-                                    placeholder="https://rickandmortyapi.com/..." 
-                                />
-                            </InputWrapper>
+                            <Label>Imagen del Personaje</Label>
+                            
+                            <ImageUploader onImageUpload={handleImageUpload} />
+                            
+                            <input type="hidden" name="image" value={input.image} />
                         </InputGroup>
                     </FormGrid>
 

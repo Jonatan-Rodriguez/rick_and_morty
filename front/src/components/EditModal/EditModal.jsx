@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux';
 import { updateChar } from '../../redux/action'; 
 import { X, Save } from 'lucide-react';
 
-// Importamos el FeedbackModal (Asegúrate que la ruta sea correcta según tu estructura)
+// Componentes
 import FeedbackModal from '../FeedbackModal/FeedbackModal'; 
+import ImageUploader from '../ImageUploader/ImageUploader';
 
 // Importamos los estilos
 import {
@@ -79,6 +80,10 @@ const EditModal = ({ char, onClose }) => {
         // Si fue error, mantenemos el modal de edición abierto para que corrija
     };
 
+    const handleImageUpload = (url) => {
+        setInput({ ...input, image: url });
+    };
+
     return (
         <>
             {/* Modal de Edición (Solo visible si no hay feedback abierto para no superponer demasiados) */}
@@ -103,12 +108,10 @@ const EditModal = ({ char, onClose }) => {
                             </InputGroup>
                             
                             <InputGroup>
-                                <Label>URL de Imagen</Label>
-                                <Input 
-                                    name="image" 
-                                    value={input.image} 
-                                    onChange={handleChange} 
-                                    placeholder="https://..."
+                                <Label>Imagen</Label>
+                                <ImageUploader 
+                                    onImageUpload={handleImageUpload} 
+                                    initialImage={input.image} // Pasamos la imagen actual para que se vea
                                 />
                             </InputGroup>
                             
