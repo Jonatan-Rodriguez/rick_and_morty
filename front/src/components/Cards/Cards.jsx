@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux'; // Usamos Hooks
 // Actions
 import { getFav } from '../../redux/action';
 // Components
@@ -7,21 +7,19 @@ import Card from '../Card/Card';
 import SkeletonLoading from '../SkeletonLoading/SkeletonLoading';
 import NoResults from '../NoResults/NoResults';
 // Styled
-import { ContainerCards } from './cards.styled'; // Asegúrate de que coincida el nombre del archivo
+import { ContainerCards } from './cards.styled';
 
-const Cards = (props) => {
-    const { characters, loading, noResults, getFav } = props;
+const Cards = ({ characters, loading, noResults }) => { // Recibe props
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        // Traemos favoritos al montar para saber qué corazones pintar
-        getFav();
-    }, [getFav]);
+        dispatch(getFav());
+    }, [dispatch]);
 
-    // 1. Estado de Carga (Skeletons)
+    // 1. Estado de Carga
     if (loading) {
         return (
             <ContainerCards>
-                {/* Generamos 8 skeletons para que coincida visualmente con la grid */}
                 {Array(8).fill(0).map((_, index) => (
                     <SkeletonLoading key={index} />
                 ))}
@@ -48,7 +46,7 @@ const Cards = (props) => {
                     name={char.name}
                     status={char.status}
                     species={char.species}
-                    origin={char.origin?.name || 'Unknown'} // Protección opcional por si origin viene null
+                    origin={char.origin?.name || 'Unknown'}
                     image={char.image}
                 />
             ))}
@@ -56,21 +54,4 @@ const Cards = (props) => {
     );
 }
 
-const mapStateToProps = (state) => {
-    return {
-        characters: state.characters,
-        loading: state.loading,
-        noResults: state.noResults
-    };
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getFav: () => dispatch(getFav()),
-    }
-}
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Cards);
+export default Cards;
