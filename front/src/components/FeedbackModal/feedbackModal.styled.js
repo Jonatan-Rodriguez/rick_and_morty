@@ -18,7 +18,7 @@ export const Overlay = styled.div`
 `;
 
 export const ModalContainer = styled.div`
-  background: #1e293b; /* Slate 800 */
+  background: #1e293b;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 1rem;
   width: 100%;
@@ -64,8 +64,6 @@ export const IconBadge = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
-  
-  /* Colores dinámicos según el tipo */
   background-color: ${props => props.$isSuccess ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)'};
   color: ${props => props.$isSuccess ? '#22c55e' : '#ef4444'};
 `;

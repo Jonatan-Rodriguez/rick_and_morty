@@ -7,8 +7,8 @@ export const NavContainer = styled.nav`
   top: 0;
   z-index: 50;
   width: 100%;
-  height: 64px; /* h-16 */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* border-border */
+  height: 64px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   
   /* Efecto Glass */
   background: var(--glass);
@@ -21,9 +21,9 @@ export const NavContainer = styled.nav`
   }
 `;
 
-// Wrapper para centrar el contenido (max-w-7xl mx-auto)
+// Wrapper para centrar el contenido
 export const NavContent = styled.div`
-  max-width: 80rem; /* 7xl */
+  max-width: 80rem;
   margin: 0 auto;
   height: 100%;
   display: flex;
@@ -42,7 +42,7 @@ export const LogoLink = styled(NavLink)`
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    background-color: rgba(134, 239, 172, 0.2); /* primary/20 */
+    background-color: rgba(134, 239, 172, 0.2);
     border: 1px solid var(--primary);
     display: flex;
     align-items: center;
@@ -61,7 +61,7 @@ export const LogoLink = styled(NavLink)`
     font-weight: bold;
     color: var(--primary);
     filter: drop-shadow(0 0 10px var(--portal-green));
-    display: none; /* Oculto en móbiles muy pequeños si falta espacio */
+    display: none;
     
     @media (min-width: 380px) {
       display: block;
@@ -73,7 +73,7 @@ export const LogoLink = styled(NavLink)`
 export const DesktopMenu = styled.div`
   display: none;
   
-  @media (min-width: 768px) { /* md:flex */
+  @media (min-width: 768px) { 
     display: flex;
     align-items: center;
     gap: 0.25rem;
@@ -83,20 +83,20 @@ export const DesktopMenu = styled.div`
   .separator {
     width: 1px;
     height: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.2); /* border */
+    background-color: rgba(255, 255, 255, 0.2);
     margin: 0 0.5rem;
   }
   
   /* Estilo especial para el botón de Salir */
   .exit-btn {
-    color: #9ca3af; /* muted-foreground */
+    color: #9ca3af;
     &:hover {
-      color: #ef4444; /* destructive (rojo) */
+      color: #ef4444;
       background-color: rgba(239, 68, 68, 0.1);
       box-shadow: none;
       
       .ico {
-        filter: none; /* Quitamos el brillo verde */
+        filter: none;
         color: #ef4444;
       }
     }
@@ -122,7 +122,7 @@ export const MobileToggle = styled.button`
   }
   
   @media (min-width: 768px) {
-    display: none; /* Oculto en escritorio */
+    display: none;
   }
   
   svg {
@@ -134,7 +134,7 @@ export const MobileToggle = styled.button`
 // MENÚ DESPLEGABLE (MÓVIL)
 export const MobileMenu = styled.div`
   position: fixed;
-  top: 64px; /* Justo debajo del navbar */
+  top: 64px;
   left: 0;
   right: 0;
   background: var(--glass);

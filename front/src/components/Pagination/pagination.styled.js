@@ -4,9 +4,9 @@ export const ContainerPagination = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem; /* Espacio entre botoncitos */
+  gap: 0.5rem;
   margin: 3rem 0;
-  flex-wrap: wrap; /* Por si en móviles son muchos números */
+  flex-wrap: wrap;
 `;
 
 /* Botón base para Prev/Next (Flechas) */
@@ -16,10 +16,10 @@ export const ArrowButton = styled.button`
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: 0.5rem; /* Cuadrado redondeado estilo v0 */
+  border-radius: 0.5rem;
   background-color: transparent;
   border: 1px solid transparent;
-  color: #9ca3af; /* muted-foreground */
+  color: #9ca3af;
   cursor: pointer;
   transition: all 0.2s ease;
 
@@ -48,7 +48,7 @@ export const NumberButton = styled.button`
   height: 2.5rem;
   padding: 0 0.5rem;
   border-radius: 0.5rem;
-  font-family: monospace; /* Fuente técnica */
+  font-family: monospace;
   font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -66,9 +66,9 @@ export const NumberButton = styled.button`
 
   /* Estado ACTIVO (La página actual) */
   &.active {
-    background-color: rgba(134, 239, 172, 0.1); /* primary/10 */
-    border: 1px solid rgba(134, 239, 172, 0.5); /* border-primary */
-    color: var(--primary); /* Verde Neón */
+    background-color: rgba(134, 239, 172, 0.1);
+    border: 1px solid rgba(134, 239, 172, 0.5);
+    color: var(--primary);
     font-weight: bold;
     box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
   }
@@ -81,7 +81,7 @@ export const Ellipsis = styled.span`
   justify-content: center;
   width: 2rem;
   height: 2.5rem;
-  color: #6b7280; /* gris oscuro */
+  color: #6b7280;
   font-weight: bold;
   letter-spacing: 2px;
 `;

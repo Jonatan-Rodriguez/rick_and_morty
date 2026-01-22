@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { getChar } from "../../redux/action";
-// Styled Components
+// estilos
 import { 
     ContainerHome, 
     ContentWrapper, 
@@ -17,16 +17,12 @@ import Pagination from "../../components/Pagination/Pagination";
 
 const Home = () => {
     const dispatch = useDispatch();
-    
-    // CORRECCIÓN 1: Traemos 'currentPage' del estado, NO 'pagesNavigation'
-    // pagesNavigation es el total (ej: 42), currentPage es donde estás parado (ej: 1)
     const { characters, loading, noResults, currentPage } = useSelector(state => state);
 
     useEffect(() => {
         dispatch(getChar({ numPag: 1 }));
     }, [dispatch]);
 
-    // Filtrado
     const myCreations = characters.filter(char => char.createdInDb || isNaN(char.id));
     const apiCharacters = characters.filter(char => !char.createdInDb && !isNaN(char.id));
 

@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
-// Contenedor Principal (Flex Row)
+// Contenedor Principal
 export const SearchContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem; 
   margin-bottom: 2rem; 
   width: 100%;
-  /* Eliminamos max-width fijo para que ocupe lo que le deje el ContentWrapper */
   
   @media (min-width: 768px) {
     flex-direction: row;
@@ -15,12 +14,10 @@ export const SearchContainer = styled.div`
   }
 `;
 
-// Grupo del Input (Input + Icono)
 export const InputGroup = styled.div`
   position: relative;
   width: 100%;
   
-  /* En escritorio, el input crece para ocupar todo el espacio sobrante */
   @media (min-width: 768px) {
     flex: 1; 
   }
@@ -64,7 +61,7 @@ export const InputGroup = styled.div`
 // Input Estilizado
 export const StyledInput = styled.input`
   width: 100%;
-  height: 2.5rem; /* h-10 */
+  height: 2.5rem;
   padding-left: 2.5rem; 
   padding-right: 2.5rem; 
   

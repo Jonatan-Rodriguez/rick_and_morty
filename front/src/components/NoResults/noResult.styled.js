@@ -29,14 +29,12 @@ export const ContainerNoResults = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 5rem; /* 80px */
+    width: 5rem;
     height: 5rem;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.05);
     margin-bottom: 1.5rem;
-    color: #9ca3af; /* muted-foreground */
-    
-    /* Brillo sutil */
+    color: #9ca3af;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
 
@@ -56,7 +54,7 @@ export const ContainerNoResults = styled.div`
 
   p {
     font-size: 1rem;
-    color: #9ca3af; /* muted-foreground */
+    color: #9ca3af;
     max-width: 280px;
     line-height: 1.5;
   }

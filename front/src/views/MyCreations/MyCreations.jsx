@@ -26,8 +26,6 @@ const MyCreations = () => {
     const dispatch = useDispatch();
     const allCharacters = useSelector(state => state.allCharacters);
     const myCharacters = allCharacters.filter(char => char.createdInDb);
-
-    // Estados para el Modal de eliminación
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [idToDelete, setIdToDelete] = useState(null);
 
@@ -35,13 +33,11 @@ const MyCreations = () => {
         dispatch(getChar()); 
     }, [dispatch]);
 
-    // 1. Al hacer click en la papelera de la carta, abrimos el modal
     const handleDeleteClick = (id) => {
         setIdToDelete(id);
         setIsModalOpen(true);
     };
 
-    // 2. Si el usuario confirma en el modal
     const handleConfirmDelete = () => {
         if (idToDelete) {
             dispatch(deleteChar(idToDelete));
@@ -50,7 +46,6 @@ const MyCreations = () => {
         }
     };
 
-    // 3. Si el usuario cancela
     const handleCancelDelete = () => {
         setIsModalOpen(false);
         setIdToDelete(null);
@@ -59,7 +54,6 @@ const MyCreations = () => {
     return (
         <PageContainer>
             <ContentWrapper>
-                {/* Header */}
                 <HeaderSection>
                     <TitleGroup>
                         <IconBox>
@@ -82,7 +76,6 @@ const MyCreations = () => {
                     </Subtitle>
                 </HeaderSection>
 
-                {/* Contenido */}
                 {myCharacters.length === 0 ? (
                     <EmptyStateCreations />
                 ) : (
@@ -97,7 +90,6 @@ const MyCreations = () => {
                                 image={char.image}
                                 origin={char.origin?.name}
                                 status={char.status}
-                                // Aquí pasamos la función que abre el modal
                                 onClose={() => handleDeleteClick(char.id)}
                                 allowEdit={true}
                             />
@@ -106,7 +98,6 @@ const MyCreations = () => {
                 )}
             </ContentWrapper>
 
-            {/* Modal de Eliminación (Siempre renderizado, controlado por isModalOpen) */}
             <DeleteModal 
                 isOpen={isModalOpen}
                 onClose={handleCancelDelete}

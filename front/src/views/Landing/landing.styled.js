@@ -199,28 +199,27 @@ export const Footer = styled.footer`
 export const SocialGlass = styled.div`
   display: flex;
   align-items: center;
-  gap: 1.5rem; /* Espacio entre iconos */
+  gap: 1.5rem;
   padding: 0.75rem 1.5rem;
   
   /* Glassmorphism */
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 9999px; /* Forma de píldora */
+  border-radius: 9999px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
   a {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #9ca3af; /* Color gris inicial */
+    color: #9ca3af;
     transition: all 0.3s ease;
     
-    /* Efecto al pasar el mouse */
     &:hover {
-      color: white; /* Se pone blanco brillante */
-      transform: translateY(-3px) scale(1.1); /* Sube un poquito y crece */
-      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5)); /* Resplandor */
+      color: white;
+      transform: translateY(-3px) scale(1.1);
+      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
     }
 
     p{

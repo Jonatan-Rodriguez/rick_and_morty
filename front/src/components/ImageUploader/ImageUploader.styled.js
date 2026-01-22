@@ -24,7 +24,7 @@ export const DropZone = styled.div`
   transition: all 0.3s ease;
   overflow: hidden;
 
-  /* Estado cuando arrastras algo encima */
+  /* Estado cuando se arrastra algo encima */
   ${props => props.$isDragActive && css`
     border-color: var(--primary);
     background: rgba(134, 239, 172, 0.1);

@@ -3,12 +3,10 @@ import { Link } from "react-router-dom";
 
 export const FooterContainer = styled.footer`
   width: 100%;
-  background: rgba(15, 23, 42, 0.8); /* Un poco más oscuro que el Nav para asentar la base */
+  background: rgba(15, 23, 42, 0.8);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding: 3rem 1rem 1.5rem;
-  margin-top: auto; /* Empuja el footer al fondo si hay poco contenido */
-  
-  /* Efecto de luz superior sutil */
+  margin-top: auto;
   box-shadow: 0 -20px 40px -20px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
 `;
@@ -21,7 +19,7 @@ export const FooterContent = styled.div`
   gap: 3rem;
   
   @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr); /* 3 Columnas en PC */
+    grid-template-columns: repeat(3, 1fr);
     align-items: start;
   }
 `;

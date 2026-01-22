@@ -69,8 +69,8 @@ export const AvatarWrapper = styled.div`
     inset: 0;
     border-radius: 50%;
     border: 2px solid transparent;
-    border-top-color: var(--primary); /* Verde */
-    border-right-color: var(--accent); /* Azul */
+    border-top-color: var(--primary);
+    border-right-color: var(--accent);
     animation: ${spin} 3s linear infinite;
   }
 `;
@@ -104,13 +104,13 @@ export const Name = styled.h1`
   margin: 0;
   
   span {
-    color: var(--primary); /* Rick Green */
+    color: var(--primary);
   }
 `;
 
 export const Role = styled.h2`
   font-size: 1.1rem;
-  color: var(--accent); /* Blue */
+  color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 0.5rem;

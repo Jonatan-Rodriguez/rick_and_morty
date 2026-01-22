@@ -30,8 +30,8 @@ export const IconLeft = styled.div`
   left: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #9ca3af; /* muted-foreground */
-  pointer-events: none; /* El click pasa a través de él */
+  color: #9ca3af;
+  pointer-events: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,25 +55,20 @@ export const IconRight = styled.div`
 export const StyledSelect = styled.select`
   width: 100%;
   height: 2.5rem;
-  padding-left: 2.5rem;  /* Espacio para icono izq */
-  padding-right: 2.5rem; /* Espacio para icono der (flecha) */
-  
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
   background-color: rgba(30, 41, 59, 0.5); 
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.5rem;
-  
   color: ${props => props.$isPlaceholder ? '#9ca3af' : 'var(--foreground)'};
   font-size: 0.875rem;
   font-family: inherit;
-  
   cursor: pointer;
   outline: none;
-  
-  /* IMPORTANTE: Quitamos la apariencia nativa y la imagen de fondo anterior */
   appearance: none; 
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: none; /* Ya no usamos URL de SVG */
+  background-image: none;
 
   @media (min-width: 768px) {
     width: 150px;

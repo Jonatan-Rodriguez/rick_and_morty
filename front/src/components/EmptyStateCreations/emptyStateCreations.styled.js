@@ -14,7 +14,7 @@ export const EmptyContainer = styled.div`
 
 export const GlassCard = styled.div`
   background: rgba(30, 41, 59, 0.4);
-  border: 1px solid rgba(96, 165, 250, 0.2); /* Borde azul suave */
+  border: 1px solid rgba(96, 165, 250, 0.2);
   border-radius: 1rem;
   padding: 3rem 2rem;
   max-width: 32rem;
@@ -63,7 +63,7 @@ export const EmptyDescription = styled.p`
 `;
 
 export const CreateButton = styled.button`
-  background-color: var(--accent); /* Azul */
+  background-color: var(--accent);
   color: white;
   font-weight: 600;
   padding: 0.75rem 1.5rem;

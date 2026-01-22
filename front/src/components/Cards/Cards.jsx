@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux'; // Usamos Hooks
+import { useDispatch } from 'react-redux';
 // Actions
 import { getFav } from '../../redux/action';
 // Components
@@ -9,7 +9,7 @@ import NoResults from '../NoResults/NoResults';
 // Styled
 import { ContainerCards } from './cards.styled';
 
-const Cards = ({ characters, loading, noResults }) => { // Recibe props
+const Cards = ({ characters, loading, noResults }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {

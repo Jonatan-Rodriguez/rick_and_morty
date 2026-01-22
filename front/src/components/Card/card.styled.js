@@ -3,37 +3,35 @@ import styled from "styled-components";
 // Contenedor Principal (Glass Card)
 export const CardWrapper = styled.div`
   position: relative;
-  background: rgba(30, 41, 59, 0.4); /* Fondo semi-transparente oscuro */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil */
-  border-radius: 0.75rem; /* rounded-xl */
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
   overflow: hidden;
   transition: all 0.3s ease;
   width: 100%;
-  max-width: 300px; /* Un ancho máximo prudente */
+  max-width: 300px;
 
   /* Efecto Hover en la Tarjeta completa */
   &:hover {
-    border-color: rgba(134, 239, 172, 0.5); /* Borde verde neón */
-    box-shadow: 0 0 30px rgba(34, 197, 94, 0.2); /* Resplandor verde */
+    border-color: rgba(134, 239, 172, 0.5);
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.2);
     
-    /* Hacemos visible el grupo de acciones al pasar el mouse */
     .actions-group {
       opacity: 1;
       transform: translateY(0);
     }
     
-    /* Zoom a la imagen */
     .character-image {
       transform: scale(1.05);
     }
   }
 `;
 
-// Contenedor de la Imagen (Aspect Ratio 1:1)
+// Contenedor de la Imagen
 export const ImageContainer = styled.div`
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1; /* Cuadrado perfecto */
+  aspect-ratio: 1 / 1;
   overflow: hidden;
 
   img.character-image {
@@ -52,8 +50,6 @@ export const ActionsGroup = styled.div`
   z-index: 20;
   display: flex;
   gap: 0.5rem;
-  
-  /* Estado inicial: Oculto y ligeramente desplazado hacia arriba */
   opacity: 0; 
   transform: translateY(-5px);
   transition: all 0.3s ease;
@@ -64,7 +60,7 @@ export const ActionButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.25rem; /* 36px */
+  width: 2.25rem;
   height: 2.25rem;
   border-radius: 50%;
   border: none;
@@ -77,7 +73,7 @@ export const ActionButton = styled.button`
   transition: all 0.2s;
 
   &:hover {
-    background: rgba(239, 68, 68, 0.8); /* Rojo al pasar el mouse */
+    background: rgba(239, 68, 68, 0.8);
     transform: scale(1.1);
   }
 
@@ -88,7 +84,7 @@ export const ActionButton = styled.button`
     box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
     
     svg {
-      fill: currentColor; /* Rellena el corazón */
+      fill: currentColor;
     }
   }
 `;
@@ -96,7 +92,7 @@ export const ActionButton = styled.button`
 // Contenedor de Información (Texto abajo)
 export const InfoContainer = styled.div`
   padding: 1rem;
-  background: rgba(30, 41, 59, 0.6); /* Fondo un poco más sólido para el texto */
+  background: rgba(30, 41, 59, 0.6);
   backdrop-filter: blur(8px);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 
@@ -117,7 +113,7 @@ export const StatusRow = styled.div`
   align-items: center;
   gap: 0.5rem;
   font-size: 0.875rem;
-  color: #9ca3af; /* gris claro */
+  color: #9ca3af;
 `;
 
 // El puntito de estado
@@ -125,13 +121,11 @@ export const StatusDot = styled.span`
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
-  
-  /* Lógica de colores basada en props */
   background-color: ${props => {
     switch (props.$status) {
-      case 'Alive': return 'var(--primary)'; // Verde
-      case 'Dead': return '#ef4444'; // Rojo
-      default: return '#9ca3af'; // Gris (Unknown)
+      case 'Alive': return 'var(--primary)';
+      case 'Dead': return '#ef4444';
+      default: return '#9ca3af';
     }
   }};
   
@@ -140,7 +134,7 @@ export const StatusDot = styled.span`
 
 export const EditButton = styled(ActionButton)`
   &:hover {
-    background: rgba(251, 191, 36, 0.8); /* Amber-400 */
+    background: rgba(251, 191, 36, 0.8);
     color: white;
   }
 `;

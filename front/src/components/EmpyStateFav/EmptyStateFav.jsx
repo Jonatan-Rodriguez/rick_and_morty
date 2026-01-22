@@ -16,7 +16,6 @@ const EmptyStateFav = () => {
     return (
         <EmptyContainer>
             <GlassCard>
-                {/* Ilustración animada del Portal */}
                 <PortalIllustration>
                     <div className="portal-ring" />
                     <div className="inner-circle">

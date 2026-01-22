@@ -21,7 +21,7 @@ const glitchShake = keyframes`
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 `;
 
-// Cambio de color para indicar error (de verde a rojo/morado)
+// Cambio de color para indicar error en el portal
 const portalColorShift = keyframes`
     0%, 100% { border-color: var(--primary); box-shadow: 0 0 30px var(--primary), inset 0 0 30px var(--primary); }
     50% { border-color: #ef4444; box-shadow: 0 0 40px #ef4444, inset 0 0 40px #ef4444; }
@@ -39,7 +39,7 @@ export const ErrorContainer = styled.div`
   overflow: hidden;
   position: relative;
 
-  /* Patrón de estrellas (Consistente con el resto de la app) */
+  /* Patrón de estrellas */
   background-image: 
     radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
     radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.2), transparent),
@@ -49,7 +49,7 @@ export const ErrorContainer = styled.div`
 
 export const GlassCard = styled.div`
   position: relative;
-  background: rgba(30, 41, 59, 0.4); /* Base oscura transparente */
+  background: rgba(30, 41, 59, 0.4);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -82,7 +82,6 @@ export const GlitchRing = styled.div`
     inset: 0;
     border-radius: 50%;
     border: 8px solid transparent;
-    /* Animación compuesta: Cambia de color y tiembla */
     animation: 
         ${portalColorShift} 4s ease-in-out infinite,
         ${glitchShake} 0.5s linear infinite;
@@ -123,7 +122,7 @@ export const ErrorTitle = styled.h1`
   margin: 0;
   letter-spacing: -0.05em;
   position: relative;
-  ${glitchText} /* Aplicamos el efecto glitch */
+  ${glitchText}
 `;
 
 export const ErrorSubtitle = styled.h2`
@@ -135,7 +134,7 @@ export const ErrorSubtitle = styled.h2`
 `;
 
 export const ErrorDescription = styled.p`
-  color: #9ca3af; /* muted-foreground */
+  color: #9ca3af;
   font-size: 1.1rem;
   line-height: 1.6;
   max-width: 28rem;
@@ -155,7 +154,7 @@ export const PrimaryButton = styled.button`
   align-items: center;
   gap: 0.75rem;
   padding: 0.875rem 2rem;
-  background-color: var(--primary); /* Verde Neón */
+  background-color: var(--primary);
   color: black;
   font-weight: 700;
   font-size: 1rem;

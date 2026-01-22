@@ -42,11 +42,10 @@ const ImageUploader = ({ onImageUpload, initialImage = '' }) => {
                 formData
             );
             
-            // ÉXITO: Cloudinary nos devuelve la URL
+            // ÉXITO: Cloudinary devuelve la URL
             const imageUrl = res.data.secure_url;
             setImage(imageUrl);
             
-            // Avisamos al componente padre (Create o Edit) que ya tenemos URL
             onImageUpload(imageUrl);
             
         } catch (error) {
@@ -78,9 +77,9 @@ const ImageUploader = ({ onImageUpload, initialImage = '' }) => {
     };
 
     const handleRemove = (e) => {
-        e.stopPropagation(); // Evita que se abra el selector de archivos
+        e.stopPropagation();
         setImage('');
-        onImageUpload(''); // Limpiamos en el padre
+        onImageUpload('');
     };
 
     return (

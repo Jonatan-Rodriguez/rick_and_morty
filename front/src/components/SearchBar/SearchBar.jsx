@@ -7,9 +7,9 @@ import {
   SearchContainer, 
   InputGroup, 
   StyledInput
-} from "./searchBar.style"; // Nota: Quitamos FiltersGroup y StyledSelect de aquí porque ahora usamos el componente Filters
+} from "./searchBar.style"; 
 // Componentes
-import Filters from "../Filters/Filters"; // <--- IMPORTAMOS TUS FILTROS AQUÍ
+import Filters from "../Filters/Filters";
 // Icons
 import { Search, X } from "lucide-react";
 
@@ -58,7 +58,6 @@ const SearchBar = () => {
                 )}
             </InputGroup>
 
-            {/* DERECHA: Tus Filtros (Orden, Origen, Género) */}
             <Filters />
             
         </SearchContainer>

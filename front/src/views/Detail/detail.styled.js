@@ -199,7 +199,6 @@ export const StatusDot = styled.span`
   box-shadow: 0 0 8px ${props => props.$color};
 `;
 
-// Botón de Favorito Inteligente
 export const FavoriteButton = styled.button`
   margin-top: 1.5rem;
   width: 100%;
@@ -241,17 +240,15 @@ export const FavoriteButton = styled.button`
 `;
 
 export const EditDetailButton = styled.button`
-  margin-top: 1rem; /* Separación del botón de favoritos */
+  margin-top: 1rem;
   width: 100%;
   height: 3.5rem; 
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  
-  /* Color Ámbar para editar */
-  background-color: rgba(245, 158, 11, 0.1); /* Amber-500 muy suave */
-  color: #f59e0b; /* Amber-500 */
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
   border: 1px solid rgba(245, 158, 11, 0.5);
   
   border-radius: 0.75rem;

@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateChar } from '../../redux/action'; 
 import { X, Save } from 'lucide-react';
-
 // Componentes
 import FeedbackModal from '../FeedbackModal/FeedbackModal'; 
 import ImageUploader from '../ImageUploader/ImageUploader';
-
 // Importamos los estilos
 import {
   Overlay,
@@ -35,7 +33,7 @@ const EditModal = ({ char, onClose }) => {
     // Estado para controlar el Feedback (Éxito/Error)
     const [feedback, setFeedback] = useState({
         isOpen: false,
-        type: 'success', // 'success' | 'error'
+        type: 'success',
         title: '',
         message: ''
     });
@@ -47,11 +45,10 @@ const EditModal = ({ char, onClose }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        // Llamamos a la acción y esperamos el resultado (true/false)
         const success = await dispatch(updateChar(char.id, input));
 
         if (success) {
-            // Mostrar Modal de Éxito
+            // Modal de Éxito
             setFeedback({
                 isOpen: true,
                 type: 'success',
@@ -59,7 +56,7 @@ const EditModal = ({ char, onClose }) => {
                 message: 'La estructura molecular del personaje ha sido reescrita con éxito. Los cambios ya son visibles en la base de datos.'
             });
         } else {
-            // Mostrar Modal de Error
+            // Modal de Error
             setFeedback({
                 isOpen: true,
                 type: 'error',
@@ -73,11 +70,9 @@ const EditModal = ({ char, onClose }) => {
     const handleCloseFeedback = () => {
         setFeedback({ ...feedback, isOpen: false });
         
-        // Si fue un éxito, cerramos también el modal de edición
         if (feedback.type === 'success') {
             onClose();
         }
-        // Si fue error, mantenemos el modal de edición abierto para que corrija
     };
 
     const handleImageUpload = (url) => {
@@ -86,7 +81,6 @@ const EditModal = ({ char, onClose }) => {
 
     return (
         <>
-            {/* Modal de Edición (Solo visible si no hay feedback abierto para no superponer demasiados) */}
             {!feedback.isOpen && (
                 <Overlay>
                     <ModalContainer>
@@ -111,7 +105,7 @@ const EditModal = ({ char, onClose }) => {
                                 <Label>Imagen</Label>
                                 <ImageUploader 
                                     onImageUpload={handleImageUpload} 
-                                    initialImage={input.image} // Pasamos la imagen actual para que se vea
+                                    initialImage={input.image}
                                 />
                             </InputGroup>
                             
@@ -133,8 +127,6 @@ const EditModal = ({ char, onClose }) => {
                     </ModalContainer>
                 </Overlay>
             )}
-
-            {/* Modal de Feedback (Reutilizado) */}
             <FeedbackModal 
                 isOpen={feedback.isOpen}
                 type={feedback.type}

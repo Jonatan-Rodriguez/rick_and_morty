@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from "../../config/axiosConfig";
-import { useParams, Link, useNavigate } from 'react-router-dom'; // <--- Importamos useNavigate
+import { useParams, Link, useNavigate } from 'react-router-dom';
 // Redux Hooks
 import { useDispatch, useSelector } from 'react-redux';
 import { addFav, removeFav } from '../../redux/action';
 // components
 import EditModal from '../../components/EditModal/EditModal';
-import FeedbackModal from '../../components/FeedbackModal/FeedbackModal'; // <--- Importamos el FeedbackModal
+import FeedbackModal from '../../components/FeedbackModal/FeedbackModal';
 // Iconos
 import { 
   ArrowLeft, 
@@ -47,7 +47,7 @@ import {
 
 const Detail = () => {
     const { id } = useParams();
-    const navigate = useNavigate(); // Hook para redirección
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     
     const myFavorites = useSelector(state => state.myFavorites);
@@ -66,14 +66,12 @@ const Detail = () => {
 
     const isCreatedCharacter = isNaN(id);
 
-    // Memorizamos la función con useCallback
     const fetchCharacter = useCallback(() => {
         axios.get(`/character/${id}`)
             .then(({ data }) => {
                 if (data.name) {
                     setCharacter(data);
                 } else {
-                    // Reemplazo de alert por Modal
                     setFeedback({
                         isOpen: true,
                         type: 'error',
@@ -83,7 +81,6 @@ const Detail = () => {
                 }
             })
             .catch(() => {
-                // Reemplazo de alert por Modal
                 setFeedback({
                     isOpen: true,
                     type: 'error',

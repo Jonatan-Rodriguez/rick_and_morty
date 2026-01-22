@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// --- LAYOUT GENERAL ---
 export const PageContainer = styled.div`
   min-height: 100vh;
   width: 100%;
@@ -14,7 +13,7 @@ export const PageContainer = styled.div`
 `;
 
 export const ContentWrapper = styled.div`
-  max-width: 80rem; /* 1280px */
+  max-width: 80rem;
   margin: 0 auto;
   padding: 2rem 1rem;
 
@@ -38,18 +37,18 @@ export const TitleGroup = styled.div`
 export const IconBox = styled.div`
   padding: 0.5rem;
   border-radius: 0.5rem;
-  background-color: rgba(96, 165, 250, 0.2); /* blue/20 (color Accent) */
+  background-color: rgba(96, 165, 250, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
 
   svg {
-    color: #60a5fa; /* blue-400 */
+    color: #60a5fa;
   }
 `;
 
 export const Title = styled.h1`
-  font-size: 1.875rem; /* ~30px */
+  font-size: 1.875rem;
   font-weight: 700;
   color: var(--foreground);
 `;
@@ -91,7 +90,6 @@ export const CreationsGrid = styled.div`
   }
 `;
 
-// --- MENSAJE VACÍO SIMPLE (Por si no quieres usar el componente EmptyState completo) ---
 export const EmptyMessageContainer = styled.div`
   text-align: center;
   padding: 4rem 1rem;

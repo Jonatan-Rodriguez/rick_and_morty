@@ -1,6 +1,5 @@
 import styled, { keyframes } from 'styled-components';
 
-// Animación de entrada suave
 const fadeIn = keyframes`
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
@@ -18,7 +17,7 @@ export const Overlay = styled.div`
 `;
 
 export const ModalContainer = styled.div`
-  background: #1e293b; /* Slate 800 */
+  background: #1e293b;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 1rem;
   padding: 2rem;
@@ -76,7 +75,7 @@ export const Input = styled.input`
   transition: border-color 0.2s;
 
   &:focus {
-    border-color: var(--primary); /* Verde Rick */
+    border-color: var(--primary);
     background: rgba(0, 0, 0, 0.5);
   }
 `;

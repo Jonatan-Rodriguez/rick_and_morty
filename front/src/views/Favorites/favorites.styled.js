@@ -14,7 +14,7 @@ export const PageContainer = styled.div`
 `;
 
 export const ContentWrapper = styled.div`
-  max-width: 80rem; /* 1280px */
+  max-width: 80rem;
   margin: 0 auto;
   padding: 2rem 1rem;
 
@@ -50,7 +50,7 @@ export const IconBox = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 1.875rem; /* ~30px */
+  font-size: 1.875rem;
   font-weight: 700;
   color: var(--foreground);
 `;

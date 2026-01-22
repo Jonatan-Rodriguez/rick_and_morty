@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFav } from '../../redux/action';
 
-// Styled Components
+// estilos
 import { 
   PageContainer, 
   ContentWrapper, 
@@ -31,10 +31,7 @@ const Favorites = () => {
 
     return (
         <PageContainer>
-            {/* Aquí iría el Navbar si corresponde */}
-
             <ContentWrapper>
-                {/* 1. ENCABEZADO (Traducido) */}
                 <HeaderSection>
                     <TitleGroup>
                         <IconBox>
@@ -46,8 +43,6 @@ const Favorites = () => {
                         Tu colección personal de todo el multiverso. <b>{"Haz clic en el corazón para eliminarlo."}</b>
                     </Subtitle>
                 </HeaderSection>
-
-                {/* 2. CONTENIDO: Grid o Empty State */}
                 {myFavorites && myFavorites.length > 0 ? (
                     <FavoritesGrid>
                         {myFavorites.map(fav => (

@@ -39,7 +39,7 @@ const Create = () => {
     // Estado del Modal de Feedback
     const [modal, setModal] = useState({
         isOpen: false,
-        type: 'success', // 'success' | 'error'
+        type: 'success',
         title: '',
         message: ''
     });
@@ -68,7 +68,6 @@ const Create = () => {
         try {
             await axios.post('/character', input);
             
-            // Éxito: Mostramos modal y luego redirigimos
             setModal({
                 isOpen: true,
                 type: 'success',
@@ -89,7 +88,7 @@ const Create = () => {
 
     const handleCloseModal = () => {
         setModal({ ...modal, isOpen: false });
-        // Si fue éxito, redirigimos al cerrar el modal
+        
         if (modal.type === 'success') {
             navigate('/home');
         }

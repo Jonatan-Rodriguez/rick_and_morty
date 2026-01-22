@@ -13,8 +13,8 @@ const scaleUp = keyframes`
 export const Overlay = styled.div`
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
-  backdrop-filter: blur(4px); /* Efecto blur en el fondo */
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,7 +24,7 @@ export const Overlay = styled.div`
 `;
 
 export const ModalContainer = styled.div`
-  background: #1e293b; /* Slate 800 */
+  background: #1e293b;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 1rem;
   width: 100%;
@@ -42,10 +42,10 @@ export const Header = styled.div`
 `;
 
 export const IconBadge = styled.div`
-  background-color: rgba(239, 68, 68, 0.15); /* Rojo suave */
+  background-color: rgba(239, 68, 68, 0.15);
   padding: 0.75rem;
   border-radius: 50%;
-  color: #ef4444; /* Rojo alerta */
+  color: #ef4444;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,13 +60,13 @@ export const Title = styled.h3`
 `;
 
 export const Description = styled.p`
-  color: #94a3b8; /* Slate 400 */
+  color: #94a3b8;
   font-size: 0.95rem;
   line-height: 1.5;
 `;
 
 export const Footer = styled.div`
-  background-color: rgba(15, 23, 42, 0.5); /* Slate 900 semi */
+  background-color: rgba(15, 23, 42, 0.5);
   padding: 1rem 1.5rem;
   display: flex;
   justify-content: flex-end;
@@ -97,10 +97,10 @@ export const CancelButton = styled(ButtonBase)`
 `;
 
 export const DeleteButton = styled(ButtonBase)`
-  background-color: #ef4444; /* Rojo */
+  background-color: #ef4444;
   color: white;
   
   &:hover {
-    background-color: #dc2626; /* Rojo más oscuro */
+    background-color: #dc2626;
   }
 `;

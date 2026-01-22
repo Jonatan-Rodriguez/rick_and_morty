@@ -16,11 +16,11 @@ export const EmptyContainer = styled.div`
 `;
 
 export const GlassCard = styled.div`
-  background: rgba(30, 41, 59, 0.4); /* Efecto cristal */
+  background: rgba(30, 41, 59, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 1rem;
   padding: 2rem;
-  max-width: 32rem; /* Un poco más ancho para mejor lectura */
+  max-width: 32rem;
   width: 100%;
   text-align: center;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -49,7 +49,7 @@ export const PortalIllustration = styled.div`
     position: absolute;
     inset: 0.5rem;
     border-radius: 50%;
-    background-color: rgba(15, 23, 42, 1); /* Slate-900 */
+    background-color: rgba(15, 23, 42, 1);
     border: 2px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
@@ -63,7 +63,7 @@ export const PortalIllustration = styled.div`
     inset: 0;
     border-radius: 50%;
     border: 3px solid transparent;
-    border-top-color: var(--primary); /* Verde */
+    border-top-color: var(--primary);
     border-left-color: var(--primary);
     opacity: 0.5;
     animation: ${spin} 8s linear infinite;
@@ -78,7 +78,7 @@ export const EmptyTitle = styled.h2`
 `;
 
 export const EmptyDescription = styled.p`
-  color: #9ca3af; /* Texto gris suave */
+  color: #9ca3af;
   margin-bottom: 2rem;
   line-height: 1.6;
   font-size: 1rem;
@@ -86,7 +86,7 @@ export const EmptyDescription = styled.p`
 
 export const GoBackButton = styled.button`
   background-color: var(--primary);
-  color: black; /* Texto negro para contraste con el verde neón */
+  color: black;
   font-weight: 700;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;

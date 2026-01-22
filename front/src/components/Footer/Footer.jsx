@@ -20,7 +20,6 @@ import {
 const Footer = () => {
     const location = useLocation();
 
-    // Ocultar footer en Landing (opcional, si quieres que la landing sea full screen limpia)
     if (location.pathname === '/') return null;
 
     return (

@@ -1,9 +1,10 @@
 import React from "react";
+// redux
 import { useDispatch } from "react-redux";
 import { getChar } from "../../redux/action";
-// Importamos los iconos de Lucide
+// iconos
 import { ArrowUpDown, Globe, Users, Trash2, ChevronDown } from "lucide-react";
-
+// estilos
 import { 
   FiltersContainer, 
   StyledSelect, 

@@ -55,7 +55,6 @@ const Landing = () => {
 
             <Footer>
                 <SocialGlass>
-                    {/* GitHub */}
                     <a 
                         href="https://github.com/Jonatan-Rodriguez/" 
                         target="_blank" 
@@ -64,8 +63,6 @@ const Landing = () => {
                     >
                         <Github size={24} /><p>GitHub</p>
                     </a>
-
-                    {/* LinkedIn */}
                     <a 
                         href="https://www.linkedin.com/in/jonatan-j-rodriguez/" 
                         target="_blank" 

@@ -19,13 +19,11 @@ function Card(props) {
     const { 
         id, name, status, species, origin, image, gender,
         myFavorites, addFav, removeFav, onClose, 
-        allowEdit // <--- NUEVA PROP: Controla si se muestra el lápiz
+        allowEdit
     } = props;
     
     const [isFav, setIsFav] = useState(false);
     const [showEdit, setShowEdit] = useState(false);
-
-    // Es editable SI: Nos permiten editar (allowEdit) Y es un personaje de DB (ID string)
     const isEditable = allowEdit && isNaN(id); 
 
     useEffect(() => {
@@ -69,7 +67,6 @@ function Card(props) {
                         <Heart size={18} />
                     </ActionButton>
 
-                    {/* Lógica Estricta: Solo mostramos lápiz si isEditable es true */}
                     {isEditable && (
                         <EditButton onClick={handleEditClick} aria-label="Edit">
                             <Pencil size={18} />

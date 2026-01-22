@@ -48,7 +48,7 @@ const reducer = (state = initialState, action) => {
 
         case GET_CHAR:
             let characters = action.payload.allCharacters || action.payload;
-            const { activeFilters } = action.payload; // Recibimos los filtros del action
+            const { activeFilters } = action.payload;
 
             // Ordenamiento Visual
             if (activeFilters.order === "A") {
@@ -64,7 +64,7 @@ const reducer = (state = initialState, action) => {
                 allCharacters: characters,
                 // GUARDAMOS EL ESTADO ACTUAL
                 activeFilters: activeFilters,
-                currentPage: parseInt(activeFilters.numPag || 1) // Guardamos la página actual
+                currentPage: parseInt(activeFilters.numPag || 1)
             };
 
         case "DELETE_CHAR":

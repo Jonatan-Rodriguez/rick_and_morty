@@ -7,12 +7,11 @@ const shimmer = keyframes`
 `;
 
 export const ContainerSkeletonLoading = styled.div`
-  /* Mismas dimensiones y estructura base que la Card real */
   width: 100%;
   max-width: 300px;
-  background-color: rgba(30, 41, 59, 0.4); /* Fondo base oscuro */
+  background-color: rgba(30, 41, 59, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 0.75rem; /* rounded-xl */
+  border-radius: 0.75rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -20,7 +19,7 @@ export const ContainerSkeletonLoading = styled.div`
   /* IMITACIÓN DE LA IMAGEN (Cuadrado perfecto) */
   .skeleton-image {
     width: 100%;
-    aspect-ratio: 1 / 1; /* Mantiene la proporción cuadrada */
+    aspect-ratio: 1 / 1;
     position: relative;
     overflow: hidden;
   }
@@ -37,7 +36,7 @@ export const ContainerSkeletonLoading = styled.div`
 
   /* BARRA DE TÍTULO (Nombre) */
   .skeleton-title {
-    height: 1.5rem; /* Altura similar a un h3 */
+    height: 1.5rem;
     width: 75%;
     border-radius: 0.25rem;
   }
@@ -51,7 +50,7 @@ export const ContainerSkeletonLoading = styled.div`
 
   /* ANIMACIÓN SHIMMER (Efecto de carga oscuro) */
   .skeleton-pulse {
-    background-color: #1e293b; /* Color base oscuro (slate-800) */
+    background-color: #1e293b;
     background-image: linear-gradient(
       90deg,
       #1e293b 0px,

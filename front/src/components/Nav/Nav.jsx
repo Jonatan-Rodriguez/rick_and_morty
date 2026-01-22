@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-// Iconos modernos (Lucide)
-import { Home, Heart, User, Plus, LogOut, Menu, X, Info } from "lucide-react"; // <-- Agregamos 'Info'
-
+// iconos
+import { Home, Heart, User, Plus, LogOut, Menu, X, Info } from "lucide-react";
+// estilos
 import { 
   NavContainer, 
   NavContent, 
@@ -20,7 +20,6 @@ const Nav = () => {
         { href: "/favorites", label: "Favoritos", icon: Heart },
         { href: "/my-creations", label: "Mis Personajes", icon: User },
         { href: "/create", label: "Crear", icon: Plus },
-        // AGREGADO: Enlace a About
         { href: "/about", label: "Sobre Mí", icon: Info }, 
     ];
 

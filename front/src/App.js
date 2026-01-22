@@ -1,6 +1,6 @@
 import axios from './config/axiosConfig';
 // hooks
-import { useState } from 'react'; // <--- Eliminamos useEffect
+import { useState } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 // components
 import Nav from './components/Nav/Nav';
@@ -19,9 +19,6 @@ import Footer from './components/Footer/Footer';
 function App() {
    const location = useLocation();
    const navigate = useNavigate();
-
-   // CAMBIO: Usamos una coma para ignorar la primera variable 'access'
-   // ya que está en modo "acceso libre" y no la leemos en el return.
    const [, setAccess] = useState(true);
 
    async function login(userData) {

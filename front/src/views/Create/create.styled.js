@@ -16,7 +16,7 @@ export const PageContainer = styled.div`
 
 export const FormWrapper = styled.div`
   width: 100%;
-  max-width: 48rem; /* 768px aprox */
+  max-width: 48rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -40,7 +40,7 @@ export const Subtitle = styled.p`
 `;
 
 export const FormCard = styled.form`
-  background: rgba(30, 41, 59, 0.4); /* Glassmorphism oscuro */
+  background: rgba(30, 41, 59, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 1.5rem;
   padding: 2rem;
@@ -58,9 +58,8 @@ export const FormGrid = styled.div`
   margin-bottom: 2rem;
 
   @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en PC */
+    grid-template-columns: repeat(2, 1fr);
     
-    /* Clases de utilidad para el grid */
     .full-width, .col-span-2 {
       grid-column: span 2;
     }
@@ -146,7 +145,7 @@ export const StyledSelect = styled.select`
 export const ButtonSubmit = styled.button`
   width: 100%;
   height: 3.5rem;
-  background: var(--primary); /* Verde Neón */
+  background: var(--primary);
   color: black;
   font-weight: 700;
   font-size: 1rem;

@@ -1,5 +1,7 @@
 import React from "react";
+// iconos
 import { CheckCircle, XCircle, X } from "lucide-react";
+// estilos
 import {
   Overlay,
   ModalContainer,

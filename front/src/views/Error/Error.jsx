@@ -23,7 +23,6 @@ const Error = () => {
     return(
         <ErrorContainer>
             <GlassCard>
-                {/* Elemento Visual: Portal Roto */}
                 <BrokenPortalWrapper>
                     <GlitchRing />
                     <IconWrapper>
@@ -35,13 +34,9 @@ const Error = () => {
                 <ErrorTitle>404</ErrorTitle>
                 
                 <ErrorSubtitle>Dimensión No Encontrada</ErrorSubtitle>
-                
-                {/* Descripción temática */}
                 <ErrorDescription>
                     ¡Wubba Lubba Dub Dub! Parece que el portal se desestabilizó y aterrizaste en una realidad que no existe. Morty probablemente tocó algo que no debía.
                 </ErrorDescription>
-                
-                {/* Botones de Acción */}
                 <ButtonGroup>
                     <Link to="/home" style={{ textDecoration: 'none' }}>
                         <PrimaryButton>

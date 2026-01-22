@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// Iconos (Usamos FlaskConical para dar toque científico)
+// íconos
 import { FlaskConical, PlusCircle } from "lucide-react";
-// Importamos los estilos de su archivo correspondiente
+// estilos
 import { 
   EmptyContainer, 
   GlassCard, 
@@ -16,10 +16,9 @@ const EmptyStateCreations = () => {
     return (
         <EmptyContainer>
             <GlassCard>
-                {/* Ilustración de Laboratorio */}
                 <IconWrapper>
                     <div className="glow-effect" />
-                    <FlaskConical size={48} color="#60a5fa" /> {/* Azul científico */}
+                    <FlaskConical size={48} color="#60a5fa" />
                 </IconWrapper>
                 
                 <EmptyTitle>Laboratorio Vacío</EmptyTitle>

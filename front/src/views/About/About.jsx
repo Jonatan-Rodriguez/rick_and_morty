@@ -34,7 +34,6 @@ const About = () => {
                 {/* 1. FOTO DE PERFIL */}
                 <ImageSection>
                     <AvatarWrapper>
-                        {/* Puedes poner tu foto real aquí o un avatar de Rick */}
                         <ProfileImage 
                             src="https://avatars.githubusercontent.com/u/137853210?v=4" 
                             alt="Profile" 

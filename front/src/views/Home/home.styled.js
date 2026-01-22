@@ -25,14 +25,14 @@ export const ContentWrapper = styled.div`
 
 export const HeaderSection = styled.div`
   margin-bottom: 1rem;
-  text-align: center; /* Centramos el header principal */
+  text-align: center;
   
   h1 {
     font-size: 2.5rem;
     font-weight: 800;
     color: var(--foreground);
     margin-bottom: 0.5rem;
-    text-shadow: 0 0 20px rgba(134, 239, 172, 0.2); /* Sutil brillo verde */
+    text-shadow: 0 0 20px rgba(134, 239, 172, 0.2);
     
     @media (min-width: 768px) {
       font-size: 3.5rem; 
@@ -45,11 +45,11 @@ export const HeaderSection = styled.div`
   }
 `;
 
-// --- NUEVOS ESTILOS PARA SEPARACIÓN ---
+// --- ESTILOS PARA SEPARACIÓN ---
 
 export const SectionTitle = styled.h2`
   font-size: 1.5rem;
-  color: var(--primary); /* Verde Rick */
+  color: var(--primary);
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   display: flex;
