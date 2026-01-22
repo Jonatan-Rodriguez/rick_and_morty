@@ -1,4 +1,4 @@
-const { Character } = require('../../db'); // Importamos la nueva tabla
+const { Character } = require('../../db'); 
 
 const postChar = async (req, res) => {
     try {

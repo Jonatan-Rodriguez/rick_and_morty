@@ -32,7 +32,6 @@ module.exports = (sequelize) => {
          type: DataTypes.STRING,
          allowNull: false,
       },
-      // Esta bandera nos sirve para el front sepa que viene de la DB
       createdInDb: {
          type: DataTypes.BOOLEAN,
          defaultValue: true,

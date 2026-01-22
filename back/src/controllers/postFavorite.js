@@ -4,12 +4,10 @@ const postFavorite = async (req, res) => {
     try {
         let { id, name, status, species, origin, image } = req.body;
 
-        // --- SOLUCIÓN DEL ERROR DE TIPOS ---
-        // Forzamos que el ID sea siempre un String.
-        // Si llega el número 1, lo convertimos a "1" para que PostgreSQL no se queje.
+        // Sanitización de PK: Asegurar consistencia de tipos (String) para la base de datos
         id = String(id); 
 
-        // --- SOLUCIÓN DEL ERROR DE ORIGEN (que vimos antes) ---
+        // Normalización de Payload: Aplanar objetos anidados o asignar valores por defecto
         if (origin && typeof origin === 'object') {
             origin = origin.name;
         }
@@ -17,14 +15,13 @@ const postFavorite = async (req, res) => {
             origin = "Unknown";
         }
 
-        // Verificamos si ya existe
+        // Validación de duplicados (Idempotencia)
         const existingCharacter = await Favorite.findOne({ where: { id } });
         
         if (existingCharacter) {
             return res.status(400).json({ message: 'El personaje ya existe en favoritos' });
         }
 
-        // Guardamos
         const charCreate = await Favorite.create({ 
             id, 
             name, 

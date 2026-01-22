@@ -4,7 +4,6 @@ const deleteFavorite = async (req, res) => {
     try {
         let { id } = req.params;
         
-        // Aseguramos que sea string también aquí, por si acaso
         id = String(id);
 
         await Favorite.destroy({ where: { id } });

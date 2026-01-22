@@ -2,11 +2,12 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+
 const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_BDD, DB_URL
 } = process.env;
 
-// Configuración dinámica
+// Configuración de entorno (Soporte para deploy con SSL en Render/Railway vs Local)
 const sequelize = DB_URL
   ? new Sequelize(DB_URL, {
       logging: false,
@@ -14,7 +15,7 @@ const sequelize = DB_URL
       dialectOptions: {
         ssl: {
           require: true,
-          rejectUnauthorized: false // Necesario para Render
+          rejectUnauthorized: false
         }
       }
     })
@@ -26,29 +27,27 @@ const sequelize = DB_URL
 const basename = path.basename(__filename);
 const modelDefiners = [];
 
-// Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
+// Carga dinámica de modelos desde el directorio
 fs.readdirSync(path.join(__dirname, '/src/models'))
   .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
   .forEach((file) => {
     modelDefiners.push(require(path.join(__dirname, '/src/models', file)));
   });
 
-// Injectamos la conexion (sequelize) a todos los modelos
+// Inyección de conexión y capitalización de nombres
 modelDefiners.forEach(model => model(sequelize));
-// Capitalizamos los nombres de los modelos ie: product => Product
+
 let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-// En sequelize.models están todos los modelos importados como propiedades
-// Para relacionarlos hacemos un destructuring
 const { User, Favorite, Character } = sequelize.models;
 
-// Relaciones
+// Definición de asociaciones
 // User.belongsToMany(Favorite, { through: "user_favorite" });
 // Favorite.belongsToMany(User, { through: "user_favorite" });
 
 module.exports = {
-  ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-  conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
+  ...sequelize.models,
+  conn: sequelize,
 };

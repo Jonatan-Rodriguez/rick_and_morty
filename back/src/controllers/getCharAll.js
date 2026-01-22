@@ -6,7 +6,6 @@ const URL = 'https://rickandmortyapi.com/api/character';
 
 const getCharAll = async (req, res) => {
     try {
-        // Recibimos los filtros por Query
         const { name, numPag, gender, status, source } = req.query;
         const page = numPag || 1;
 
@@ -14,19 +13,18 @@ const getCharAll = async (req, res) => {
         let apiCharacters = [];
         let totalPages = 0;
 
-        // --- 1. LÓGICA BASE DE DATOS (DB) ---
-        // Si el filtro source es "api", saltamos la DB
+        // 1. Recuperación de datos locales (DB) con filtros dinámicos
+        // Se omite si la fuente solicitada es estrictamente externa ('api')
         if (source !== 'api') {
             const whereCondition = {};
             
-            // Construimos filtros dinámicos para Sequelize
             if (name) whereCondition.name = { [Op.iLike]: `%${name}%` };
             if (gender && gender !== 'all') whereCondition.gender = gender;
             if (status && status !== 'all') whereCondition.status = status;
 
             dbCharacters = await Character.findAll({ where: whereCondition });
             
-            // Formateamos
+            // Normalización: Adaptar entidad local al esquema DTO de la API externa
             dbCharacters = dbCharacters.map(char => ({
                 id: char.id,
                 name: char.name,
@@ -39,11 +37,10 @@ const getCharAll = async (req, res) => {
             }));
         }
 
-        // --- 2. LÓGICA API EXTERNA ---
-        // Si el filtro source es "created", saltamos la API
+        // 2. Consulta a API Externa
+        // Se omite si la fuente solicitada es estrictamente local ('created')
         if (source !== 'created') {
             try {
-                // Construimos la URL con los filtros
                 let apiUrl = `${URL}/?page=${page}`;
                 if (name) apiUrl += `&name=${name}`;
                 if (gender && gender !== 'all') apiUrl += `&gender=${gender}`;
@@ -56,17 +53,17 @@ const getCharAll = async (req, res) => {
                     totalPages = data.info.pages; 
                 }
             } catch (error) {
-                // Si la API devuelve 404 es que no encontró nada con esos filtros
+                // Manejo silencioso: La API retorna 404 si no hay coincidencias.
+                // Permitimos continuar para retornar posibles resultados de DB.
                 console.log("La API no encontró resultados para los filtros dados.");
             }
         }
 
-        // --- 3. UNIFICAR RESULTADOS ---
+        // 3. Agregación de resultados
         const allCharacters = [...dbCharacters, ...apiCharacters];
 
-        // Recalcular páginas si estamos mezclando DB y API
-        // (Nota: Esto es una simplificación, ya que paginar híbridos es complejo.
-        // Aquí priorizamos mostrar las páginas de la API)
+        // Definición de paginación para respuesta híbrida
+        // Nota: Prioriza la paginación de la API. La paginación combinada real requiere cursor unificado.
         const finalPages = totalPages > 0 ? totalPages : (allCharacters.length > 0 ? 1 : 0);
 
         if (allCharacters.length === 0) {

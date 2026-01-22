@@ -7,12 +7,12 @@ const getCharById = async (req, res) => {
     const { id } = req.params;
 
     try {
-        // CASO 1: Si el ID tiene guiones (es UUID), buscamos en Base de Datos
+        // Estrategia de enrutamiento: UUIDs indican registros locales (DB), Integers indican API externa
         if (id.includes("-")) {
             const charFromDb = await Character.findByPk(id); 
             
             if (charFromDb) {
-                // Formateamos para que el Front lo lea igual que a los de la API
+                // Normalización de datos: Adaptamos la entidad local al esquema esperado por el cliente
                 const charFormatted = {
                     id: charFromDb.id,
                     name: charFromDb.name,
@@ -20,15 +20,16 @@ const getCharById = async (req, res) => {
                     status: charFromDb.status,
                     species: charFromDb.species,
                     gender: charFromDb.gender,
-                    origin: { name: charFromDb.origin }, // Truco para que Detail.jsx no falle
-                    location: { name: charFromDb.origin } // Rellenamos location también
+                    // Replicamos la estructura anidada de la API externa para evitar rupturas en la UI
+                    origin: { name: charFromDb.origin }, 
+                    location: { name: charFromDb.origin } 
                 };
                 return res.status(200).json(charFormatted);
             } 
             return res.status(404).send('Personaje no encontrado en DB');
         }
 
-        // CASO 2: Si el ID no tiene guiones (es número), buscamos en API
+        // Fetch a servicio externo
         const { data } = await axios.get(`${URL}/${id}`);
         
         if (data.id) {
