@@ -22,6 +22,14 @@ El proyecto destaca por una interfaz moderna estilo **Glassmorphism** con efecto
 
 ## 🚀 Características Principales
 
+- **Gestión CRUD Completa:** Permite crear nuevos personajes, visualizarlos, editar su información y eliminarlos.
+- **Buscador Inteligente:** Filtra personajes por nombre en tiempo real.
+- **Filtrado y Ordenamiento:** Sistema de filtros combinados (Género, Especie, Origen) y ordenamiento alfabético/ID.
+- **Paginación Dinámica:** Navegación eficiente entre los cientos de personajes disponibles.
+- **Carga de Imágenes con Cloudinary:** Integración con la API de Cloudinary para subir y gestionar fotos de personajes de forma profesional.
+- **Diseño Responsive:** Interfaz moderna y adaptable a dispositivos móviles utilizando **Styled Components**.
+- **Base de Datos Persistente:** Desplegada en **Render**, asegurando que tus personajes creados se mantengan guardados.
+
 ### 🌌 Exploración del Multiverso
 - **Consumo de API Externa:** Conexión eficiente con la API de Rick and Morty.
 - **Búsqueda y Filtrado:** Búsqueda por nombre combinada con filtros de backend (Género, Status, Origen).
@@ -49,11 +57,11 @@ El proyecto destaca por una interfaz moderna estilo **Glassmorphism** con efecto
 - **React Router DOM v6**: Manejo de rutas y navegación SPA.
 - **Lucide React**: Iconografía moderna y ligera.
 - **Axios**: Peticiones HTTP.
+- **Cloudinary SDK** (Upload de imágenes)
 
 ### Backend
 - **Node.js & Express**: Servidor RESTful escalable.
 - **Sequelize ORM**: Modelado y consultas a la base de datos.
-- **Cloudinary API**: Gestión y almacenamiento de imágenes en la nube.
 
 ### Base de Datos
 - **PostgreSQL**: Base de datos relacional robusta.
@@ -101,6 +109,10 @@ Si deseas correr este proyecto localmente:
    ```bash
       npm start
    ```
+   
+## 🌐 Deploy
+
+  Puedes ver la aplicación funcionando aquí: (https://rick-and-morty-front-8fqy.onrender.com/)
 
 ## 🤝 Contribuciones
 
